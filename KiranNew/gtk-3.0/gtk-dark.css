@@ -1,8 +1,7 @@
-@define-color theme_bg_color #ffffff;
-@define-color theme_fg_color #222222;
-@define-color disabled_bg_color #f2f2f2;
-@define-color disabled_fg_color #919191;
-
+@define-color theme_bg_color #222222;
+@define-color theme_fg_color #ffffff;
+@define-color disabled_bg_color #E1E1E1;
+@define-color disabled_fg_color #b2b2b2;
 @define-color focus_outline_color #ffffff;
 @define-color placeholder_theme_fg_color @theme_fg_color;
 @define-color button_theme_fg_color #ffffff;
@@ -11,15 +10,7 @@
 @define-color taskbar_bg_color #0c0c0c;
 @define-color taskbar_fg_color #ffffff;
 
-@define-color widgets_bg_color #f2f2f2;
-@define-color widgets_border_color #cccccc;
-@define-color widgets_selected_bg_color #2eb3ff;
 
-@define-color menu_selected_color #dcdcdc;
-@define-color textview_bg_color #f2f2f2;
-
-
-@import url("widgets/common.css");
 @import url("widgets/base.css");
 @import url("widgets/button.css");
 @import url("widgets/color-chooser.css");
@@ -28,10 +19,13 @@
 @import url("widgets/entry.css");
 @import url("widgets/layout.css");
 @import url("widgets/misc.css");
+@import url("widgets/notebook.css");
 @import url("widgets/progressbar.css");
+@import url("widgets/scale.css");
 @import url("widgets/scroll.css");
 @import url("widgets/sidebar.css");
+@import url("widgets/spinbutton.css");
+@import url("widgets/switch.css");
 @import url("widgets/textview.css");
 @import url("widgets/toolbar.css");
 @import url("widgets/treeview.css");
-

@@ -1,0 +1,10 @@
+
+.view, textview.view {
+    /* background: @widgets_border_color; */
+    background: @textview_bg_color;
+}
+
+textview.view text selection, GtkTextView text selection {
+    background: @widgets_selected_bg_color;
+    color: @theme_fg_color;
+}

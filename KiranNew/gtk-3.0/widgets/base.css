@@ -1,0 +1,70 @@
+
+* {
+    font-size: 10pt;
+    -gtk-dpi: 96;
+    -GtkToolButton-icon-spacing: 0px;
+    -GtkMenu-horizontal-offset: 1px;
+    -gtk-secondary-caret-color: @theme_fg_color; /* Used for the secondary caret in bidirectional text */
+    caret-color: @theme_fg_color; /* The caret properties provide a way to change the appearance of the insertion caret in editable text.*/
+}
+
+/*window, window.background.popup, dialog, dialog.popup, headerbar, popover, messagedialog, iconview.view, .view {*/
+.background{
+    background: @theme_bg_color;
+    color: @theme_fg_color;
+}
+
+*:selected {
+    color: @selected_fg_color;
+    background-color: @selected_bg_color;
+}
+
+*:disabled {
+    color: @disabled_fg_color;
+    background-color: @disabled_bg_color;
+    -gtk-icon-effect: dim;
+}
+
+*:hover {
+    -gtk-icon-effect: highlight;
+}
+
+image, image:disabled,
+label, label:disabled,
+grid, grid:disabled,
+box, box:disabled
+{
+    background-color: transparent;
+}
+
+headerbar, .view {
+    min-height: 48px;
+    background: @theme_bg_color;
+}
+
+headerbar button.titlebutton {
+    border-color: transparent;
+    background: none;
+}
+
+.csd.background decoration {
+    border: 1px solid #b2b2b2;
+    box-shadow: 2px 2px 6px alpha(#000000, 0.2),
+                2px -2px 6px alpha(#000000, 0.2),
+                -2px -2px 6px alpha(#000000, 0.2),
+                -2px 2px 6px alpha(#000000, 0.2);
+}
+
+.csd.background.popup {
+    background: none;
+    border-radius: 2px;
+}
+
+.csd.background.popup decoration {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 2px 2px 4px alpha(#000000, 0.1),
+                2px -2px 4px alpha(#000000, 0.1),
+                -2px -2px 4px alpha(#000000, 0.1),
+                -2px 2px 4px alpha(#000000, 0.1);
+}

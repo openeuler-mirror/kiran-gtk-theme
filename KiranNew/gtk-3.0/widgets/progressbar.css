@@ -1,0 +1,54 @@
+
+progressbar trough progress {
+    background: #21A6FF;
+    border: none;
+}
+
+progressbar trough {
+    background: #E1E1E1;
+    border: none;
+    border-radius: 0px;
+}
+
+progressbar trough, progressbar trough progress {
+    min-height: 8px;
+}
+
+progressbar text {
+    color: @theme_fg_color;
+}
+
+
+
+levelbar.horizontal block{
+    min-height: 4px;
+    min-width: 16px;
+}
+
+levelbar.vertical block{
+    min-width: 4px;
+    min-height: 16px;
+}
+
+levelbar.horizontal.discrete block {
+    margin: 0px 4px 0px 4px;
+}
+levelbar.vertical.discrete block {
+    margin: 4px 0px 4px 0px;
+}
+
+levelbar block.filled.low {
+    background: #ff0000;
+}
+
+levelbar block.filled.high {
+    background: #ff9c00;
+}
+
+levelbar block.filled.full {
+    background: #41cc54;
+}
+
+levelbar block.empty {
+    background: #cccccc;
+}

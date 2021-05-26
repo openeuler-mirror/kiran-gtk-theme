@@ -1,8 +1,7 @@
-@define-color theme_bg_color #ffffff;
-@define-color theme_fg_color #222222;
-@define-color disabled_bg_color #f2f2f2;
+@define-color theme_bg_color #222222;
+@define-color theme_fg_color #ffffff;
+@define-color disabled_bg_color #2d2d2d;
 @define-color disabled_fg_color #919191;
-
 @define-color focus_outline_color #ffffff;
 @define-color placeholder_theme_fg_color @theme_fg_color;
 @define-color button_theme_fg_color #ffffff;
@@ -11,12 +10,12 @@
 @define-color taskbar_bg_color #0c0c0c;
 @define-color taskbar_fg_color #ffffff;
 
-@define-color widgets_bg_color #f2f2f2;
-@define-color widgets_border_color #cccccc;
+@define-color widgets_bg_color #2d2d2d;
+@define-color widgets_border_color #393939;
 @define-color widgets_selected_bg_color #2eb3ff;
 
-@define-color menu_selected_color #dcdcdc;
-@define-color textview_bg_color #f2f2f2;
+@define-color menu_selected_color #393939;
+@define-color textview_bg_color #191919;
 
 
 @import url("widgets/common.css");
@@ -34,4 +33,3 @@
 @import url("widgets/textview.css");
 @import url("widgets/toolbar.css");
 @import url("widgets/treeview.css");
-

@@ -1,0 +1,11 @@
+
+placessidebar list row {
+    padding-left: 30px;
+    min-height: 36px;
+}
+
+placessidebar {
+    min-width: 120px;
+    border: none;
+    border-right: 1px solid rgba(0, 0, 0, 0.15);
+}
