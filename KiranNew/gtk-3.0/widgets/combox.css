@@ -67,7 +67,7 @@ button.combo {
 }
 
 button.combo:hover, button.combo:active {
-    border-color: @widgets_selected_bg_color;
+    border-color: @widgets_selected_color;
 }
 
 button.combo arrow {

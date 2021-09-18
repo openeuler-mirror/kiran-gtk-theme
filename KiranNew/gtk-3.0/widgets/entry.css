@@ -48,7 +48,7 @@ entry.search image.right {
 }
 
 entry:focus, entry:focus:selected {
-    border: 1px solid @widgets_selected_bg_color;
+    border: 1px solid @widgets_selected_color;
     caret-color: @theme_fg_color;
     box-shadow: none;
 }
@@ -151,7 +151,7 @@ scale.vertical indicator{
 }
 
 scale trough highlight, scale.fine-tune trough highlight {
-    background: @widgets_selected_bg_color;
+    background: @widgets_selected_color;
     border: none;
     border-radius: 0px;
     padding: 0px;

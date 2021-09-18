@@ -9,15 +9,15 @@ list row {
 }
 
 list row:hover {
-    background: @widgets_hover_color;
+    background: @container_hover_color;
 }
 
 list row:active {
-    background: @widgets_active_color;
+    background: @container_active_color;
 }
 
 list row:selected {
-    background: @widgets_selected_bg_color;
+    background: @container_selected_color;
 }
 
 list row image:first-child:not(:last-child) {
@@ -97,7 +97,7 @@ notebook tab:hover{
 
 notebook tab:checked {
     outline: none;
-    background: @widgets_selected_bg_color;
+    background: @widgets_selected_color;
 }
 
 notebook stack {

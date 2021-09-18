@@ -1,0 +1,7 @@
+
+/* GtkLabel */
+label, label:disabled {
+    background-color: transparent;
+    color: @theme_fg_color;
+}
+

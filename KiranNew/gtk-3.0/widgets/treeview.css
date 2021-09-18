@@ -28,7 +28,7 @@ treeview.view .cell {
 }
 
 treeview.view .cell:selected {
-    background: @widgets_selected_bg_color;
+    background: @widgets_selected_color;
     color: @theme_fg_color;
 }
 

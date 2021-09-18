@@ -152,7 +152,7 @@ radiobutton.text-button radio, radiobutton radio {
 }
 
 button.radio:checked {
-    background: @widgets_selected_bg_color;
+    background: @widgets_selected_color;
 }
 
 radio {
@@ -207,7 +207,7 @@ radio:checked:disabled {
 
 /* GtkToggleButton */
 button.toggle:checked {
-    background: @widgets_selected_bg_color;
+    background: @widgets_selected_color;
 }
 
 
@@ -234,9 +234,9 @@ button.link:active, button.link:visited {
 }
 
 button.link:active > label, button.link:visited > label {
-    color: @widgets_selected_bg_color;
+    color: @widgets_selected_color;
     text-decoration-line: underline;
-    text-decoration-color: @widgets_selected_bg_color;
+    text-decoration-color: @widgets_selected_color;
 }
 
 /* GtkSwitch */
@@ -252,7 +252,7 @@ switch, switch:disabled {
 }
 
 switch:checked {
-    background: @widgets_selected_bg_color;
+    background: @widgets_selected_color;
     border-color: transparent;
 }
 

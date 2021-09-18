@@ -5,6 +5,6 @@
 }
 
 textview.view text selection, GtkTextView text selection {
-    background: @widgets_selected_bg_color;
+    background: @widgets_selected_color;
     color: @theme_fg_color;
 }

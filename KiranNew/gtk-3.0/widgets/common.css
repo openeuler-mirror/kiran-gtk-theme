@@ -1,5 +1,45 @@
 
 
+/* Backdrop state colors */
+@define-color unfocused_bg_color @bg_color;
+@define-color unfocused_fg_color @fg_color;
+@define-color unfocused_base_color @base_color;
+@define-color unfocused_text_color @text_color;
+@define-color unfocused_selected_bg_color @selected_bg_color;
+@define-color unfocused_selected_fg_color @selected_fg_color;
+@define-color unfocused_disabled_bg_color mix(@fg_color, @bg_color, 0.98);
+@define-color unfocused_disabled_fg_color mix(@fg_color, @bg_color, 0.75);
+@define-color unfocused_disabled_base_color @unfocused_disabled_bg_color;
+@define-color unfocused_disabled_text_color @unfocused_disabled_fg_color;
+/* Theme colors */
+@define-color theme_bg_color @bg_color;
+@define-color theme_fg_color @fg_color;
+@define-color theme_base_color @base_color;
+@define-color theme_text_color @text_color;
+@define-color theme_selected_bg_color @selected_bg_color;
+@define-color theme_selected_fg_color @selected_fg_color;
+@define-color theme_disabled_bg_color @disabled_bg_color;
+@define-color theme_disabled_fg_color @disabled_fg_color;
+@define-color theme_disabled_text_color @disabled_text_color;
+@define-color theme_disabled_base_color @disabled_base_color;
+/* Unfocused color scheme */
+@define-color theme_unfocused_bg_color @unfocused_bg_color;
+@define-color theme_unfocused_fg_color @unfocused_fg_color;
+@define-color theme_unfocused_base_color @unfocused_base_color;
+@define-color theme_unfocused_text_color @unfocused_text_color;
+@define-color theme_unfocused_selected_bg_color @unfocused_selected_bg_color;
+@define-color theme_unfocused_selected_fg_color @unfocused_selected_fg_color;
+@define-color theme_unfocused_disabled_bg_color @unfocused_disabled_bg_color;
+@define-color theme_unfocused_disabled_fg_color @unfocused_disabled_fg_color;
+@define-color theme_unfocused_disabled_text_color @unfocused_disabled_text_color;
+@define-color theme_unfocused_disabled_base_color @unfocused_disabled_base_color;
+
+
 @define-color switch_slider_color #ffffff;
-@define-color widgets_hover_color mix(@widgets_bg_color, @theme_fg_color, 0.2);
-@define-color widgets_active_color mix(@widgets_bg_color, @theme_fg_color, 0.5);
+@define-color widgets_hover_color mix(@widgets_bg_color, @theme_fg_color, 0.3);
+@define-color widgets_active_color mix(@widgets_bg_color, @theme_fg_color, 0.4);
+
+@define-color container_hover_color mix(@theme_bg_color, @theme_fg_color, 0.1);
+@define-color container_active_color mix(@theme_bg_color, @theme_fg_color, 0.2);
+
+@define-color container_selected_color @widgets_selected_color;
