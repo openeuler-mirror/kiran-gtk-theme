@@ -1,8 +1,8 @@
 
-.view, textview.view {
-    /* background: @widgets_border_color; */
+textview.view {
     background: @textview_bg_color;
 }
+
 
 textview.view text selection, GtkTextView text selection {
     background: @widgets_selected_color;
