@@ -56,7 +56,7 @@ entry:focus, entry:focus:selected {
 entry:disabled, entry.search:disabled {
     border: none;
     background: @disabled_bg_color;
-    color: @disabled_fg_color;
+    color: @theme_disabled_fg_color;
 }
 
 entry selection {

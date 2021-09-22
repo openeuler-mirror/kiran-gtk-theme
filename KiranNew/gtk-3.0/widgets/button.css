@@ -33,7 +33,7 @@ button:active {
 button:disabled, switch:disabled {
     border: none;
     background: @disabled_bg_color;
-    color: @disabled_fg_color;
+    color: @theme_disabled_fg_color;
 }
 
 /* Button */
@@ -56,7 +56,7 @@ checkbutton {
 
 checkbutton:disabled {
     background: none;
-    color: @disabled_fg_color;
+    color: @theme_disabled_fg_color;
 }
 
 checkbutton.text-button check:first-child, checkbutton check {
@@ -142,7 +142,7 @@ radiobutton {
 }
 
 radiobutton:disabled {
-    color: @disabled_fg_color;
+    color: @theme_disabled_fg_color;
     background: none;
 }
 
@@ -179,7 +179,7 @@ radio:active {
 
 radio:disabled {
     -gtk-icon-source: url("../assets/radio_unchecked_disabled.svg");
-    color: @disabled_fg_color;
+    color: @theme_disabled_fg_color;
 }
 
 
@@ -202,7 +202,7 @@ radio:checked:active {
 
 radio:checked:disabled {
     -gtk-icon-source: url("../assets/radio_checked_disabled.svg");
-    color: @disabled_fg_color;
+    color: @theme_disabled_fg_color;
 }
 
 /* GtkToggleButton */
@@ -270,7 +270,7 @@ switch slider, switch:disabled slider {
 }
 
 switch:disabled slider {
-    background: @disabled_fg_color;
+    background: @theme_disabled_fg_color;
 }
 
 
@@ -298,11 +298,11 @@ button.font > box > box > label {
 }
 
 button.font:disabled > box > lable {
-    color: @disabled_fg_color;
+    color: @theme_disabled_fg_color;
 }
 
 button.font:disabled > box > box > label {
-    color: @disabled_fg_color;
+    color: @theme_disabled_fg_color;
 }
 
 /* ColorButton */

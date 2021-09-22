@@ -16,14 +16,7 @@
 
 /* Global selected/disable/hover color cannot be adapted to some third-party applications. */
 
-/* *:selected {
-    color: @selected_fg_color;
-    background-color: @selected_bg_color;
-} */
-
 *:disabled {
-    /* color: @disabled_fg_color;
-    background-color: @disabled_bg_color; */
     -gtk-icon-effect: dim;
 }
 

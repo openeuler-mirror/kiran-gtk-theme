@@ -1,7 +1,15 @@
 
 /* GtkLabel */
 label, label:disabled {
-    background-color: transparent;
-    color: @theme_fg_color;
+    background: transparent;
+}
+
+label:disabled {
+    color: @theme_disabled_fg_color; 
+}
+
+label selection {
+    background-color: alpha(@theme_selected_bg_color, 0.4);
+    color: @theme_selected_fg_color; 
 }
 

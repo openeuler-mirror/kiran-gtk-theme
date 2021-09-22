@@ -91,7 +91,7 @@ button.combo:disabled arrow {
 button.combo:disabled {
     background: @disabled_bg_color;
     border-color: mix(@theme_bg_color, #49a5f1, 0.2);
-    color: @disabled_fg_color;
+    color: @theme_disabled_fg_color;
 }
 
 
@@ -135,7 +135,7 @@ menubar menu menuitem{
 }
 
 menubar menu menuitem:disabled {
-    color: @disabled_fg_color;
+    color: @theme_disabled_fg_color;
 }
 
 menu, .menu {
