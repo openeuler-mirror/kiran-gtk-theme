@@ -58,7 +58,8 @@ view rubberband,
 
 
 .view:selected, .view:selected:focus, .view text:selected, .view text:selected:focus, .view text selection, .view text selection:focus {
-    background-color: alpha(@theme_selected_bg_color, 0.9); 
+    color: @theme_selected_fg_color;
+    background-color: @theme_selected_bg_color;
 }
 
 .view:selected:disabled, .view:selected:focus:disabled, .view text:selected:disabled, .view text:selected:focus:disabled, .view text selection:disabled, .view text selection:focus:disabled {
