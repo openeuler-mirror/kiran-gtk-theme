@@ -1,0 +1,56 @@
+
+treeview.view {
+    padding: 10px;
+}
+
+treeview.view header button {
+    /* border-style: solid;
+    border-width: 0px 0px 1px 0px;
+    border-color: gtk("@widgets_border_color"); */
+    border: none;
+    border-radius: 0px;
+    /* background: gtk("@theme_bg_color"); */
+    padding: 10px 8px 10px 8px;
+}
+
+/* treeview.view header button:first-child {
+    border-top-left-radius: 4px;
+}
+treeview.view header button:last-child {
+    border-top-right-radius: 4px;
+} */
+
+treeview.view .cell {
+    background: gtk("@theme_bg_color");
+    color: gtk("@theme_fg_color");
+    padding: 5px 5px 5px 5px;
+    border: none;
+}
+
+treeview.view .cell:selected {
+    background: gtk("@widgets_selected_color");
+    color: gtk("@theme_fg_color");
+}
+
+treeview.view .cell:not(:selected):hover {
+    background: gtk("@widgets_hover_color");
+    border-style: none;
+    color: gtk("@theme_fg_color");
+}
+
+treeview.view .separator {
+    min-height: 10px;
+}
+
+treeview.view .cell.separator:hover {
+    min-height: 10px;
+}
+
+
+
+treeview.view check,
+treeview.view radio
+{
+    min-width: 14px;
+    min-height: 14px;
+}

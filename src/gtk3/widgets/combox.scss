@@ -1,0 +1,208 @@
+
+combobox {
+    -GtkComboBox-appears-as-list: false;
+}
+
+combobox:disabled {
+    border-radius: 6px;
+}
+
+combobox window.popup {
+    background: transparent;
+    border-radius: 6px;
+}
+
+combobox window.popup menu {
+    border: 1px solid gtk("@widgets_border_color");
+    border-radius: 6px;
+    padding: 1px;
+}
+
+combobox window.popup menu menuitem {
+    padding: 8px 5px 8px 5px;
+    margin: 0px;
+}
+
+combobox window.popup menu menuitem image:not(:last-child) {
+    margin-right: 10px;
+}
+
+combobox window.popup menu menuitem:first-child {
+    border-radius: 0px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+combobox window.popup menu menuitem:last-child {
+    border-radius: 0px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+combobox window.popup menu menuitem:hover {
+    border-width: 0px;
+    background: gtk("@selected_bg_color");
+    color: gtk("@selected_fg_color");
+}
+
+combobox entry.combo {
+    border-radius: 6px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-right-width: 0px;
+}
+
+combobox button.combo:not(:only-child) {
+    border-top-left-radius: 0px; 
+    border-bottom-left-radius: 0px; 
+}
+
+button.combo {
+    border-width: 1px;
+    border-color: #848484;
+    border-radius: 6px;
+    padding: 5px 10px 5px 10px;
+    background: transparent;
+    color: gtk("@theme_fg_color");
+}
+
+button.combo:hover, button.combo:active {
+    border-color: gtk("@widgets_selected_color");
+}
+
+button.combo arrow {
+    color: #ffffff;
+    min-width: 16px;
+    min-height: 16px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    -gtk-icon-source: url("assets/arrow-down.svg");
+}
+
+button.combo arrow:not(:only-child) {
+    margin-left: 10px;
+}
+
+button.combo:disabled arrow {
+    -gtk-icon-source: url("assets/arrow-down-disabled.svg");
+    background: none;
+}
+
+button.combo:disabled {
+    background: gtk("@disabled_bg_color");
+    border-color: gtkmix(gtk("@theme_bg_color"), #49a5f1, 0.2);
+    color: gtk("@theme_disabled_fg_color");
+}
+
+
+/* GtkMenuBar */
+
+menubar {
+    border: none;
+    box-shadow: none;
+    background: gtk("@theme_bg_color");
+}
+
+menubar > menuitem:hover, menubar > menuitem:active {
+    background: gtk("@widgets_hover_color");
+    border: none;
+    box-shadow: none;
+}
+
+menubar > menuitem {
+    min-width: 40px;
+    min-height: 30px;
+    padding: 2px 8px 2px 8px;
+    margin: 0px 4px 0px 0px;
+    border-radius: 2px;
+    background: none;
+    border: none;
+    box-shadow: none;
+}
+
+menubar menu, menubar .menu{
+    background: gtk("@theme_bg_color");
+    border-radius: 8px;
+    border: 1px solid gtk("@widgets_border_color");
+}
+
+
+menubar menu menuitem{
+    margin: 0px;
+    padding: 0px 20px 0px 10px;
+    min-height: 30px;
+    border-radius: 0px;
+}
+
+menubar menu menuitem:disabled {
+    color: gtk("@theme_disabled_fg_color");
+}
+
+menu, .menu {
+    background: gtk("@theme_bg_color");
+    border-radius: 8px;
+    border: 1px solid gtk("@widgets_border_color");
+    padding: 4px 0px 4px 0px;
+    color: gtk("@theme_fg_color");
+    margin: 0px;
+}
+
+menu menuitem, .menu menuitem, .menu modelbutton {
+    border: none;
+    background: none;
+    color: gtk("@theme_fg_color");
+    padding: 4px 5px 4px 10px;
+}
+
+menu separator, .menu separator{
+    color: gtk("@theme_fg_color");
+    border-width: 1px 1px 0px 0px;
+    border-style: solid;
+    border-color: gtk("@disabled_bg_color");
+}
+
+menuitem arrow, .menu menuitem arrow, .menu modelbutton arrow {
+    min-width: 16px;
+    min-height: 16px;
+}
+
+menuitem arrow.left, .menu modelbutton arrow.left {
+    -gtk-icon-source: url("assets/arrow-left.png");
+    margin-right: 20px;
+}
+
+/* TODO： 左箭头禁用 */
+
+menuitem arrow.right, .menu modelbutton arrow.right {
+    -gtk-icon-source: url("assets/arrow-right.png");
+    margin-left: 20px;
+}
+
+menuitem:disabled arrow.right, .menu modelbutton:disabled arrow.right {
+    -gtk-icon-source: url("assets/arrow-right-disabled.png");
+}
+
+menuitem:hover arrow, .menu modelbutton:hover arrow
+{
+    -gtk-icon-effect: none;
+    -gtk-icon-shadow: none;
+}
+
+menu menuitem:hover, .menu menuitem:hover, .menu modelbutton:hover {
+    background: gtk("@widgets_hover_color");
+}
+
+menu menuitem image:first-child:not(:last-child),
+menu menuitem radio:first-child,
+menu menuitem check:first-child,
+.menu menuitem image:first-child:not(:last-child),
+.menu menuitem radio:first-child,
+.menu menuitem check:first-child,
+.menu modelbutton image:first-child:not(:last-child),
+.menu modelbutton radio:first-child,
+.menu modelbutton check:first-child
+{
+    margin-right: 10px;
+}
+
+

@@ -1,0 +1,262 @@
+
+/* GtkEntry GtkSearchEntry */
+
+entry, entry.search {
+    border: 1px solid #848484;
+    border-radius: 6px;
+    background: transparent;
+    color: gtk("@theme_fg_color");
+    border-width: 1px;
+}
+
+entry {
+    padding: 5px 10px 5px 10px;
+}
+
+entry.error {
+    border-width: 1px;
+    border-color: gtkalpha(#ff0000, 0.6);
+}
+
+entry.error:focus {
+    border-width: 1px;
+    border-color: gtkalpha(#ff0000, 1.0);
+}
+
+entry.warning {
+    border-width: 1px;
+    border-color: gtkalpha(#FFAD30, 1.0);
+}
+
+entry.warning:focus {
+    border-color: gtkalpha(#F99801, 1.0);
+}
+
+entry.search {
+    min-height: 30px;
+    padding: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+entry.search image.left {
+    padding-right: 10px;
+}
+
+entry.search image.right {
+    padding-left: 10px;
+}
+
+entry:focus, entry:focus:selected {
+    border: 1px solid gtk("@widgets_selected_color");
+    caret-color: gtk("@theme_fg_color");
+    box-shadow: none;
+}
+
+entry:disabled, entry.search:disabled {
+    border: none;
+    background: gtk("@disabled_bg_color");
+    color: gtk("@theme_disabled_fg_color");
+}
+
+entry selection {
+    color: #ffffff;
+    background: #21A6FF;
+}
+
+
+.linked.horizontal entry:not(:last-child):not(:only-child) {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-right-width: 0px;
+}
+
+.linked.horizontal entry:not(:first-child):not(:only-child) {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-left-width: 1px;
+}
+
+.path-bar button {
+    border-width: 1px;
+}
+
+/* GtkScale */
+scale.horizontal {
+    min-height: 30px;
+    margin: 0px 10px 0px 10px;
+}
+
+scale.vertical {
+    min-width: 30px;
+    margin: 10px 0px 10px 0px;
+}
+
+scale:disabled {
+    background: none;
+}
+
+scale trough {
+    border: none;
+    border-radius: 0px;
+    padding: 0px;
+    margin: 0px;
+    outline: none;
+    box-shadow: none;
+    background: gtk("@widgets_bg_color");
+}
+
+scale.vertical trough {
+    min-width: 2px;
+}
+
+scale.horizontal trough {
+    min-height: 2px;
+}
+
+scale.horizontal marks.top mark label,
+scale.horizontal marks.top mark indicator
+{
+   margin: 0px 0px 8px 0px;
+}
+
+scale.horizontal marks.bottom mark label,
+scale.horizontal marks.bottom mark indicator 
+{
+   margin: 8px 0px 0px 0px;
+}
+
+scale.vertical marks.top mark label,
+scale.vertical marks.top mark indicator
+{
+   margin: 0px 8px 0px 0px;
+}
+
+scale.vertical marks.bottom mark label,
+scale.vertical marks.bottom mark indicator 
+{
+   margin: 0px 0px 0px 8px;
+}
+
+scale.horizontal indicator{
+   min-height: 6px;
+   min-width: 1px;
+   color: gtkalpha(gtk("@theme_fg_color"), 0.3);
+}
+
+scale.vertical indicator{
+   min-height: 1px;
+   min-width: 6px;
+   color: gtkalpha(gtk("@theme_fg_color"), 0.3);
+}
+
+scale trough highlight, scale.fine-tune trough highlight {
+    background: gtk("@widgets_selected_color");
+    border: none;
+    border-radius: 0px;
+    padding: 0px;
+    box-shadow: none;
+    outline-width: 0px;
+}
+
+scale:disabled trough {
+    background: gtk("@disabled_bg_color");
+}
+
+scale:disabled trough highlight {
+    background: gtk("@disabled_bg_color");
+}
+
+scale contents trough fill {
+    background: gtkalpha(gtk("@theme_fg_color"), 0.3);
+}
+
+scale:disabled slider,
+scale:disabled marks,
+scale:disabled marks mark,
+scale marks,
+scale,
+scale marks mark
+{
+   background: none;
+}
+
+scale contents trough slider {
+    -gtk-icon-source: url("assets/scale_normal.png");
+    min-width: 24px;
+    min-height: 24px;
+    box-shadow: none;
+    border: none;
+    -gtk-icon-shadow: none;
+    background: none;
+}
+
+scale contents trough slider:active {
+    -gtk-icon-source: url("assets/scale_pressed.png");
+    -gtk-icon-shadow: none;
+    -gtk-icon-effect: none;
+    box-shadow: none;
+}
+
+scale:disabled contents trough slider {
+    -gtk-icon-source: url("assets/scale_disabled.png");
+    -gtk-icon-shadow: none;
+    -gtk-icon-effect: none;
+    box-shadow: none;
+}
+
+scale.horizontal contents trough slider {
+    margin: 0px;
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
+
+scale.vertical contents trough slider {
+    margin: 0px;
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+/* GtkSpinButton */
+
+spinbutton.horizontal entry {
+    border-radius: 4px 0px 0px 4px;
+    border-width: 1px 0px 1px 1px;
+    border-style: solid;
+    border-color: gtk("@widgets_border_color");
+    color: gtk("@theme_fg_color");
+}
+
+spinbutton.horizontal button.up {
+    border-radius: 0px 4px 4px 0px;
+    border-width: 1px 1px 1px 0px;
+}
+
+spinbutton.horizontal button.down {
+    border-radius: 0px;
+    border-width: 1px;
+}
+
+spinbutton.vertical entry {
+    border-radius: 0px;
+    border-width: 0px 1px 0px 1px;
+    border-style: solid;
+    border-color: gtk("@widgets_border_color");
+    color: gtk("@theme_fg_color");
+}
+
+spinbutton.vertical button.up {
+    border-radius: 4px 4px 0px 0px;
+    border-width: 1px;
+}
+
+spinbutton.vertical button.down {
+    border-radius: 0px 0px 4px 4px;
+    border-width: 1px;
+}
+
+/* button默认禁用样式为无边框，在spinbutton中需要添加边框 */
+spinbutton button:disabled {
+    border-style: solid;
+    border-color: gtk("@widgets_border_color");
+}

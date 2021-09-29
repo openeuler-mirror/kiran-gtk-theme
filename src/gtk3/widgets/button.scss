@@ -1,0 +1,352 @@
+
+
+/* common css for button */
+
+button, button:not(.color) {
+    box-shadow: none;
+    text-shadow: none;
+    padding: 5px 8px 5px 8px;
+    border-radius: 4px;
+    border: 1px solid gtk("@widgets_border_color");
+    color: gtk("@theme_fg_color");
+    background: gtk("@widgets_bg_color");
+}
+
+
+button:focus {
+    outline-offset: -5px;
+    outline-style: dashed;
+    outline-color: rgba(0, 0, 0, 0.5);
+    outline-width: 1px;
+    -gtk-outline-radius: 2px;
+}
+
+button:hover, switch:hover {
+    box-shadow: none;
+    background: gtk("@widgets_hover_color");
+}
+
+button:active {
+    background: gtk("@widgets_active_color");
+}
+
+button:disabled, switch:disabled {
+    border: none;
+    background: gtk("@disabled_bg_color");
+    color: gtk("@theme_disabled_fg_color");
+}
+
+/* Button */
+
+button.flat {
+    border-color: transparent;
+    background: transparent;
+}
+
+button.image-button image:not(:last-child):not(:only-child)
+{
+    margin-right: 5px;
+}
+
+/* GtkCheckButton */
+
+checkbutton {
+    color: gtk("@theme_fg_color");
+}
+
+checkbutton:disabled {
+    background: none;
+    color: gtk("@theme_disabled_fg_color");
+}
+
+checkbutton.text-button check:first-child, checkbutton check {
+    margin-right: 10px;
+}
+
+checkbutton.text-button check:last-child, check:last-child {
+    margin-left: 10px;
+}
+
+check {
+    -gtk-icon-source: url("assets/check_unchecked_normal.svg");
+    -gtk-icon-shadow: none;
+    -gtk-icon-effect: none;
+    border: none;
+    box-shadow: none;
+    border-radius: 0px;
+    padding: 0px;
+    background: none;
+    border-image: none;
+    outline: none;
+    min-width: 14px;
+    min-height: 14px;
+}
+
+check:hover {
+    -gtk-icon-source: url("assets/check_unchecked_hover.svg");
+}
+
+check:active {
+    -gtk-icon-source: url("assets/check_unchecked_pressed.svg");
+}
+
+check:disabled {
+    -gtk-icon-source: url("assets/check_unchecked_disabled.svg");
+}
+
+check:checked:hover {
+    -gtk-icon-source: url("assets/check_checked_hover.svg");
+}
+
+check:checked:active {
+    -gtk-icon-source: url("assets/check_checked_pressed.svg");
+}
+
+check:checked:disabled {
+    -gtk-icon-source: url("assets/check_checked_disabled.svg");
+}
+
+check:checked, check:selected {
+    -gtk-icon-source: url("assets/check_checked_normal.svg");
+    border: none;
+    box-shadow: none;
+    padding: 0px;
+    outline: none;
+    background: none;
+    animation: none;
+    transition: none;
+}
+
+check:indeterminate {
+    -gtk-icon-source: url("assets/check_inconsistent_normal.svg");
+}
+
+check:indeterminate:hover {
+    -gtk-icon-source: url("assets/check_inconsistent_hover.svg");
+}
+
+check:indeterminate:active {
+    -gtk-icon-source: url("assets/check_inconsistent_pressed.svg");
+}
+
+check:indeterminate:disabled {
+    -gtk-icon-source: url("assets/check_inconsistent_disabled.svg");
+}
+
+
+/* GtkRadioButton */
+
+radiobutton {
+    color: gtk("@theme_fg_color");
+    background: none;
+}
+
+radiobutton:disabled {
+    color: gtk("@theme_disabled_fg_color");
+    background: none;
+}
+
+radiobutton.text-button radio, radiobutton radio {
+    margin-right: 10px;
+    background: none;
+}
+
+button.radio:checked {
+    background: gtk("@widgets_selected_color");
+}
+
+radio {
+    min-width: 14px;
+    min-height: 14px;
+    -gtk-icon-source: url("assets/radio_unchecked_normal.svg");
+    -gtk-icon-shadow: none;
+    -gtk-icon-effect: none;
+    border: none;
+    border-image: none;
+    box-shadow: none;
+    padding: 0px;
+    background: transparent;
+}
+
+radio:hover {
+    -gtk-icon-source: url("assets/radio_unchecked_hover.svg");
+}
+
+
+radio:active {
+    -gtk-icon-source: url("assets/radio_unchecked_pressed.svg");
+}
+
+radio:disabled {
+    -gtk-icon-source: url("assets/radio_unchecked_disabled.svg");
+    color: gtk("@theme_disabled_fg_color");
+}
+
+
+radio:checked {
+    -gtk-icon-source: url("assets/radio_checked_normal.svg");
+    -gtk-icon-shadow: none;
+    -gtk-icon-effect: none;
+    border: none;
+    border-image: none;
+    transition: none;
+}
+
+radio:checked:hover {
+    -gtk-icon-source: url("assets/radio_checked_hover.svg");
+}
+
+radio:checked:active {
+    -gtk-icon-source: url("assets/radio_checked_pressed.svg");
+}
+
+radio:checked:disabled {
+    -gtk-icon-source: url("assets/radio_checked_disabled.svg");
+    color: gtk("@theme_disabled_fg_color");
+}
+
+/* GtkToggleButton */
+button.toggle:checked {
+    background: gtk("@widgets_selected_color");
+}
+
+
+/* GtkLinkButton */
+button.link {
+    color: gtk("@theme_fg_color");
+    border: none;
+    background: none;
+}
+
+button.link:hover {
+    border: none;
+    background: none;
+}
+
+button.link:hover > label {
+    text-decoration-line: underline;
+    text-decoration-color: gtk("@theme_fg_color");
+}
+
+button.link:active, button.link:visited {
+    border: none;
+    background: none;
+}
+
+button.link:active > label, button.link:visited > label {
+    color: gtk("@widgets_selected_color");
+    text-decoration-line: underline;
+    text-decoration-color: gtk("@widgets_selected_color");
+}
+
+/* GtkSwitch */
+
+switch, switch:disabled {
+    border: none;
+    border-radius: 12px;
+    min-width: 54px;
+    min-height: 24px;
+    text-shadow: none;
+    color: transparent;
+    background: gtk("@widgets_bg_color");
+}
+
+switch:checked {
+    background: gtk("@widgets_selected_color");
+    border-color: transparent;
+}
+
+switch slider, switch:disabled slider {
+    background: gtk("@switch_slider_color");
+    background-repeat: no-repeat;
+    border-radius: 8px;
+    border-width: 0px;
+    min-width: 16px;
+    min-height: 16px;
+    margin-right: 4px;
+    margin-left: 4px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+switch:disabled slider {
+    background: gtk("@theme_disabled_fg_color");
+}
+
+
+/* GtkFontButton */
+
+button.font {
+    border: none;
+    background: none;
+    padding: 0px 0px 0px 0px;
+}
+
+
+button.font > box > label {
+    border: 1px solid gtk("@widgets_border_color");
+    border-radius: 4px;
+    background: gtk("@theme_bg_color");
+    padding: 8px 8px 8px 8px;
+}
+
+button.font > box > box > label {
+    border: none;
+    border-radius: 4px;
+    background: gtk("@widgets_bg_color");
+    padding: 8px 8px 8px 8px;
+}
+
+button.font:disabled > box > lable {
+    color: gtk("@theme_disabled_fg_color");
+}
+
+button.font:disabled > box > box > label {
+    color: gtk("@theme_disabled_fg_color");
+}
+
+/* ColorButton */
+button.color {
+    background: none;
+}
+
+
+button.suggested-action {
+    border: none;
+    background: #43A3F2;
+    color: #ffffff;
+}
+
+button.suggested-action:hover, button.text-button.suggested-action:hover {
+    border: none;
+    background: #79C3FF;
+}
+
+button.suggested-action:active, button.text-button.suggested-action:active {
+    background: #1568AD;
+    box-shadow: none;
+    border: none;
+}
+
+button.suggested-action:disabled {
+    background: gtkalpha(#43A3F2, 0.7); 
+    color: #ffffff;
+}
+
+button.destructive-action {
+    background: #FA4949;
+    border: none;
+    color: #ffffff;
+}
+
+button.destructive-action:hover {
+    background: #FF7878;
+}
+
+button.destructive-action:active {
+    background: #9D2C2C;
+}
+
+button.destructive-action:disabled {
+    background: gtkalpha(#FA4949, 0.7);
+}
