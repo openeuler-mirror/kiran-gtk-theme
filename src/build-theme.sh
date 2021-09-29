@@ -51,7 +51,7 @@ cp gtk2/gtkrc ${THEME_GTK2_BUILD_DIR}
 # ---------------------------------------------------------  gtk3 ---------------------------------------------------------
 THEME_GTK3_BUILD_DIR=${THEME_BUILD_DIR}/gtk-3.0
 mkdir -p ${THEME_GTK3_BUILD_DIR}
-cp ${COLOR_FILE} ${THEME_GTK3_BUILD_DIR}/colors.scss
+cp ${COLOR_FILE} ${THEME_GTK3_BUILD_DIR}/_base-colors.scss
 cp -r assets ${THEME_GTK3_BUILD_DIR}/
 sassc -I ${THEME_GTK3_BUILD_DIR} gtk3/gtk.scss ${THEME_GTK3_BUILD_DIR}/gtk.css
-rm ${THEME_GTK3_BUILD_DIR}/colors.scss
+rm ${THEME_GTK3_BUILD_DIR}/_base-colors.scss

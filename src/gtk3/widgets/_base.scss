@@ -8,10 +8,22 @@
     caret-color: gtk("@theme_fg_color"); /* The caret properties provide a way to change the appearance of the insertion caret in editable text.*/
 }
 
-/*window, window.background.popup, dialog, dialog.popup, headerbar, popover, messagedialog, iconview.view, .view {*/
-.background{
+
+/***************
+ * Base States *
+ ***************/
+ 
+.background {
     background: gtk("@theme_bg_color");
     color: gtk("@theme_fg_color");
+
+    &:backdrop {
+        text-shadow: none;
+        -gtk-icon-shadow: none;
+        background-color: gtk("@theme_unfocused_bg_color");
+        color: gtk("@theme_unfocused_fg_color");
+    }
+    
 }
 
 /* Global selected/disable/hover color cannot be adapted to some third-party applications. */

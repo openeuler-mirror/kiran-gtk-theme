@@ -27,7 +27,7 @@ gen_theme_files(${KIRAN_DARK_THEME_NAME})
 add_custom_command(
     OUTPUT ${KIRAN_LIGHT_THEME_NAME}_FILES
     COMMAND ./build-theme.sh -t ${KIRAN_LIGHT_THEME_NAME}
-                             -c ${PROJECT_SOURCE_DIR}/src/gtk3/colors-light.scss
+                             -c ${PROJECT_SOURCE_DIR}/src/gtk3/_base-colors-light.scss
                              -d ${PROJECT_BINARY_DIR}/${KIRAN_LIGHT_THEME_NAME}
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 )
@@ -37,7 +37,7 @@ add_custom_target(${KIRAN_LIGHT_THEME_NAME}_TARGET ALL DEPENDS ${KIRAN_LIGHT_THE
 add_custom_command(
     OUTPUT ${KIRAN_DARK_THEME_NAME}_FILES
     COMMAND ./build-theme.sh -t ${KIRAN_DARK_THEME_NAME}
-                             -c ${PROJECT_SOURCE_DIR}/src/gtk3/colors-dark.scss
+                             -c ${PROJECT_SOURCE_DIR}/src/gtk3/_base-colors-dark.scss
                              -d ${PROJECT_BINARY_DIR}/${KIRAN_DARK_THEME_NAME}
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 )
