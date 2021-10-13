@@ -1,262 +1,173 @@
+@charset "UTF-8";
 
-/* GtkEntry GtkSearchEntry */
+@mixin entry($t, $fc: gtk("@theme_view_border_focus")) {
+    //
+    // Entries drawing function
+    //
+    // $t: entry type
+    // $fc: focus color
+    // $edge: set to none to not draw the bottom edge or specify a color to not
+    //        use the default one
+    //
+    // possible $t values:
+    // normal, focus, insensitive, backdrop, backdrop-insensitive, osd, osd-focus, osd-backdrop;
+    //
+    @if $t==normal {
+        color: gtk("@theme_view_foreground_normal");
+        border-color: gtk("@theme_view_border_normal");
+        background-color: gtk("@theme_view_background_normal");
+        box-shadow: none;
+    }
 
-entry, entry.search {
-    border: 1px solid #848484;
-    border-radius: 6px;
-    background: transparent;
-    color: gtk("@theme_fg_color");
-    border-width: 1px;
+    @if $t==focus {
+        border-color: $fc;
+    }
+
+    @if $t==insensitive {
+        color: gtk("@theme_view_foreground_insensitive");
+        border-color: gtk("@theme_view_border_insensitive");
+        background-color: gtk("@theme_view_background_insensitive");
+    }
+
+    @if $t==backdrop {
+        color: gtk("@theme_view_foreground_backdrop");
+        border-color: gtk("@theme_view_border_backdrop");
+        background-color: gtk("@theme_view_background_backrop");
+    }
+
+    @if $t==backdrop-insensitive {
+        color: gtk("@theme_view_background_backdrop_insensitive");
+        border-color: gtk("@theme_view_border_backdrop_insensitive");
+        background-color: gtk("@theme_view_background_backrop_insensitive");
+    }
 }
-
+  
+/****************
+* Text Entries *
+****************/
+  
+%entry,
 entry {
-    padding: 5px 10px 5px 10px;
+    %entry_basic,
+    & {
+        min-height: 30px;
+        padding-left: 8px;
+        padding-right: 8px;
+        border: 1px solid;
+        border-radius: $RadiusLittle;
+
+        @include entry(normal);
+
+        image {
+            // icons inside the entry
+            &.left {
+                padding-left: 0;
+                padding-right: 6px;
+            }
+            &.right {
+                padding-left: 6px;
+                padding-right: 0;
+            }
+        }
+        // FIXME
+        // undershoot {
+        // &.left { @include undershoot(left); }
+        // &.right { @include undershoot(right); }
+        // }
+
+        &.flat {
+            &:focus,
+            & {
+                min-height: 0;
+                padding: 2px;
+                @include entry(normal);
+            }
+        }
+        &:focus {
+            @include entry(focus);
+        }
+        &:disabled {
+            @include entry(insensitive);
+        }
+        &:backdrop {
+            @include entry(backdrop);
+        }
+        &:backdrop:disabled {
+            @include entry(backdrop-insensitive);
+        }
+
+        selection {
+            &:focus,
+            & {
+                @extend %selected_items;
+            }
+        }
+
+        @each $e_type, $e_color in (error, gtk("@theme_default_error")),
+                                   (warning, gtk("@theme_default_warning")) {
+            &.#{$e_type} {
+                color: $e_color;
+                border-color: $e_color;
+                &:focus {
+                    @include entry(focus, $e_color);
+                }
+
+                selection,
+                &:selected {
+                    background-color: $e_color;
+                }
+            }
+        }
+
+        image {
+            // entry icons colors
+            color: gtk("@theme_widget_foreground_normal");
+
+            &:hover {
+                color: gtk("@theme_widget_foreground_hover");
+            }
+            &:active {
+                color: gtk("@theme_widget_foreground_active");
+            }
+            &:backdrop {
+                color: gtk("@theme_widget_foreground_backdrop");
+            }
+        }
+    }
+
+    progress {
+        margin: 1px;
+        border-radius: 0;
+        border-width: 0 0 1px;
+        border-color: gtk("@theme_widget_border_normal");
+        border-style: solid;
+        background-image: none;
+        background-color: transparent;
+        box-shadow: none;
+
+        &:focus {
+            border-color: gtk("@theme_widget_border_focus");
+        }
+
+        &:backdrop {
+            border-color: gtk("@theme_widget_border_backdrop");
+        }
+    }
 }
 
-entry.error {
-    border-width: 1px;
-    border-color: gtkalpha(#ff0000, 0.6);
+treeview acceleditor > label {
+    background-color: gtk("@theme_widget_background_checked");
 }
 
-entry.error:focus {
-    border-width: 1px;
-    border-color: gtkalpha(#ff0000, 1.0);
-}
+treeview entry {
+    &.flat,
+    & {
+        border-radius: 0;
+        background-image: none;
+        background-color: gtk("@theme_base_color");
 
-entry.warning {
-    border-width: 1px;
-    border-color: gtkalpha(#FFAD30, 1.0);
-}
-
-entry.warning:focus {
-    border-color: gtkalpha(#F99801, 1.0);
-}
-
-entry.search {
-    min-height: 30px;
-    padding: 0px;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-entry.search image.left {
-    padding-right: 10px;
-}
-
-entry.search image.right {
-    padding-left: 10px;
-}
-
-entry:focus, entry:focus:selected {
-    border: 1px solid gtk("@widgets_selected_color");
-    caret-color: gtk("@theme_fg_color");
-    box-shadow: none;
-}
-
-entry:disabled, entry.search:disabled {
-    border: none;
-    background: gtk("@disabled_bg_color");
-    color: gtk("@theme_disabled_fg_color");
-}
-
-entry selection {
-    color: #ffffff;
-    background: #21A6FF;
-}
-
-
-.linked.horizontal entry:not(:last-child):not(:only-child) {
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
-    border-right-width: 0px;
-}
-
-.linked.horizontal entry:not(:first-child):not(:only-child) {
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
-    border-left-width: 1px;
-}
-
-.path-bar button {
-    border-width: 1px;
-}
-
-/* GtkScale */
-scale.horizontal {
-    min-height: 30px;
-    margin: 0px 10px 0px 10px;
-}
-
-scale.vertical {
-    min-width: 30px;
-    margin: 10px 0px 10px 0px;
-}
-
-scale:disabled {
-    background: none;
-}
-
-scale trough {
-    border: none;
-    border-radius: 0px;
-    padding: 0px;
-    margin: 0px;
-    outline: none;
-    box-shadow: none;
-    background: gtk("@widgets_bg_color");
-}
-
-scale.vertical trough {
-    min-width: 2px;
-}
-
-scale.horizontal trough {
-    min-height: 2px;
-}
-
-scale.horizontal marks.top mark label,
-scale.horizontal marks.top mark indicator
-{
-   margin: 0px 0px 8px 0px;
-}
-
-scale.horizontal marks.bottom mark label,
-scale.horizontal marks.bottom mark indicator 
-{
-   margin: 8px 0px 0px 0px;
-}
-
-scale.vertical marks.top mark label,
-scale.vertical marks.top mark indicator
-{
-   margin: 0px 8px 0px 0px;
-}
-
-scale.vertical marks.bottom mark label,
-scale.vertical marks.bottom mark indicator 
-{
-   margin: 0px 0px 0px 8px;
-}
-
-scale.horizontal indicator{
-   min-height: 6px;
-   min-width: 1px;
-   color: gtkalpha(gtk("@theme_fg_color"), 0.3);
-}
-
-scale.vertical indicator{
-   min-height: 1px;
-   min-width: 6px;
-   color: gtkalpha(gtk("@theme_fg_color"), 0.3);
-}
-
-scale trough highlight, scale.fine-tune trough highlight {
-    background: gtk("@widgets_selected_color");
-    border: none;
-    border-radius: 0px;
-    padding: 0px;
-    box-shadow: none;
-    outline-width: 0px;
-}
-
-scale:disabled trough {
-    background: gtk("@disabled_bg_color");
-}
-
-scale:disabled trough highlight {
-    background: gtk("@disabled_bg_color");
-}
-
-scale contents trough fill {
-    background: gtkalpha(gtk("@theme_fg_color"), 0.3);
-}
-
-scale:disabled slider,
-scale:disabled marks,
-scale:disabled marks mark,
-scale marks,
-scale,
-scale marks mark
-{
-   background: none;
-}
-
-scale contents trough slider {
-    -gtk-icon-source: url("assets/scale_normal.png");
-    min-width: 24px;
-    min-height: 24px;
-    box-shadow: none;
-    border: none;
-    -gtk-icon-shadow: none;
-    background: none;
-}
-
-scale contents trough slider:active {
-    -gtk-icon-source: url("assets/scale_pressed.png");
-    -gtk-icon-shadow: none;
-    -gtk-icon-effect: none;
-    box-shadow: none;
-}
-
-scale:disabled contents trough slider {
-    -gtk-icon-source: url("assets/scale_disabled.png");
-    -gtk-icon-shadow: none;
-    -gtk-icon-effect: none;
-    box-shadow: none;
-}
-
-scale.horizontal contents trough slider {
-    margin: 0px;
-    margin-top: -10px;
-    margin-bottom: -10px;
-}
-
-scale.vertical contents trough slider {
-    margin: 0px;
-    margin-left: -10px;
-    margin-right: -10px;
-}
-
-/* GtkSpinButton */
-
-spinbutton.horizontal entry {
-    border-radius: 4px 0px 0px 4px;
-    border-width: 1px 0px 1px 1px;
-    border-style: solid;
-    border-color: gtk("@widgets_border_color");
-    color: gtk("@theme_fg_color");
-}
-
-spinbutton.horizontal button.up {
-    border-radius: 0px 4px 4px 0px;
-    border-width: 1px 1px 1px 0px;
-}
-
-spinbutton.horizontal button.down {
-    border-radius: 0px;
-    border-width: 1px;
-}
-
-spinbutton.vertical entry {
-    border-radius: 0px;
-    border-width: 0px 1px 0px 1px;
-    border-style: solid;
-    border-color: gtk("@widgets_border_color");
-    color: gtk("@theme_fg_color");
-}
-
-spinbutton.vertical button.up {
-    border-radius: 4px 4px 0px 0px;
-    border-width: 1px;
-}
-
-spinbutton.vertical button.down {
-    border-radius: 0px 0px 4px 4px;
-    border-width: 1px;
-}
-
-/* button默认禁用样式为无边框，在spinbutton中需要添加边框 */
-spinbutton button:disabled {
-    border-style: solid;
-    border-color: gtk("@widgets_border_color");
+        &:focus {
+            border-color: gtk("@theme_selected_bg_color");
+        }
+    }
 }

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 
 /* GtkLabel */
 label, label:disabled {
@@ -5,7 +6,7 @@ label, label:disabled {
 }
 
 label:disabled {
-    color: gtk("@theme_disabled_fg_color"); 
+    color: gtk("@insensitive_fg_color"); 
 }
 
 label selection {

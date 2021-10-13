@@ -1,257 +1,197 @@
-frame border {
-    border-radius: 6px;
-    border: 1px solid gtkalpha(gtk("@textview_bg_color"), 0.2);
+@charset "UTF-8";
+
+/********
+ * Misc *
+ ********/
+
+/****************
+* Print dialog *
+*****************/
+printdialog {
+    paper {
+        color: gtk("@theme_window_foreground_normal");
+        border: 1px solid gtk("@theme_window_border_normal");
+        background: gtk("@theme_window_background_normal");
+        padding: 0;
+
+        &:backdrop {
+            color: gtk("@theme_window_foreground_backdrop");
+            border-color: gtk("@theme_window_border_backdrop");
+            background: gtk("@theme_window_background_backdrop");
+        }
+    }
+
+    .dialog-action-box {
+        margin: 12px;
+    }
 }
 
-frame label.label-widget {
-    color: gtk("@theme_fg_color");
-    margin-left: 5px;
-    margin-right: 5px;
-}
-
-
-expander arrow {
-    -gtk-icon-source: url("assets/expander_collapsed.png");
-    margin-right: 5px;
-}
-
-expander arrow:checked {
-    -gtk-icon-source: url("assets/expander_expanded.png");
-}
-
-statusbar frame border{
-    border: none;
-    border-radius: 0px;
-}
-
-paned separator, paned separator:hover {
-    border: none;
-    background: gtk("@theme_bg_color");
-    -gtk-icon-source: none;
-}
-
-
-/* .view */
-.view {
-    color: gtk("@theme_fg_color");
-    background-color: gtk("@theme_bg_color"); 
-}
-
-.view:disabled {
-    color: gtk("@theme_disabled_fg_color");
-    background-color: gtk("@theme_disabled_bg_color"); 
-}
-
-rubberband,
-flowbox rubberband,
-treeview.view rubberband,
-.content-view rubberband,
-view rubberband,
-.view.rubberband,  /* In order to see the selected content, The box dragged by the mouse needs to be transparent. */
-.rubberband {
-    border-width: 1px;
-    border-style: solid;
-    border-color: shade(gtk("@theme_selected_bg_color"), 0.7);
-    background: none;
-    background-color: gtkalpha(gtk("@theme_selected_bg_color"), 0.4); 
-}
-
-
-.view:selected, .view:selected:focus, .view text:selected, .view text:selected:focus, .view text selection, .view text selection:focus {
-    color: gtk("@theme_selected_fg_color");
-    background-color: gtk("@theme_selected_bg_color");
-}
-
-.view:selected:disabled, .view:selected:focus:disabled, .view text:selected:disabled, .view text:selected:focus:disabled, .view text selection:disabled, .view text selection:focus:disabled {
-    color: gtkmix(gtk("@theme_selected_fg_color"), gtk("@theme_disabled_fg_color"), 0.5);
-    background-color: gtkalpha(gtk("@theme_selected_bg_color"), 0.7); 
-}
-
-.view:selected:backdrop, .view:selected:focus:backdrop, .view text:selected:backdrop, .view text:selected:focus:backdrop, .view text selection:backdrop, .view text selection:focus:backdrop {
-    background-color: gtkalpha(gtk("@theme_unfocused_selected_bg_color"), 0.7);
-}
-
-.mate-panel-menu-bar button.toggle#showdesktop-button {
-    padding: 0px;
-    background: rgba(255, 255, 255, 0.2);
-    min-width: 12px;
-    border-radius: 0px;
-    border-width: 0px;
-    border-left-width: 1px;
-    border-right-width: 1px;
-}
-
-.mate-panel-menu-bar button.toggle#showdesktop-button:checked, button.toggle#showdesktop-button:checked:hover {
-    background: rgba(255, 255, 255, 0.4);
-}
-
-.mate-panel-menu-bar button.toggle#clock-applet-button {
-    font-size: 9pt;
-}
-
-MatePanelAppletFrameDBus>MatePanelAppletFrameDBus {
-    background: url("assets/panel-grid-horizontal.png");
-    background-color: transparent;
-    background-repeat: no-repeat;
-    background-position: left;
-}
-
-.wnck-pager {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-.wnck-pager:selected {
-    background-color: rgba(255, 255, 255, 0.3);
-}
-
-.wnck-pager:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-PanelToplevel.horizontal PanelSeparator {
-    background: url("assets/panel-grid-horizontal.png");
-    background-color: transparent;
-    background-repeat: no-repeat;
-    background-position: left;
-}
-
-PanelToplevel.vertical PanelSeparator {
-    background: url("assets/panel-grid-vertical.png");
-    background-color: transparent;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-PanelToplevel>grid {
-    background-color: gtk("@taskbar_bg_color");
-    border-style: outset;
-    border-width: 0px;
-    border-color: rgba(255, 255, 255, 0.2);
-}
-
-PanelToplevel.horizontal.bottom>grid {
-    border-top-width: 1px;
-}
-
-PanelToplevel.horizontal.top>grid {
-    border-bottom-width: 1px;
-}
-
-PanelToplevel.vertical.left>grid {
-    border-right-width: 1px;
-}
-
-PanelToplevel.vertical.right>grid {
-    border-left-width: 1px;
-}
-
-entry.cell.flat {
-    background: #ffffff;
-}
-
-.mate-panel-menu-bar {
-    color: gtk("@taskbar_fg_color");
-    background-color: gtk("@taskbar_bg_color");
-}
-
-
-.mate-panel-menu-bar button, .mate-panel-menu-bar button.flat {
-    background-color: transparent;
-}
-
-.mate-panel-menu-bar button:hover, .mate-panel-menu-bar button.flat:hover {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.mate-panel-menu-bar button:checked, .mate-panel-menu-bar button.flat:checked {
-    background: rgba(255, 255, 255, 0.2);
-}
-
-.mate-panel-menu-bar, .mate-panel-menu-bar .menubar {
-    background-color: gtk("@taskbar_bg_color");
-}
-
-.mate-panel-menu-bar menubar, .mate-panel-menu-bar menubar menuitem, .mate-panel-menu-bar togglebutton {
-    border-color: transparent;
-    background-color: transparent;
-}
-
-.mate-panel-menu-bar .menubar>.menuitem {
-    padding-top: 0;
-    padding-bottom: 0;
-}
-
-.mate-panel-menu-bar GtkMenu .label {
-    color: gtk("@theme_fg_color");
-    font-style: normal;
-}
-
-.mate-panel-menu-bar GtkMenu .label:disabled {
-    color: gtk("@theme_disabled_fg_color");
-}
-
-.mate-panel-menu-bar .button:not(#tasklist-button) {
-    color: gtk("@taskbar_fg_color");
-    border-radius: 0;
-    border: none;
-    background-color: gtk("@taskbar_bg_color");
-}
-
-.mate-panel-menu-bar .button:not(#tasklist-button):hover {
-    border: none;
-    background-color: shade(gtk("@taskbar_bg_color"), 1.1);
-}
-
-.mate-panel-menu-bar .button:not(#tasklist-button):active, .mate-panel-menu-bar .button:not(#tasklist-button):checked {
-    color: gtk("@theme_selected_fg_color");
-    border: none;
-    background-color: gtk("@theme_selected_bg_color");
-}
-
-.mate-panel-menu-bar #tasklist-button {
-    color: gtk("@taskbar_fg_color");
-    border-radius: 0;
-    border: none;
-    padding-bottom: 0;
-    padding-top: 0;
-}
-
-.mate-panel-menu-bar #tasklist-button:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-.mate-panel-menu-bar #tasklist-button:checked, .mate-panel-menu-bar #tasklist-button:active {
-    color: gtk("@theme_selected_fg_color");
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-.mate-panel-menu-bar PanelSeparator {
-    color: transparent;
-    background: url("assets/panel-grid.png");
-    background-repeat: no-repeat;
-    background-position: center center;
-    padding-top: 6px;
-    padding-bottom: 6px;
-}
-
-.mate-panel-menu-bar na-tray-applet {
-    -NaTrayApplet-icon-padding: 5;
-    -NaTrayApplet-icon-size: 16;
-}
-
-.mate-panel-menu-bar #PanelApplet label {
-    color: gtk("@taskbar_fg_color");
-}
-
-.mate-panel-menu-bar .caja-desktop.entry, .mate-panel-menu-bar .caja-navigation-window .view.entry {
-    background-image: none;
-    border-radius: 0px;
+/**********
+* Frames *
+**********/
+frame > border,
+.frame {
     box-shadow: none;
-    border-color: shade(gtk("@theme_selected_bg_color"), 0.7);
-    background-color: gtk("@theme_theme_bg_color");
+    margin: 0;
+    padding: 0;
+    border-radius: $RadiusMiddle;
+    border: 1px solid gtk("@theme_window_border_normal");
+
+    &.flat {
+        border-style: none;
+    }
+
+    &:backdrop {
+        border-color: gtk("@theme_window_border_backdrop");
+    }
 }
 
-.mate-panel-menu-bar .caja-desktop.entry:selected, .mate-panel-menu-bar .caja-navigation-window .view.entry:selected {
-    color: gtk("@theme_selected_fg_color");
-    background-color: gtk("@theme_selected_bg_color");
+actionbar > revealer > box {
+    padding: 6px;
+    border-top: 1px solid gtk("@theme_window_border_normal");
+
+    &:backdrop {
+        border-color: gtk("@theme_window_border_backdrop");
+    }
+}
+
+scrolledwindow {
+    viewport.frame {
+        // avoid double borders when viewport inside scrolled window
+        border-style: none;
+    }
+
+    junction {
+        // the small square between two scrollbars
+        border-color: transparent;
+        background-color: transparent;
+        background-image: none;
+    }
+}
+
+//vbox and hbox separators
+separator {
+    background: gtk("@theme_window_background_normal");
+    min-width: 1px;
+    min-height: 1px;
+}
+
+/*************
+* Expanders *
+*************/
+
+expander {
+    arrow {
+        min-width: 16px;
+        min-height: 16px;
+        -gtk-icon-source: -gtk-icontheme('pan-end-symbolic');
+
+        &:dir(rtl) {
+            -gtk-icon-source: -gtk-icontheme('pan-end-symbolic-rtl');
+        }
+
+        &:hover {
+            color: gtk("@theme_widget_foreground_hover");
+        } //only lightens the arrow
+
+        &:checked {
+            -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
+        }
+    }
+}
+
+/*********
+* Paned *
+*********/
+
+paned {
+    > separator {
+        min-width: 1px;
+        min-height: 1px;
+        -gtk-icon-source: none; // defeats the ugly default handle decoration
+        border-style: none; // just to be sure
+        background-color: transparent;
+        // workaround, using background istead of a border since the border will get rendered twice (?)
+        background-image: image(gtk("@theme_window_background_normal"));
+        background-size: 1px 1px;
+
+        //&:selected { background-image: image($selected_bg_color); } // FIXME is this needed?
+
+        &:backdrop {
+            background-image: image(gtk("@theme_window_background_backdrop"));
+        }
+
+        &.wide {
+            min-width: 5px;
+            min-height: 5px;
+            background-color: gtk("@theme_window_background_normal");
+            background-image: image(gtk("@borders")), image(gtk("@borders"));
+            background-size: 1px 1px, 1px 1px;
+
+            &:backdrop {
+                background-color: gtk("@theme_window_background_backdrop");
+                background-image: image(gtk("@unfocused_borders")),
+                                  image(gtk("@unfocused_borders"));
+            }
+        }
+    }
+
+    &.horizontal > separator {
+        background-repeat: repeat-y;
+
+        &:dir(ltr) {
+            margin: 0 -8px 0 0;
+            padding: 0 8px 0 0;
+            background-position: left;
+        }
+        &:dir(rtl) {
+            margin: 0 0 0 -8px;
+            padding: 0 0 0 8px;
+            background-position: right;
+        }
+
+        &.wide {
+            margin: 0;
+            padding: 0;
+            background-repeat: repeat-y, repeat-y;
+            background-position: left, right;
+        }
+    }
+
+    &.vertical > separator {
+        margin: 0 0 -8px 0;
+        padding: 0 0 8px 0;
+        background-repeat: repeat-x;
+        background-position: top;
+
+        &.wide {
+            margin: 0;
+            padding: 0;
+            background-repeat: repeat-x, repeat-x;
+            background-position: bottom, top;
+        }
+    }
+}
+
+/*********************
+* Spinner Animation *
+*********************/
+
+@keyframes spin {
+    to {
+        -gtk-icon-transform: rotate(1turn);
+    }
+}
+
+spinner {
+    background-image: none;
+    opacity: 0; // non spinning spinner makes no sense
+    -gtk-icon-source: -gtk-icontheme("process-working-symbolic");
+    &:checked {
+        opacity: 1;
+        animation: spin 1s linear infinite;
+        &:disabled {
+            opacity: 0.5;
+        }
+    }
 }

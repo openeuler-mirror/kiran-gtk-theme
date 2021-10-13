@@ -1,0 +1,258 @@
+@charset "UTF-8";
+
+/*********
+ * Menus *
+ *********/
+
+menubar,
+.menubar {
+    -GtkWidget-window-dragging: true;
+    padding: 0px;
+    box-shadow: none;
+    border-style: none;
+    background-color: gtk("@theme_window_background_normal");
+
+    &:backdrop {
+        background-color: gtk("@theme_window_background_backdrop");
+    }
+
+    > menuitem {
+        min-height: 20px;
+        padding: 4px 6px;
+
+        &:hover {
+            background-color: gtk("@theme_widget_background_hover");
+        }
+
+        &:disabled {
+            color: gtk("@theme_widget_foreground_insensitive");
+            box-shadow: none;
+
+            &:backdrop {
+                background-color: gtk("@theme_window_background_backdrop_insensitive");
+                color: gtk("@theme_widget_foreground_backdrop_insensitive");
+            }
+        }
+
+        &:backdrop {
+            background-color: gtk("@theme_window_background_backdrop");
+            color: gtk("@theme_widget_foreground_backdrop");
+        }
+    }
+}
+
+menu,
+.menu {
+    background-color: gtk("@theme_window_background_normal");
+    padding: 4px 0px 4px 0px;
+    border: 1px solid gtk("@theme_window_border_normal");
+
+    border-radius: $RadiusBig;
+
+    // axes borders in a composited env
+    separator {
+        color: gtk("@theme_window_border_normal");
+    }
+
+    menuitem {
+        text-shadow: none;
+        min-height: 18px;
+        min-width: 40px;
+        padding: 6px 8px;
+
+        &:hover {
+            background-color: gtk("@theme_widget_background_hover");
+        }
+
+        &:disabled {
+            color: gtk("@theme_widget_foreground_insensitive");
+            &:backdrop {
+                color: gtk("@theme_widget_foreground_backdrop_insensitive");
+            }
+        }
+
+        &:backdrop,
+        &:backdrop:hover {
+            color: gtk("@theme_widget_foreground_backdrop");
+            background-color: gtk("@theme_window_background_backdrop");
+        }
+
+        // submenu indicators
+        arrow {
+            min-height: 16px;
+            min-width: 16px;
+
+            &:dir(ltr) {
+                -gtk-icon-source: -gtk-icontheme($arrow_right);
+                margin-left: 10px;
+            }
+
+            &:dir(rtl) {
+                -gtk-icon-source: -gtk-icontheme("go-next-rtl-symbolic");
+                margin-right: 10px;
+            }
+        }
+    }
+
+    // overflow arrows
+    > arrow {
+        @include button(undecorated);
+
+        min-height: 16px;
+        min-width: 16px;
+        padding: 4px;
+        background-color: transparent;
+        border-radius: 0;
+
+        &.top {
+            margin-top: -6px;
+            border: none;
+            -gtk-icon-source: -gtk-icontheme($arrow_up);
+        }
+
+        &.bottom {
+            margin-bottom: -6px;
+            border: none;
+            -gtk-icon-source: -gtk-icontheme($arrow_down);
+        }
+
+        &:hover {
+            color: gtk("@theme_widget_foreground_hover");
+        }
+
+        &:active {
+            color: gtk("@theme_widget_foreground_active");
+        }
+
+        &:backdrop {
+            background-color: gtk("@theme_widget_background_backdrop");
+        }
+
+        &:disabled {
+            color: transparent;
+            background-color: transparent;
+            border-color: transparent;
+        }
+    }
+}
+
+menuitem {
+    accelerator {
+        color: gtkalpha(currentColor, 0.55);
+    }
+    check,
+    radio {
+        min-height: 18px;
+        min-width: 18px;
+
+        &:dir(ltr) {
+            margin-right: 6px;
+        }
+        &:dir(rtl) {
+            margin-left: 6px;
+        }
+    }
+    &:active check,
+    &:active radio {
+        -gtk-icon-transform: translate(1px, 1px);
+    }
+}
+
+
+/***************
+ * Popovers   *
+ ***************/
+/* menu buttons */
+modelbutton.flat,
+.menuitem.button.flat {
+    min-height: 16px;
+    padding: 7px 8px;
+
+    @extend %undecorated_button;
+    color: gtk("@theme_fg_color");
+    &:hover {
+        background-color: gtk("@theme_widget_background_hover");
+    }
+
+    &:selected { 
+        @extend %selected_items;
+    }
+
+    &:backdrop,
+    &:backdrop:hover {
+        @extend %undecorated_button;
+        color: gtk("@theme_widget_foreground_backdrop");
+    }
+}
+
+modelbutton.flat arrow {
+    background: none;
+
+    &:hover {
+        background: none;
+    }
+
+    &.left {
+        -gtk-icon-source: -gtk-icontheme($arrow_left);
+    }
+
+    &.right {
+        -gtk-icon-source: -gtk-icontheme($arrow_right);
+    }
+}
+
+popover, menu {
+    border: 1px solid gtk("@theme_window_border_normal");
+}
+
+popover.background {
+    $shadow: rgba(0, 0, 0, 0.25);
+
+    padding: 0px;
+    border-radius: 3px;
+    background-color: gtk("@theme_window_background_normal");
+
+    box-shadow: 0px 0px 8px $shadow,
+      0px 1px 4px scale-color($shadow, $alpha: -40%);
+
+    &:backdrop {
+        box-shadow: none;
+    }
+
+    > list,
+    > .view,
+    > toolbar {
+        border-style: none;
+        background-color: transparent;
+    }
+    .csd &,
+    & {
+        &.touch-selection,
+        &.magnifier {
+          @extend %osd;
+
+          border: 1px solid gtk("@theme_window_border_normal");
+
+          button {
+              @extend %button;
+          }
+        }
+
+        &.osd {
+            @extend %osd;
+        }
+    }
+
+    separator {
+        margin: 3px;
+    }
+
+    list separator {
+        margin: 0px;
+    }
+
+    checkbutton,
+    radiobutton {
+        @extend modelbutton.flat;
+    }
+}

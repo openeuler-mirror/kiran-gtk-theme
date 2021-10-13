@@ -1,10 +1,11 @@
+@charset "UTF-8";
 
-textview.view {
+/* textview.view {
     background: gtk("@textview_bg_color");
 }
 
 
 textview.view text selection, GtkTextView text selection {
-    background: gtk("@widgets_selected_color");
+    background: gtk("@theme_selected_bg_color");
     color: gtk("@theme_fg_color");
-}
+} */

@@ -1,11 +1,139 @@
+@charset "UTF-8";
 
-placessidebar list row {
-    padding-left: 30px;
-    min-height: 36px;
+/***********
+ * Sidebar *
+ ***********/
+
+.sidebar {
+    border-style: none;
+    background-color: gtk("@theme_window_background_normal");
+
+    @at-root %sidebar_left,
+    &:dir(ltr),
+    &.left,
+    &.left:dir(rtl) {
+        border-right: 1px solid gtk("@theme_window_border_normal");
+        border-left-style: none;
+    }
+
+    @at-root %sidebar_right
+    &:dir(rtl),
+    &.right {
+        border-right: 1px solid gtk("@theme_window_border_normal");
+        border-right-style: none;
+    }
+
+    &:backdrop {
+        background-color: gtk("@theme_window_background_backdrop");
+        color: gtk("@theme_window_foreground_backdrop");
+    }
+
+    list { background-color: transparent; }
+
+    paned & { &.left, &.right, &.left:dir(rtl), &:dir(rtl), &:dir(ltr), & { border-style: none; }}
 }
 
+// Places sidebar is a special case, since the view here have to look like chrome not content, so we override text color
 placessidebar {
-    min-width: 120px;
-    border: none;
-    border-right: 1px solid rgba(0, 0, 0, 0.15);
+    > viewport.frame {
+        border-style: none;
+    }
+
+    row {
+        @extend %row;
+
+        // Needs overriding of the GtkListBoxRow padding
+        min-height: 36px;
+        padding: 0px;
+
+        // Using margins/padding directly in the SidebarRow
+        // will make the animation of the new bookmark row jump
+        > revealer {
+            padding: 0 14px;
+        }
+
+        image.sidebar-icon {
+            &:dir(ltr) {
+                padding-right: 8px;
+            }
+            &:dir(rtl) {
+                padding-left: 8px;
+            }
+        }
+
+        label.sidebar-label {
+            &:dir(ltr) {
+                padding-right: 2px;
+            }
+            &:dir(rtl) {
+                padding-left: 2px;
+            }
+        }
+
+        @at-root button.sidebar-button {
+            @extend %button_basic.flat;
+
+            @extend %undecorated_button;
+
+            min-height: 26px;
+            min-width: 26px;
+            margin-top: 3px;
+            margin-bottom: 3px;
+            padding: 0;
+        }
+
+        // in the sidebar case it makes no sense to click the selected row
+        &:selected:active {
+            box-shadow: none;
+        }
+
+        &.sidebar-placeholder-row {
+            padding: 0 8px;
+            min-height: 2px;
+            background-image: none;
+            background-clip: content-box;
+        }
+
+        &.sidebar-new-bookmark-row {
+            background-color: gtk("@theme_widget_background_checked");
+        }
+    }
+}
+
+placesview {
+    .server-list-button > image {
+
+        -gtk-icon-transform: rotate(0turn);
+    }
+
+    .server-list-button:checked > image {
+
+        -gtk-icon-transform: rotate(-0.5turn);
+    }
+
+    row.activatable:hover {
+        background-color: transparent;
+    }
+
+    // this selects the "connect to server" label
+    > actionbar > revealer > box > label {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+}
+
+stacksidebar {
+    &.sidebar {
+        row {
+            padding: 10px 4px;
+            > label {
+                padding-left: 6px;
+                padding-right: 6px;
+            }
+            &.needs-attention > .label {
+                @extend %needs_attention;
+                background-size: 6px 6px, 0 0;
+            }
+        }
+    }
 }

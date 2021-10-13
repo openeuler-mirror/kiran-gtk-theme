@@ -1,0 +1,69 @@
+@charset "UTF-8";
+
+/*********
+ * Links *
+ *********/
+ // FIXME: hover/active颜色不明显
+%link,
+*:link {
+    color: gtk("@theme_widget_foreground_normal");
+
+    &:active,
+    &:visited {
+        color: gtk("@theme_widget_foreground_checked");
+        > label {
+            color: inherit;
+        }
+    }
+
+    &:hover {
+        color: gtkalpha(gtk("@theme_widget_foreground_checked"), 0.8);
+        > label {
+            color: inherit;
+        }
+    }
+
+    &:backdrop {
+        color: gtk("@theme_widget_foreground_backdrop");
+        > label {
+            color: inherit;
+        }
+    }
+
+    &:backdrop:hover,
+    &:backdrop:active,
+    &:backdrop:visited {
+        color: gtk("@theme_widget_foreground_backdrop_checked");
+        > label {
+            color: inherit;
+        }
+    }
+
+    @at-root %link_selected,
+    &:selected,
+    *:selected & {
+        color: gtkmix(gtk("@theme_selected_fg_color"), gtk("@theme_selected_bg_color"), 0.8);
+    }
+}
+
+button:link,
+button:visited {
+    @extend %undecorated_button;
+
+    @extend *:link;
+
+    text-shadow: none;
+
+    &:hover,
+    &:active,
+    &:checked {
+        @extend %undecorated_button;
+
+        text-shadow: none;
+    }
+
+    > label {
+        /* @extend %link; */
+        text-decoration-line: underline;
+    }
+}

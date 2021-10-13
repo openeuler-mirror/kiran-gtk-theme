@@ -1,54 +1,122 @@
+@charset "UTF-8";
 
-progressbar trough progress {
-    background: #21A6FF;
-    border: none;
+
+/*****************
+ * Progress bars *
+ *****************/
+progressbar {
+    // sizing
+    &.horizontal {
+        trough,
+        progress {
+            min-height: 6px;
+        }
+    }
+
+    &.vertical {
+        trough,
+        progress {
+            min-width: 6px;
+        }
+    }
+
+    font-size: smaller;
+    background: transparent;
+
+    trough {
+        border: 0px solid transparent;
+        border-radius: $RadiusLittle;
+        background-color: gtk("@theme_widget_background_normal");
+
+        &:backdrop {
+            background-color: gtk("@theme_widget_background_backdrop");
+        }
+    }
+
+
+    progress {
+        background-color: gtk("@theme_widget_background_checked");
+        border: 0px solid transparent;
+        border-radius: $RadiusLittle;
+        box-shadow: none; //needed for clipping
+
+        &:backdrop {
+            background-color: gtk("@theme_widget_background_backdrop_checked");    
+        }
+    }
+
+    &.osd {
+        // progressbar.osd used for epiphany page loading progress
+        background-color: transparent;
+    }
 }
 
-progressbar trough {
-    background: #E1E1E1;
-    border: none;
-    border-radius: 0px;
-}
+/*************
+ * Level Bar *
+ *************/
+levelbar {
+    block {
+        min-width: 32px;
+        min-height: 6px;
+    }
 
-progressbar trough, progressbar trough progress {
-    min-height: 8px;
-}
+    &.vertical block {
+        min-width: 6px;
+        min-height: 32px;
+    }
 
-progressbar text {
-    color: gtk("@theme_fg_color");
-}
+    trough {
+        border: none;
+        padding: 2px;
+        border-radius: $RadiusLittle;
+        @include entry(normal);
 
+        &:backdrop {
+            @include entry(backdrop);
+        }
+    }
 
+    &.horizontal.discrete block {
+        margin: 0 1px;
+    }
 
-levelbar.horizontal block{
-    min-height: 4px;
-    min-width: 16px;
-}
+    &.vertical.discrete block {
+        margin: 1px 0;
+    }
 
-levelbar.vertical block{
-    min-width: 4px;
-    min-height: 16px;
-}
+    block:not(.empty) {
+        background-color: gtk("@theme_widget_background_checked");
+        box-shadow: none;
+        border-radius: 1px;
 
-levelbar.horizontal.discrete block {
-    margin: 0px 4px 0px 4px;
-}
-levelbar.vertical.discrete block {
-    margin: 4px 0px 4px 0px;
-}
+        &:backdrop {
+            background-color: gtk("@theme_widget_background_backdrop_checked");
+        }
+    }
 
-levelbar block.filled.low {
-    background: #ff0000;
-}
+    block {
+        &.low {
+            background-color: gtk("@theme_default_warning");
+            &:backdrop {
+                background-color: gtk("@theme_default_warning_backdrop");
+            }
+        }
 
-levelbar block.filled.high {
-    background: #ff9c00;
-}
+        &.high,
+        &.full {
+            background-color: gtk("@theme_default_success");
+            &:backdrop {
+                background-color: gtk("@theme_default_success_backdrop");
+            }
+        }
 
-levelbar block.filled.full {
-    background: #41cc54;
-}
-
-levelbar block.empty {
-    background: #cccccc;
+        &.empty {
+            background-color: gtk("@theme_widget_background_normal");
+            border-color: transparent;
+            box-shadow: none;
+            &:backdrop {
+                background-color: gtk("@theme_widget_background_backdrop");
+            }
+        }
+    }
 }

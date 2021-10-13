@@ -1,53 +1,82 @@
+@charset "UTF-8";
 
-
+/*****************
+ * Color Chooser *
+ *****************/
+// FIXME button.color in buttons section
 colorswatch {
-    background: none;
+    border: 1px solid gtk("@theme_widget_border_normal");
+    border-radius: $RadiusLittle;
+    // take care of colorswatches on selected elements
+    :selected & {
+        box-shadow: none;
+        &.overlay,
+        &.overlay:hover {
+            border-color: gtk("@theme_selected_fg_color");
+        }
+    }
+
+    &:selected {
+        box-shadow: none;
+    }
+
+    &:backdrop,
+    &:backdrop:selected &.color-dark:backdrop,
+    &.color-dark:backdrop:selected {
+        background-image: none;
+        box-shadow: none;
+    }
+
+    // no hover effect for the colorswatch in the color editor
+    GtkColorEditor & {
+        border-radius: $RadiusLittle; // same radius as the entry
+        &:hover {
+            background-image: none;
+            box-shadow: none;
+        }
+        &:backdrop {
+            box-shadow: none;
+        }
+    }
+
+    // indicator and keynav outline colors
+    &.color-dark {
+        color: white;
+        outline-color: transparentize(black, 0.7);
+        &:backdrop {
+            color: transparentize(white, 0.7);
+        }
+    }
+    &.color-light {
+        color: black;
+        outline-color: transparentize(white, 0.5);
+        &:backdrop {
+            color: transparentize(black, 0.7);
+        }
+    }
+
+    // border color
+    overlay,
+    overlay:selected {
+        border: 1px solid gtk("@borders");
+        border-radius: $RadiusLittle;
+        &:hover {
+            border-color: gtk("@theme_widget_border_hover");
+        }
+    }
+
+    // make the add color button looks like, well, a button
+    &#add-color-button {
+        border-radius: $RadiusLittle;
+
+        overlay {
+            @include button(normal);
+            &:hover {
+                @include button(hover);
+            }
+            &:backdrop {
+                @include button(backdrop);
+            }
+        }
+    }
 }
-
-colorswatch.top {
-  border-top-left-radius: 2.5px;
-  border-top-right-radius: 2.5px; }
-  colorswatch.top overlay {
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px; }
-colorswatch.bottom {
-  border-bottom-left-radius: 2.5px;
-  border-bottom-right-radius: 2.5px; }
-  colorswatch.bottom overlay {
-    border-bottom-left-radius: 2px;
-    border-bottom-right-radius: 2px; }
-colorswatch.left, colorswatch:first-child:not(.top) {
-  border-top-left-radius: 2.5px;
-  border-bottom-left-radius: 2.5px; }
-  colorswatch.left overlay, colorswatch:first-child:not(.top) overlay {
-    border-top-left-radius: 2px;
-    border-bottom-left-radius: 2px; }
-colorswatch.right, colorswatch:last-child:not(.bottom) {
-  border-top-right-radius: 2.5px;
-  border-bottom-right-radius: 2.5px; }
-  colorswatch.right overlay, colorswatch:last-child:not(.bottom) overlay {
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 2px; }
-colorswatch.dark overlay {
-  color: gtkalpha(gtk("@light_shadow"), 0.7); }
-  colorswatch.dark overlay:hover {
-    border-color: gtkalpha(gtk("@dark_shadow"), 0.5); }
-colorswatch.light overlay {
-  color: gtkalpha(gtk("@light_shadow"), 0.7); }
-  colorswatch.light overlay:hover {
-    border-color: gtkalpha(gtk("@dark_shadow"), 0.3); }
-colorswatch overlay {
-  border: 1px solid gtkalpha(gtk("@dark_shadow"), 0.15); }
-  colorswatch overlay:hover {
-    background-color: gtkalpha(gtk("@light_shadow"), 0.2); }
-colorswatch:disabled {
-  opacity: 0.5; }
-  colorswatch:disabled overlay {
-    border-color: gtkalpha(gtk("@dark_shadow"), 0.6);
-    box-shadow: none; }
-
-button.color {
-  padding: 0; }
-  button.color colorswatch:first-child:last-child, button.color colorswatch:first-child:last-child overlay {
-    margin: 4px;
-    border-radius: 0; }

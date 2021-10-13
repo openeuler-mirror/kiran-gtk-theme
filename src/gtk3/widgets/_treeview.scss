@@ -1,24 +1,185 @@
+@charset "UTF-8";
 
+
+/**************
+ * Tree Views *
+ **************/
+treeview.view {
+    -GtkTreeView-grid-line-width: 0;
+    -GtkTreeView-grid-line-pattern: "";
+    -GtkTreeView-tree-line-width: 1;
+    -GtkTreeView-tree-line-pattern: "";
+    -GtkTreeView-expander-size: 16;
+
+    padding: 2px;
+    border-left-color: gtk("@borders"); // this is actually the tree lines color,
+    border-top-color: transparent; // while this is the grid lines color, better then nothing
+
+    rubberband {
+        @extend rubberband;
+    } // to avoid borders being overridden by the previously set props
+
+    &:hover {
+        background-color: gtkalpha(gtk("@theme_widget_background_hover"), 0.6);
+    }
+
+    &:selected {
+        border-radius: 0px;
+        background-color: gtk("@theme_widget_background_checked");
+    }
+
+    &:backdrop {
+        background-color: gtk("@theme_widget_background_backdrop");
+
+        &:selected {
+            background-color: gtk("@theme_widget_background_backdrop_checked");
+        }
+
+        &:disabled {
+            background-color: gtk("@theme_widget_background_backdrop_insensitive");
+        }
+    }
+
+    &:disabled {
+        background-color: gtk("@theme_widget_background_insensitive");
+    }
+
+    &.separator {
+        min-height: 2px;
+        background-color: gtk("@theme_widget_background_normal");
+
+        &:backdrop {
+            background-color: gtk("@theme_widget_background_backdrop");
+        }
+    }
+
+    &.expander {
+        // GtkTreeView uses the larger of the expander’s min-width and min-height
+        min-width: 16px;
+        min-height: 16px;
+        -gtk-icon-source: -gtk-icontheme($arrow_right);
+        background-color: transparent;
+
+        &:dir(rtl) {
+            -gtk-icon-source: -gtk-icontheme("go-next-rtl-symbolic");
+        }
+
+        &:hover {
+            background-color: gtk("@theme_widget_background_hover");
+        }
+
+        &:selected {
+            border-radius: 0px;
+            background-color: gtk("@theme_widget_background_checked");
+        }
+
+        &:checked {
+            -gtk-icon-source: -gtk-icontheme($arrow_down);
+        }
+
+        &:backdrop {
+            background-color: gtk("@theme_widget_background_backdrop");
+        }
+    }
+
+    header {
+        button {
+            @extend %column_header_button;
+            color: gtk("@theme_widget_foreground_normal");
+            background-color: gtk("@theme_widget_background_normal");
+            text-shadow: none;
+            box-shadow: none;
+
+            &:hover {
+                @extend %column_header_button;
+                background-color: gtk("@theme_widget_background_hover");
+                box-shadow: none;
+            }
+            &:active {
+                @extend %column_header_button;
+                background-color: gtk("@theme_widget_background_active");
+            }
+
+            /* &:first-child {
+                border-top-left-radius: $RadiusLittle;    
+            }
+
+            &:last-child {
+                border-top-right-radius: $RadiusLittle;
+            } */
+        }
+
+        button:last-child {
+            &:backdrop,
+            & {
+                border-right-style: none;
+            }
+        }
+    }
+
+    button.dnd,
+    header.button.dnd {
+        // for treeview-like derive widgets
+        &:active,
+        &:selected,
+        &:hover,
+        & {
+            padding: 0 6px;
+            color: gtk("@theme_selected_fg_color");
+            background-image: none;
+            background-color: gtk("@theme_selected_bg_color");
+            border-style: none;
+            border-radius: 0;
+            box-shadow: none;
+            text-shadow: none;
+        }
+    }
+}
+
+%column_header_button {
+    padding: 6px;
+    border-style: none solid solid none;
+    border-radius: 0;
+    background-image: none;
+    border-color: gtk("@theme_widget_border_normal");
+    text-shadow: none;
+
+    &:disabled {
+        background-color: gtk("@theme_widget_background_insensitive");
+        background-image: none;
+    }
+
+    &:backdrop {
+        background-image: none;
+        background-color: gtk("@theme_widget_background_backdrop");
+        &:disabled {
+            background-image: none;
+            background-color: gtk("@theme_widget_background_backdrop_insensitive");
+        }
+    }
+}
+
+
+/* 
 treeview.view {
     padding: 10px;
 }
 
 treeview.view header button {
-    /* border-style: solid;
+    border-style: solid;
     border-width: 0px 0px 1px 0px;
-    border-color: gtk("@widgets_border_color"); */
+    border-color: gtk("@borders");
     border: none;
     border-radius: 0px;
-    /* background: gtk("@theme_bg_color"); */
     padding: 10px 8px 10px 8px;
 }
 
-/* treeview.view header button:first-child {
+treeview.view header button:first-child {
     border-top-left-radius: 4px;
 }
 treeview.view header button:last-child {
     border-top-right-radius: 4px;
-} */
+}
 
 treeview.view .cell {
     background: gtk("@theme_bg_color");
@@ -28,7 +189,7 @@ treeview.view .cell {
 }
 
 treeview.view .cell:selected {
-    background: gtk("@widgets_selected_color");
+    background: gtk("@theme_selected_bg_color");
     color: gtk("@theme_fg_color");
 }
 
@@ -54,3 +215,4 @@ treeview.view radio
     min-width: 14px;
     min-height: 14px;
 }
+ */

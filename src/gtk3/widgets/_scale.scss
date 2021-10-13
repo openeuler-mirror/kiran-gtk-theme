@@ -1,0 +1,81 @@
+@charset "UTF-8";
+
+/************
+ * GtkScale *
+ ************/
+scale {
+    &.fine-tune {
+        &.trough {
+            margin: 8px;
+            border-radius: $RadiusLittle;
+        }
+    }
+
+    slider {
+        -gtk-icon-source: url("../assets/scale-normal.png");
+        min-width: 24px;
+        min-height: 24px;
+        box-shadow: none;
+        border: none;
+        -gtk-icon-shadow: none;
+        -gtk-icon-effect: none;
+        background: none;
+
+        &:disabled {
+            -gtk-icon-source: url("../assets/scale-disabled.png");
+        }
+        &:active {
+            -gtk-icon-source: url("../assets/scale-pressed.png");
+        }
+    }
+
+    &.horizontal slider {
+        margin: 0px;
+        margin-top: -10px;
+        margin-bottom: -10px;
+    }
+    
+    &.vertical slider {
+        margin: 0px;
+        margin-left: -10px;
+        margin-right: -10px;
+    }
+    
+    
+    trough {
+        min-width: 2px;
+        min-height: 2px;
+        border: none;
+        background-color: gtk("@theme_widget_background_normal");
+        box-shadow: none;
+
+        &:disabled,
+        &.vertical:disabled {
+            background-color: gtk("@theme_widget_background_insensitive");
+            box-shadow: none;
+            &:backdrop {
+                background-color: gtk("@theme_widget_background_backdrop_insensitive");
+            }
+        }
+
+        &:backdrop {
+            background-color: gtk("@theme_widget_background_backdrop");
+        }
+    }
+
+    highlight {
+        border: none;
+        background-color: gtk("@theme_widget_background_checked");
+
+        &:disabled {
+            background-color: gtk("@theme_widget_background_insensitive");
+        }
+
+        &:backdrop {
+            background-color: gtk("@theme_widget_background_backdrop_checked");
+            &:disabled {
+                background-color: gtk("@theme_widget_background_backdrop_insensitive");
+            }
+        }
+    }
+}

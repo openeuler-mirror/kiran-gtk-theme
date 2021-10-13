@@ -1,352 +1,490 @@
+@charset "UTF-8";
 
+/***********
+ * Buttons *
+ ***********/
 
-/* common css for button */
+ @mixin button($t) {
+    //
+    // Button drawing function
+    //
+    // $t:    button type,
 
-button, button:not(.color) {
-    box-shadow: none;
-    text-shadow: none;
-    padding: 5px 8px 5px 8px;
-    border-radius: 4px;
-    border: 1px solid gtk("@widgets_border_color");
-    color: gtk("@theme_fg_color");
-    background: gtk("@widgets_bg_color");
+    @if $t==normal {
+        box-shadow: none;
+        text-shadow: none;
+        -gtk-icon-shadow: none;
+
+        color: gtk("@theme_widget_foreground_normal");
+        border-color: gtk("@theme_widget_border_normal");
+        background-color: gtk("@theme_widget_background_normal");
+    } @else if $t==hover {
+        /* border-color: gtk("@theme_widget_border_hover"); */
+        background-color: gtk("@theme_widget_background_hover");
+    } @else if $t==active {
+        background-color: gtk("@theme_widget_background_active");
+    }  @else if $t==checked {
+        // FIXME: delete border
+        background-color: gtk("@theme_widget_background_checked");
+    } @else if $t==insensitive {
+        color: gtk("@theme_widget_foreground_insensitive");
+        border-color: gtk("@theme_widget_border_insensitive");
+        background-color: gtk("@theme_widget_background_insensitive");
+
+        > .label {
+            color: inherit;
+        }
+    } @else if $t==backdrop {
+        color: gtk("@theme_widget_foreground_backdrop");
+        border-color: gtk("@theme_widget_border_backdrop");
+        background-color: gtk("@theme_widget_background_backdrop");
+    }@else if $t==backdrop-checked {
+        color: gtk("@theme_widget_foreground_backdrop");
+        border-color: gtk("@theme_widget_border_backdrop");
+        background-color: gtk("@theme_widget_background_backdrop_checked");
+    } @else if $t==backdrop-insensitive {
+        color: gtk("@theme_widget_foreground_backdrop_insensitive");
+        border-color: gtk("@theme_widget_border_backdrop_insensitive");
+        background-color: gtk("@theme_widget_background_backdrop_insensitive");
+        > .label {
+            color: inherit;
+        }
+    } @else if $t==undecorated {
+        border-color: transparent;
+        background-color: transparent;
+        background-image: none;
+        box-shadow: none;
+        color: gtk("@theme_widget_foreground_normal");
+
+        text-shadow: none;
+        -gtk-icon-shadow: none;
+    }
 }
 
 
-button:focus {
-    outline-offset: -5px;
-    outline-style: dashed;
-    outline-color: rgba(0, 0, 0, 0.5);
-    outline-width: 1px;
-    -gtk-outline-radius: 2px;
-}
-
-button:hover, switch:hover {
-    box-shadow: none;
-    background: gtk("@widgets_hover_color");
-}
-
-button:active {
-    background: gtk("@widgets_active_color");
-}
-
-button:disabled, switch:disabled {
-    border: none;
-    background: gtk("@disabled_bg_color");
-    color: gtk("@theme_disabled_fg_color");
-}
-
-/* Button */
-
-button.flat {
-    border-color: transparent;
-    background: transparent;
-}
-
-button.image-button image:not(:last-child):not(:only-child)
-{
-    margin-right: 5px;
-}
-
-/* GtkCheckButton */
-
-checkbutton {
-    color: gtk("@theme_fg_color");
-}
-
-checkbutton:disabled {
-    background: none;
-    color: gtk("@theme_disabled_fg_color");
-}
-
-checkbutton.text-button check:first-child, checkbutton check {
-    margin-right: 10px;
-}
-
-checkbutton.text-button check:last-child, check:last-child {
-    margin-left: 10px;
-}
-
-check {
-    -gtk-icon-source: url("assets/check_unchecked_normal.svg");
-    -gtk-icon-shadow: none;
-    -gtk-icon-effect: none;
-    border: none;
-    box-shadow: none;
-    border-radius: 0px;
-    padding: 0px;
-    background: none;
-    border-image: none;
-    outline: none;
-    min-width: 14px;
-    min-height: 14px;
-}
-
-check:hover {
-    -gtk-icon-source: url("assets/check_unchecked_hover.svg");
-}
-
-check:active {
-    -gtk-icon-source: url("assets/check_unchecked_pressed.svg");
-}
-
-check:disabled {
-    -gtk-icon-source: url("assets/check_unchecked_disabled.svg");
-}
-
-check:checked:hover {
-    -gtk-icon-source: url("assets/check_checked_hover.svg");
-}
-
-check:checked:active {
-    -gtk-icon-source: url("assets/check_checked_pressed.svg");
-}
-
-check:checked:disabled {
-    -gtk-icon-source: url("assets/check_checked_disabled.svg");
-}
-
-check:checked, check:selected {
-    -gtk-icon-source: url("assets/check_checked_normal.svg");
-    border: none;
-    box-shadow: none;
-    padding: 0px;
-    outline: none;
-    background: none;
-    animation: none;
-    transition: none;
-}
-
-check:indeterminate {
-    -gtk-icon-source: url("assets/check_inconsistent_normal.svg");
-}
-
-check:indeterminate:hover {
-    -gtk-icon-source: url("assets/check_inconsistent_hover.svg");
-}
-
-check:indeterminate:active {
-    -gtk-icon-source: url("assets/check_inconsistent_pressed.svg");
-}
-
-check:indeterminate:disabled {
-    -gtk-icon-source: url("assets/check_inconsistent_disabled.svg");
+// stuff for .needs-attention
+$_dot_color: gtk("@theme_widget_foreground_active");
+@keyframes needs_attention {
+  from {
+    background-image: -gtk-gradient(
+      radial,
+      center center,
+      0,
+      center center,
+      0.01,
+      to($_dot_color),
+      to(transparent)
+    );
+  }
+  to {
+    background-image: -gtk-gradient(
+      radial,
+      center center,
+      0,
+      center center,
+      0.5,
+      to(gtk("@theme_selected_bg_color")),
+      to(transparent)
+    );
+  }
 }
 
 
-/* GtkRadioButton */
 
-radiobutton {
-    color: gtk("@theme_fg_color");
-    background: none;
+%buttons {
+    border: 1px solid;
+    border-radius: $RadiusLittle;
+    padding: 6px 6px;
+    background-clip: border-box;
+
+    @include button(normal);
+    &.flat {
+        @include button(undecorated);
+        // to avoid adiacent buttons borders clashing when transitioning, the transition on the normal state is set
+        // to none, while it's added back in the hover state, so the button decoration will fade in on hover, but
+        // it won't fade out when the pointer leave the button allocation area. To make the transition more evident
+        // in this case the duration is increased.
+        transition: none;
+
+        &:hover {
+            /* transition: $button_transition; */
+            transition-duration: 500ms;
+            &:active {
+                /* transition: $button_transition; */
+            }
+        }
+    }
+
+    &:hover {
+        @include button(hover);
+        -gtk-icon-effect: none; // Do we want this?
+    }
+
+    &:active {
+        @include button(active);
+        transition-duration: 50ms;
+    }
+
+    &:checked {
+        @include button(checked);
+        transition-duration: 50ms;
+    }
+
+    &:backdrop {
+        @include button(backdrop);
+        -gtk-icon-effect: none;
+
+        &:checked{
+            @include button(backdrop-checked);
+        }
+
+        &:disabled {
+            @include button(backdrop-insensitive);
+        }
+    }
+
+    &.flat:backdrop {
+        -gtk-icon-effect: none;
+        @include button(undecorated);
+        color: gtk("@theme_widget_foreground_backdrop");
+    }
+
+    &.flat:disabled {
+        @include button(undecorated);
+        color: gtk("@theme_widget_foreground_insensitive");
+    }
+    
+    &.flat:backdrop:disabled {
+        @include button(undecorated);
+        color: gtk("@theme_widget_foreground_backdrop_insensitive");
+    }
+
+    &:disabled {
+        @include button(insensitive);
+    }
+
+    separator {
+        background-color: transparent;
+        background-image: none;
+        color: transparent;
+    }
 }
 
-radiobutton:disabled {
-    color: gtk("@theme_disabled_fg_color");
-    background: none;
+%button,
+button {
+    @at-root %button_basic,
+    & {
+        @extend %buttons;
+        &.osd {
+            @extend %buttons;
+        }
+        //overlay / OSD style
+        @at-root %osd_button,
+        .osd & {
+            @extend %buttons;
+        }
+
+        &.image-button {
+            min-width: 16px;
+            padding: 6px;
+        }
+
+        &.text-button {
+            padding-left: 6px;
+            padding-right: 6px;
+        }
+
+        &.text-button.image-button {
+            padding-left: 6px;
+            padding-right: 6px;
+            label {
+                padding-left: 6px;
+                padding-right: 6px;
+            }
+        }
+        // FIXME
+        // &:drop(active) {
+        //   color: $drop_target_color;
+        //   border-color: $drop_target_color;
+        //   box-shadow: inset 0 0 0 1px $drop_target_color;
+        // }
+    }
+
+    @at-root %button_selected,    
+    & {
+        row:selected & {
+            border-color: gtk("@theme_selected_bg_color");
+
+            &.flat:not(:active):not(:checked):not(:hover):not(disabled) {
+                color: gtk("@theme_selected_fg_color");
+                border-color: transparent;
+
+                &:backdrop {
+                    color: gtk("@theme_unfocused_selected_fg_color");
+                }
+            }
+        }
+    }
+
+    // Suggested and Destructive Action buttons
+    @each $b_type, $button_color in (suggested-action, gtk("@theme_widget_foreground_normal")),
+                                    (destructive-action, gtk("@theme_default_error")) {
+        &.#{$b_type},
+        &.#{$b_type}.osd & {
+            @include button(normal);
+            background-color: $button_color;
+            color: gtk("@theme_widget_foreground_active");
+            &.flat {
+                @include button(undecorated);
+                color: $button_color;
+            }
+            &:hover {
+                @include button(hover);
+                color: white; //! FIXME - No hardcoded colors.
+                background-color: $button_color;
+            }
+            &:active,
+            &:checked,
+            &:focus {
+                @include button(active);
+                background-color: $button_color;
+                color: white;
+            }
+            &:backdrop,
+            &.flat:backdrop {
+                @include button(backdrop);
+                background-color: $button_color;
+                color: white;
+                &:disabled {
+                    @include button(backdrop-insensitive);
+                }
+            }
+            &.flat:backdrop,
+            &.flat:disabled,
+            &.flat:backdrop:disabled {
+                @include button(undecorated);
+                color: gtkalpha($button_color, 0.8);
+            }
+            &:disabled {
+                @include button(insensitive);
+            }
+        }
+    }
+
+    .stack-switcher > & {
+        // to position the needs attention dot, padding is added to the button
+        // child, a label needs just lateral padding while an icon needs vertical
+        // padding added too.
+        > label {
+            padding-left: 6px; // label padding
+            padding-right: 6px; //
+        }
+        > image {
+            padding-left: 6px; // image padding
+            padding-right: 6px; //
+            padding-top: 3px; //
+            padding-bottom: 3px; //
+        }
+        &.text-button {
+            padding: 6px; // needed or it will get overridden
+        }
+        &.image-button {
+            // we want image buttons to have a 1:1 aspect ratio, so compensation
+            // of the padding added to the GtkImage is needed
+            padding: 3px 0px;
+        }
+        &.needs-attention > label,
+        &.needs-attention > image {
+            @extend %needs_attention;
+        }
+        &.needs-attention:active > label,
+        &.needs-attention:active > image,
+        &.needs-attention:focus > label,
+        &.needs-attention:focus > image,
+        &.needs-attention:checked > label,
+        &.needs-attention:checked > image {
+            animation: none;
+            background-image: none;
+        }
+    }
+
+    // hide separators
+    &.font,
+    &.file {
+        separator {
+            background-color: transparent; 
+        }
+    }
+
+    &.font {
+        > box > box > label {
+            font-weight: bold; 
+        }
+    }
+
+    //inline-toolbar buttons
+    .inline-toolbar &,
+    .inline-toolbar &:backdrop {
+        border-radius: $RadiusLittle;
+        border-width: 1px;
+        @extend %linked;
+    }
+
+    .primary-toolbar & {
+        -gtk-icon-shadow: none;
+    }
+
+    .linked > &,
+    .linked > &:hover,
+    .linked > &:active,
+    .linked > &:focus,
+    .linked > &:checked,
+    .linked > &:backdrop {
+        @extend %linked;
+    }
+
+    .linked.vertical > &,
+    .linked.vertical > &:hover,
+    .linked.vertical > &:active,
+    .linked.vertical > &:focus,
+    .linked.vertical > &:checked,
+    .linked.vertical > &:backdrop {
+        @extend %linked_vertical;
+    }
 }
 
-radiobutton.text-button radio, radiobutton radio {
-    margin-right: 10px;
-    background: none;
+
+/**************
+ * ComboBoxes *
+ **************/
+combobox {
+    arrow {
+        -gtk-icon-source: -gtk-icontheme($arrow_down);
+        min-height: 16px;
+        min-width: 16px;
+    }
+
+    &.linked {
+        button:nth-child(2) {
+            &:dir(ltr) {
+                @extend %linked:last-child;
+            }
+            &:dir(rtl) {
+                @extend %linked:first-child;
+            }
+        }
+    }
+
+    /* &:drop(active) { // FIXME: untested
+        box-shadow: none;
+        button.combo { @extend %button_basic:drop(active); }
+    } */
+}
+  
+.linked > combobox > box > button.combo {
+    // the combo is a composite widget so the way we do button linking doesn't
+    // work, special case needed. See
+    // https://bugzilla.gnome.org/show_bug.cgi?id=733979
+
+    &:dir(ltr),
+    &:dir(rtl) {
+        @extend %linked_middle;
+    } // specificity bump
 }
 
-button.radio:checked {
-    background: gtk("@widgets_selected_color");
-}
+.linked:not(.vertical) > combobox:first-child > box > button.combo { @extend %linked:first-child; }
+.linked:not(.vertical) > combobox:last-child > box > button.combo { @extend %linked:last-child; }
+.linked:not(.vertical) > combobox:only-child > box > button.combo { @extend %linked:only-child; }
 
-radio {
-    min-width: 14px;
-    min-height: 14px;
-    -gtk-icon-source: url("assets/radio_unchecked_normal.svg");
-    -gtk-icon-shadow: none;
-    -gtk-icon-effect: none;
-    border: none;
-    border-image: none;
-    box-shadow: none;
-    padding: 0px;
-    background: transparent;
-}
-
-radio:hover {
-    -gtk-icon-source: url("assets/radio_unchecked_hover.svg");
-}
-
-
-radio:active {
-    -gtk-icon-source: url("assets/radio_unchecked_pressed.svg");
-}
-
-radio:disabled {
-    -gtk-icon-source: url("assets/radio_unchecked_disabled.svg");
-    color: gtk("@theme_disabled_fg_color");
-}
-
-
-radio:checked {
-    -gtk-icon-source: url("assets/radio_checked_normal.svg");
-    -gtk-icon-shadow: none;
-    -gtk-icon-effect: none;
-    border: none;
-    border-image: none;
-    transition: none;
-}
-
-radio:checked:hover {
-    -gtk-icon-source: url("assets/radio_checked_hover.svg");
-}
-
-radio:checked:active {
-    -gtk-icon-source: url("assets/radio_checked_pressed.svg");
-}
-
-radio:checked:disabled {
-    -gtk-icon-source: url("assets/radio_checked_disabled.svg");
-    color: gtk("@theme_disabled_fg_color");
-}
-
-/* GtkToggleButton */
-button.toggle:checked {
-    background: gtk("@widgets_selected_color");
-}
-
-
-/* GtkLinkButton */
-button.link {
-    color: gtk("@theme_fg_color");
-    border: none;
-    background: none;
-}
-
-button.link:hover {
-    border: none;
-    background: none;
-}
-
-button.link:hover > label {
-    text-decoration-line: underline;
-    text-decoration-color: gtk("@theme_fg_color");
-}
-
-button.link:active, button.link:visited {
-    border: none;
-    background: none;
-}
-
-button.link:active > label, button.link:visited > label {
-    color: gtk("@widgets_selected_color");
-    text-decoration-line: underline;
-    text-decoration-color: gtk("@widgets_selected_color");
-}
-
-/* GtkSwitch */
-
-switch, switch:disabled {
-    border: none;
-    border-radius: 12px;
-    min-width: 54px;
-    min-height: 24px;
-    text-shadow: none;
-    color: transparent;
-    background: gtk("@widgets_bg_color");
-}
-
-switch:checked {
-    background: gtk("@widgets_selected_color");
-    border-color: transparent;
-}
-
-switch slider, switch:disabled slider {
-    background: gtk("@switch_slider_color");
+.linked.vertical > combobox > box > button.combo { @extend %linked_vertical_middle; }
+.linked.vertical > combobox:first-child > box > button.combo { @extend %linked_vertical:first-child;}
+.linked.vertical > combobox:last-child > box > button.combo { @extend %linked_vertical:last-child; }
+.linked.vertical > combobox:only-child > box > button.combo { @extend %linked_vertical:only-child; }
+  
+%needs_attention {
+    animation: needs_attention 150ms ease-in;
+    $_dot_shadow: gtk("@theme_widget_foreground_normal");
+    $_dot_shadow_r: 0.5;
+    background-image: -gtk-gradient(
+        radial,
+        center center,
+        0,
+        center center,
+        0.5,
+        to($_dot_color),
+        to(transparent)),
+        -gtk-gradient(radial, center center, 0, center center, $_dot_shadow_r, to($_dot_shadow), to(transparent));
+    background-size: 6px 6px, 6px 6px;
     background-repeat: no-repeat;
-    border-radius: 8px;
-    border-width: 0px;
-    min-width: 16px;
-    min-height: 16px;
-    margin-right: 4px;
-    margin-left: 4px;
-    margin-top: 4px;
-    margin-bottom: 4px;
+    background-position: right 3px, right 4px;
+    &:backdrop {
+        background-size: 6px 6px, 0 0;
+    }
+    &:dir(rtl) {
+        background-position: left 3px, left 4px;
+    }
+}
+  
+%linked_middle {
+    border-radius: 0;
+    border-right-style: none;
 }
 
-switch:disabled slider {
-    background: gtk("@theme_disabled_fg_color");
+%linked {
+    @extend %linked_middle;
+   
+    &:first-child {
+        border-top-left-radius: $RadiusLittle;
+        border-bottom-left-radius: $RadiusLittle;
+    }
+
+    &:last-child {
+        border-top-right-radius: $RadiusLittle;
+        border-bottom-right-radius: $RadiusLittle;
+        border-right-style: solid;
+    }
+
+    &:only-child {
+        border-radius: $RadiusLittle;
+        border-style: solid;
+    }
+    
 }
 
-
-/* GtkFontButton */
-
-button.font {
-    border: none;
-    background: none;
-    padding: 0px 0px 0px 0px;
+%linked_vertical_middle {
+    border-style: solid solid none solid;
+    border-radius: 0;
 }
 
+%linked_vertical {
+    @extend %linked_vertical_middle;
 
-button.font > box > label {
-    border: 1px solid gtk("@widgets_border_color");
-    border-radius: 4px;
-    background: gtk("@theme_bg_color");
-    padding: 8px 8px 8px 8px;
+    &:first-child {
+        border-top-left-radius: $RadiusLittle;
+        border-top-right-radius: $RadiusLittle;
+    }
+
+    &:last-child {
+        border-bottom-left-radius: $RadiusLittle;
+        border-bottom-right-radius: $RadiusLittle;
+        border-style: solid;
+    }
+
+    &:only-child {
+        border-radius: $RadiusLittle;
+        border-style: solid;
+    }
 }
 
-button.font > box > box > label {
-    border: none;
-    border-radius: 4px;
-    background: gtk("@widgets_bg_color");
-    padding: 8px 8px 8px 8px;
+%undecorated_button {
+    border-color: transparent;
+    background-color: transparent;
+    background-image: none;
+    box-shadow: none;
+    text-shadow: none;
+    -gtk-icon-shadow: none;
 }
 
-button.font:disabled > box > lable {
-    color: gtk("@theme_disabled_fg_color");
-}
-
-button.font:disabled > box > box > label {
-    color: gtk("@theme_disabled_fg_color");
-}
-
-/* ColorButton */
 button.color {
     background: none;
-}
-
-
-button.suggested-action {
-    border: none;
-    background: #43A3F2;
-    color: #ffffff;
-}
-
-button.suggested-action:hover, button.text-button.suggested-action:hover {
-    border: none;
-    background: #79C3FF;
-}
-
-button.suggested-action:active, button.text-button.suggested-action:active {
-    background: #1568AD;
-    box-shadow: none;
-    border: none;
-}
-
-button.suggested-action:disabled {
-    background: gtkalpha(#43A3F2, 0.7); 
-    color: #ffffff;
-}
-
-button.destructive-action {
-    background: #FA4949;
-    border: none;
-    color: #ffffff;
-}
-
-button.destructive-action:hover {
-    background: #FF7878;
-}
-
-button.destructive-action:active {
-    background: #9D2C2C;
-}
-
-button.destructive-action:disabled {
-    background: gtkalpha(#FA4949, 0.7);
 }

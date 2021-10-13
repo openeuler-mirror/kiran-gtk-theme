@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+/***********
+ * Dialogs *
+ ***********/
+
+// .message-dialog .dialog-action-area .button {
+//   //padding: 8px;
+// }
+
+messagedialog {
+    // Message Dialog styling
+
+    &.background {
+        background-color: gtk("@theme_window_background_normal");
+    }
+
+    &:backdrop {
+        background-color: gtk("@theme_window_background_backdrop");
+    }
+
+    .titlebar {
+        min-height: 20px;
+        background-image: none;
+        background-color: gtk("@theme_titlebar_background_normal");
+        border-style: none;
+        border-top-left-radius: $RadiusMiddle;
+        border-top-right-radius: $RadiusMiddle;
+    }
+}
+
+filechooser {
+    .search-bar {
+        @include entry(normal);
+        box-shadow: none;
+
+        &:backdrop {
+            @include entry(backdrop)
+        }
+    }
+
+    .dialog-action-box {
+        border-top: 1px solid gtk("@borders");
+        &:backdrop {
+            border-top-color: gtk("@unfocused_borders");
+        }
+    }
+    
+    #pathbarbox {
+        background-color: gtk("@theme_window_background_normal");
+        border-bottom: 1px solid gtk("@theme_window_border_normal");
+    }
+}

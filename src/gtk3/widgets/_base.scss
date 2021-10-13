@@ -1,11 +1,38 @@
+@charset "UTF-8";
 
 * {
-    font-size: 10pt;
-    -gtk-dpi: 96;
-    -GtkToolButton-icon-spacing: 0px;
+    padding: 0;
+    -GtkToolButton-icon-spacing: 4;
+    -GtkTextView-error-underline-color: gtk("@theme_default_error");
+
+    // The size for scrollbars. The slider is 2px smaller, but we keep it
+    // up so that the whole area is sensitive to button presses for the
+    // slider. The stepper button is larger in both directions, the slider
+    // only in the width
+
+    -GtkScrolledWindow-scrollbar-spacing: 0;
+
+    -GtkToolItemGroup-expander-size: 11;
+
+    -GtkWidget-text-handle-width: 20;
+    -GtkWidget-text-handle-height: 24;
+
+    -GtkDialog-button-spacing: 4;
+    -GtkDialog-action-area-border: 0;
     -GtkMenu-horizontal-offset: 1px;
-    -gtk-secondary-caret-color: gtk("@theme_fg_color"); /* Used for the secondary caret in bidirectional text */
+
+    // We use the outline properties to signal the focus properties
+    // to the kiran engine: using real CSS properties is faster,
+    // and we don't use any outlines for now.
+
+    outline-color: gtkalpha(currentColor, 0.3);
+    outline-style: dashed;
+    outline-offset: -3px;
+    outline-width: 1px;
+    -gtk-outline-radius: 2px;
+    
     caret-color: gtk("@theme_fg_color"); /* The caret properties provide a way to change the appearance of the insertion caret in editable text.*/
+    -gtk-secondary-caret-color: gtk("@theme_selected_bg_color"); /* Used for the secondary caret in bidirectional text */
 }
 
 
@@ -26,7 +53,14 @@
     
 }
 
-/* Global selected/disable/hover color cannot be adapted to some third-party applications. */
+/*
+   These wildcard seems unavoidable, need to investigate.
+   Wildcards are bad and troublesome, use them with care,
+   or better, just don't.
+   Everytime a wildcard is used a kitten dies, painfully.
+
+   Global selected/disable/hover color cannot be adapted to some third-party applications.
+*/
 
 *:disabled {
     -gtk-icon-effect: dim;
@@ -36,42 +70,181 @@
     -gtk-icon-effect: highlight;
 }
 
-image, image:disabled,
-grid, grid:disabled,
-box, box:disabled
-{
-    background-color: transparent;
+.gtkstyle-fallback {
+    color: gtk("@theme_fg_color");
+    background-color: gtk("@theme_bg_color");
+
+    &:hover {
+        color: gtk("@theme_fg_color");
+        background-color: gtkshade("@theme_bg_color", 1.1);
+    }
+    
+    &:active {
+        background-color: gtkshade("@theme_bg_color", 0.9);
+        color: gtk("@theme_fg_color");
+    }
+    &:disabled {
+        background-color: gtk("@insensitive_fg_color");
+        color: gtk("@insensitive_fg_color");
+    }
+    &:selected {
+        background-color: gtk("@theme_selected_bg_color");
+        color: gtk("@theme_selected_fg_color");
+    }
 }
 
-headerbar, .view {
-    min-height: 48px;
-    background: gtk("@theme_bg_color");
+%view,
+.view {
+  color: gtk("@theme_text_color");
+  background-color: gtk("@theme_base_color");
+
+  &:backdrop {
+    color: gtk("@theme_unfocused_text_color");
+    background-color: gtk("@theme_unfocused_base_color");
+  }
+
+  &:disabled {
+    color: gtk("@insensitive_text_color");
+    background-color: gtk("@insensitive_base_color");
+  }
+
+  &:selected {
+    &:focus,
+    & {
+        @extend %selected_items;
+    }
+  }
 }
 
-headerbar button.titlebutton {
-    border-color: transparent;
+.view,
+textview {
+  text {
+    @extend %view;
+
+    selection {
+      &:focus,
+      & {
+        @extend %selected_items;
+      }
+    }
+  }
+}
+
+textview border {
+    background-color: gtk("@theme_base_color");
+}
+
+/* In order to see the selected content, The box dragged by the mouse needs to be transparent. */
+.rubberband,
+rubberband {
+    border: 1px solid gtk("@theme_selected_bg_color");
+    background-color: gtkalpha(gtk("@theme_selected_bg_color"), 0.8);
+    &:backdrop {
+        border-color: gtk("@theme_unfocused_selected_bg_color");
+        background-color: gtkalpha(gtk("@theme_unfocused_selected_bg_color"), 0.8);
+    }
+}
+
+/* .view.rubberband,  
+.rubberband {
+    border-width: 1px;
+    border-style: solid;
+    border-color: shade(gtk("@theme_selected_bg_color"), 0.7);
     background: none;
+    background-color: gtkalpha(gtk("@theme_selected_bg_color"), 0.4); 
+} */
+
+flowbox {
+    rubberband {
+        @extend rubberband;
+    }
+
+    flowboxchild {
+        padding: 3px;
+
+        &:selected {
+            @extend %selected_items;
+
+            outline-offset: -2px;
+        }
+    }
 }
 
+label {
+    &.separator {
+        color: gtk("@theme_fg_color");
+        @extend .dim-label;
+        &:backdrop {
+            color: gtk("@theme_unfocused_fg_color");
+        }
+    }
 
-.csd.background decoration {
-    border: 1px solid #b2b2b2;
-    box-shadow: 2px 2px 6px gtkalpha(#000000, 0.2),
-                2px -2px 6px gtkalpha(#000000, 0.2),
-                -2px -2px 6px gtkalpha(#000000, 0.2),
-                -2px 2px 6px gtkalpha(#000000, 0.2);
+    selection {
+        background-color: gtk("@theme_selected_bg_color");
+        color: gtk("@theme_selected_fg_color");
+    }
+
+    &:disabled {
+        color: gtk("@insensitive_fg_color");
+        selection {
+            @extend %selected_items:disabled;
+        }
+
+        &:backdrop {
+            color: gtk("@insensitive_unfocused_fg_color");
+        }
+    }
+
+    &:backdrop {
+        color: gtk("@theme_unfocused_text_color");
+
+        selection {
+            @extend %selected_items:backdrop;
+        }
+    }
 }
 
-.csd.background.popup {
-    background: none;
-    border-radius: 2px;
+.dim-label {
+    opacity: 0.55;
+    text-shadow: none;
 }
 
-.csd.background.popup decoration {
-    border: none;
-    border-radius: 8px;
-    box-shadow: 2px 2px 4px gtkalpha(#000000, 0.1),
-                2px -2px 4px gtkalpha(#000000, 0.1),
-                -2px -2px 4px gtkalpha(#000000, 0.1),
-                -2px 2px 4px gtkalpha(#000000, 0.1);
+%osd,
+.osd {
+    color: gtk("@theme_fg_color");
+    border: 1px solid gtk("@borders");
+    background-color: gtkalpha(gtk("@theme_bg_color"), 0.8);
+    background-clip: padding-box;
+    box-shadow: none;
+    text-shadow: none;
+    -gtk-icon-shadow: none;
+
+    &:backdrop {
+        color: gtk("@theme_unfocused_text_color");
+        background-color: gtkalpha(gtk("@theme_unfocused_bg_color"), 0.8);
+        -gtk-icon-shadow: none;
+    }
+}
+  
+%selected_items {
+    background-color: gtk("@theme_selected_bg_color");
+    color: gtk("@theme_selected_fg_color");
+
+    @at-root %nobg_selected_items,
+    & {
+        color: gtk("@theme_selected_fg_color");
+
+        &:disabled {
+            color: gtk("@insensitive_selected_fg_color");
+        }
+
+        &:backdrop {
+            background-color: gtk("@theme_unfocused_selected_bg_color");
+            color: gtk("@theme_unfocused_selected_fg_color");
+
+            &:disabled {
+                color: gtk("@insensitive_unfocused_selected_fg_color");
+            }
+        }
+    }
 }

@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+/************
+ * Tooltips *
+ ************/
+
+ tooltip {
+    &.background {
+        // background-color needs to be set this way otherwise it gets drawn twice
+        // see https://bugzilla.gnome.org/show_bug.cgi?id=736155 for details.
+        background-color: gtk("@theme_window_background_normal");
+        background-clip: padding-box;
+        border: 1px solid gtk("@theme_window_border_normal");
+    }
+
+    color: gtk("@theme_window_foreground_normal");
+    padding: 2px; /* not working */
+    border-radius: $RadiusMiddle;
+    box-shadow: none; // otherwise it gets inherited by windowframe.csd
+    text-shadow: none;
+
+    // FIXME: we need a border or tooltips vanish on black background.
+    decoration {
+        background-color: transparent;
+    }
+}

@@ -1,63 +1,86 @@
+@charset "UTF-8";
 
-
-toolbar toolbutton button.image-button, toolbar toolbutton button.text-button, toolbar button:not(.combo) {
-    min-height: 22px;
-    padding: 4px 8px 4px 8px;
-    border-width: 1px;
-    border-radius: 6px;
-    background: gtk("@theme_bg_color");
-    color: gtk("@theme_fg_color");
+/************
+ * Toolbars *
+ ************/
+%toolbar {
+    -GtkWidget-window-dragging: true;
+    padding: 4px;
+    background-color: gtk("@theme_window_background_normal");
 }
 
+toolbar {
+    @extend %toolbar;
+    padding: 4px 3px 3px 4px;
 
-toolbar toolbutton:focus {
-    outline: 1px dashed rgba(0, 0, 0, 0.8);
-    outline-offset: -2px;
+    &:backdrop {
+        background-color: gtk("@theme_window_background_backdrop");
+        box-shadow: none;
+    }
+
+    button {
+        margin: 2px;
+        padding: 3px;
+        &.image-button,
+        &.text-button.image-button {
+            padding: 3px;
+        }
+    }
+
+    separator {
+        margin-left: 3px;
+        margin-right: 3px;
+    }
+
+    entry {
+        margin: 3px;
+    }
+
+    // on OSD
+    .osd & {
+        background-color: transparent;
+    }
+
+    &.osd {
+        padding: 13px;
+        border: none;
+        border-radius: $r;
+        background-color: gtk("@theme_window_background_normal");
+
+        &:backdrop {
+            background-color: gtk("@theme_window_background_backdrop");
+            box-shadow: none;
+        }
+
+        &.left,
+        &.right,
+        &.top,
+        &.bottom {
+            border-radius: 0;
+        } // positional classes for `attached` osd toolbars
+    }
 }
 
-toolbar button:disabled {
-    border-color: transparent;
+//searchbar, location-bar & inline-toolbar
+.inline-toolbar {
+    @extend %toolbar;
+    @extend %inset-bar;
+    border-width: 0px 0px 1px 0px;
+    padding: 3px;
+    border-radius: 0;
 }
 
-popover.background {
-    border: 1px solid gtkalpha(gtk("@textview_bg_color"), 0.25);
-    padding: 10px 2px 10px 2px;
+searchbar,
+.location-bar {
+    @extend %toolbar;
+    @extend %inset-bar;
+    border-width: 0px 0px 1px 0px;
+    padding: 3px;
 }
 
-toolbar toolbutton button.popup {
-    min-width: 12px;
-    padding: 0px;
-}
-
-toolbar button.text-button {
-    min-width: 42px;
-}
-
-toolbar button.image-button {
-    min-width: 22px;
-}
-
-toolbar toolbutton button:hover {
-    background: gtkalpha(#000000, 0.05);
-    border-radius: 2px;
-    color: gtk("@theme_fg_color");
-}
-
-toolbar toolbutton button:active {
-    background: gtkalpha(#000000, 0.1);
-    border-radius: 2px;
-    color: gtk("@theme_fg_color");
-}
-
-toolbar.horizontal separator {
-    margin: 0px 5px 0px 5px;
-}
-
-toolbar.horizontal, toolbar.vertical {
-    background: gtk("@theme_bg_color");
-}
-
-toolbar, toolbar.horizontal {
-    min-height: 22px;
-    border: none;
+%inset-bar {
+    border-style: solid;
+    border-color: gtk("@theme_window_border_normal");
+    text-shadow: none;
+    background-color: gtk("@theme_window_background_normal");
 }
