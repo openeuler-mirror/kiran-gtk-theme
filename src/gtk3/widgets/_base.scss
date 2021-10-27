@@ -138,21 +138,12 @@ textview border {
 .rubberband,
 rubberband {
     border: 1px solid gtk("@theme_selected_bg_color");
-    background-color: gtkalpha(gtk("@theme_selected_bg_color"), 0.8);
+    background-color: gtkalpha(gtk("@theme_selected_bg_color"), 0.3);
     &:backdrop {
         border-color: gtk("@theme_unfocused_selected_bg_color");
         background-color: gtkalpha(gtk("@theme_unfocused_selected_bg_color"), 0.8);
     }
 }
-
-/* .view.rubberband,  
-.rubberband {
-    border-width: 1px;
-    border-style: solid;
-    border-color: shade(gtk("@theme_selected_bg_color"), 0.7);
-    background: none;
-    background-color: gtkalpha(gtk("@theme_selected_bg_color"), 0.4); 
-} */
 
 flowbox {
     rubberband {

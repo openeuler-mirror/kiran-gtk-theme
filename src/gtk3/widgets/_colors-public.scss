@@ -152,6 +152,7 @@ textview main backgound color */
 @define-color error_color #{"" +internal_default(error)};
 @define-color success_color #{"" +internal_default(success)};
 
+
 /* --------------------------------------------------------------- Widget Colors --------------------------------------------------------------- */
 @define-color theme_widget_background_normal                   #{"" + internal_widget(background)};
 @define-color theme_widget_background_hover                    #{"" + internal_widget(background-hover)};
