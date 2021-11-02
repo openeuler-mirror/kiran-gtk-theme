@@ -24,8 +24,7 @@
     } @else if $t==active {
         background-color: gtk("@theme_widget_background_active");
     }  @else if $t==checked {
-        // FIXME: delete border
-        background-color: gtk("@theme_widget_background_checked");
+        background-color: gtk("@theme_widget_background_active");
     } @else if $t==insensitive {
         color: gtk("@theme_widget_foreground_insensitive");
         border-color: gtk("@theme_widget_border_insensitive");
@@ -100,11 +99,6 @@ $_dot_color: gtk("@theme_widget_foreground_active");
     @include button(normal);
     &.flat {
         @include button(undecorated);
-        // to avoid adiacent buttons borders clashing when transitioning, the transition on the normal state is set
-        // to none, while it's added back in the hover state, so the button decoration will fade in on hover, but
-        // it won't fade out when the pointer leave the button allocation area. To make the transition more evident
-        // in this case the duration is increased.
-        transition: none;
 
         &:hover {
             /* transition: $button_transition; */
@@ -134,9 +128,9 @@ $_dot_color: gtk("@theme_widget_foreground_active");
         @include button(backdrop);
         -gtk-icon-effect: none;
 
-        &:checked{
+        /* &:checked{
             @include button(backdrop-checked);
-        }
+        } */
 
         &:disabled {
             @include button(backdrop-insensitive);

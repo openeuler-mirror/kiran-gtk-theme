@@ -71,9 +71,10 @@ scrolledwindow {
 
 //vbox and hbox separators
 separator {
-    background: gtk("@theme_window_background_normal");
-    min-width: 1px;
-    min-height: 1px;
+    /* background-color: gtkalpha(gtk("@theme_window_foreground_normal"), 0.2); */
+    border-width: 1px 1px 0px 0px;
+    border-style: solid;
+    border-color: gtk("@theme_widget_border_normal");
 }
 
 /*************

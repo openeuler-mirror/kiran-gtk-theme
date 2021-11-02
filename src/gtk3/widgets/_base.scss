@@ -200,6 +200,20 @@ label {
     text-shadow: none;
 }
 
+.csd.background {
+
+    &.popup {
+        background: none;
+        border-radius: $RadiusLittle;
+
+        decoration {
+            border: none;
+            border-radius: $RadiusBig;
+        }
+    }
+}
+  
+
 %osd,
 .osd {
     color: gtk("@theme_fg_color");

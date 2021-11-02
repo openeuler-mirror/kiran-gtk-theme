@@ -59,6 +59,7 @@ menu,
         min-height: 18px;
         min-width: 40px;
         padding: 6px 8px;
+        border: none;
 
         &:hover {
             background-color: gtk("@theme_widget_background_hover");
