@@ -19,12 +19,14 @@
         border-color: gtk("@theme_widget_border_normal");
         background-color: gtk("@theme_widget_background_normal");
     } @else if $t==hover {
-        /* border-color: gtk("@theme_widget_border_hover"); */
+        border-color: gtk("@theme_widget_border_normal");
         background-color: gtk("@theme_widget_background_hover");
     } @else if $t==active {
+        border-color: gtk("@theme_widget_border_normal");
         background-color: gtk("@theme_widget_background_active");
     }  @else if $t==checked {
-        background-color: gtk("@theme_widget_background_active");
+        border-color: gtk("@theme_widget_border_normal");
+        background-color: gtk("@theme_widget_background_checked");
     } @else if $t==insensitive {
         color: gtk("@theme_widget_foreground_insensitive");
         border-color: gtk("@theme_widget_border_insensitive");
@@ -114,13 +116,9 @@ $_dot_color: gtk("@theme_widget_foreground_active");
         -gtk-icon-effect: none; // Do we want this?
     }
 
-    &:active {
-        @include button(active);
-        transition-duration: 50ms;
-    }
-
+    &:active,
     &:checked {
-        @include button(checked);
+        @include button(active);
         transition-duration: 50ms;
     }
 
