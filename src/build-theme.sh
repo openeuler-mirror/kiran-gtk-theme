@@ -29,6 +29,9 @@ render_theme () {
 
     # assets
     cp -r assets/ "$3"
+
+    # window manager
+    cp -r metacity-1/ "$3"
 }
 
 
