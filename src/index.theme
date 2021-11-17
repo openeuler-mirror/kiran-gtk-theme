@@ -7,7 +7,7 @@ Encoding=UTF-8
 
 [X-GNOME-Metatheme]
 GtkTheme=GTK_THEME_NAME
-MetacityTheme=Kiran
+MetacityTheme=META_THEME_NAME
 IconTheme=Kiran
 CursorTheme=Kiran
 ButtonLayout=menu:minimize,maximize,close
