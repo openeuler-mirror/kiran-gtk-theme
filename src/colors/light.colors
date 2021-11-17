@@ -42,6 +42,16 @@ BorderNormal=Default::Border
 BorderHover=mix(Widget::BorderNormal, Widget::ForegroundNormal, 0.3)
 BorderFocus=Default::Selection
 
+[Colors:Bare]
+BackgroundNormal=Default::Border
+ForegroundNormal=Default::ForegroundNormal
+BackgroundHover=mix(Bare::BackgroundNormal, Bare::ForegroundNormal, 0.9)
+BackgroundActive=mix(Bare::BackgroundNormal, Bare::ForegroundNormal, 0.8)
+BackgroundChecked=Default::Selection
+ForegroundHover=mix(Bare::BackgroundNormal, Bare::ForegroundNormal, 0.3)
+ForegroundActive=mix(Bare::BackgroundNormal, Bare::ForegroundNormal, 0.4)
+ForegroundChecked=Default::Selection
+
 [Colors:Window]
 BackgroundNormal=Default::BackgroundNormal
 ForegroundNormal=Default::ForegroundNormal

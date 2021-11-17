@@ -50,35 +50,35 @@ scale {
         min-width: 2px;
         min-height: 2px;
         border: none;
-        background-color: gtk("@theme_widget_background_normal");
+        background-color: gtk("@theme_bare_background_normal");
         box-shadow: none;
 
         &:disabled,
         &.vertical:disabled {
-            background-color: gtk("@theme_widget_background_insensitive");
+            background-color: gtk("@theme_bare_background_insensitive");
             box-shadow: none;
             &:backdrop {
-                background-color: gtk("@theme_widget_background_backdrop_insensitive");
+                background-color: gtk("@theme_bare_background_backdrop_insensitive");
             }
         }
 
         &:backdrop {
-            background-color: gtk("@theme_widget_background_backdrop");
+            background-color: gtk("@theme_bare_background_backdrop");
         }
     }
 
     highlight {
         border: none;
-        background-color: gtk("@theme_widget_background_checked");
+        background-color: gtk("@theme_bare_background_checked");
 
         &:disabled {
-            background-color: gtk("@theme_widget_background_insensitive");
+            background-color: gtk("@theme_bare_background_insensitive");
         }
 
         &:backdrop {
-            background-color: gtk("@theme_widget_background_backdrop_checked");
+            background-color: gtk("@theme_bare_background_backdrop_checked");
             &:disabled {
-                background-color: gtk("@theme_widget_background_backdrop_insensitive");
+                background-color: gtk("@theme_bare_background_backdrop_insensitive");
             }
         }
     }

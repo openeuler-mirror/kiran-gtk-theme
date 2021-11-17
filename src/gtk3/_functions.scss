@@ -26,7 +26,7 @@
 // Theme color functions
 //
 
-// Widget Color
+// Default Color
 @function internal_default($c: background) {
     @if $c == background {
         @return $DefaultBackgroundNormal;
@@ -88,6 +88,34 @@
     }
     @if $c == border-focus {
         @return $WidgetBorderFocus;
+    }
+}
+
+// Bare(No border) Widget Color
+@function internal_bare($c: background) {
+    @if $c == background {
+        @return $BareBackgroundNormal;
+    }
+    @if $c == foreground {
+        @return $BareForegroundNormal;
+    }
+    @if $c == background-hover {
+        @return $BareBackgroundHover;
+    }
+    @if $c == background-active {
+        @return $BareBackgroundActive;
+    }
+    @if $c == background-checked {
+        @return $BareBackgroundChecked;
+    }
+    @if $c == foreground-hover {
+        @return $BareForegroundHover;
+    }
+    @if $c == foreground-active {
+        @return $BareForegroundActive;
+    }
+    @if $c == foreground-checked {
+        @return $BareForegroundChecked;
     }
 }
 

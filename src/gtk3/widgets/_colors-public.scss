@@ -177,19 +177,38 @@ textview main backgound color */
 @define-color theme_widget_border_backdrop                     #{"" + internal_backdrop(internal_widget(border))};
 @define-color theme_widget_border_backdrop_insensitive         #{"" + internal_insensitive(internal_backdrop(internal_widget(border)))};
 
+
+/* --------------------------------------------------------------- Bare Colors --------------------------------------------------------------- */
+@define-color theme_bare_background_normal                     #{"" + internal_bare(background)};
+@define-color theme_bare_background_hover                      #{"" + internal_bare(background-hover)};
+@define-color theme_bare_background_active                     #{"" + internal_bare(background-active)};
+@define-color theme_bare_background_checked                    #{"" + internal_bare(background-checked)};
+@define-color theme_bare_background_insensitive                #{"" + internal_insensitive(internal_bare(background))};
+@define-color theme_bare_background_backdrop                   #{"" + internal_backdrop(internal_bare(background))};
+@define-color theme_bare_background_backdrop_checked           #{"" + internal_backdrop(internal_bare(background-checked))};
+@define-color theme_bare_background_backdrop_insensitive       #{"" + internal_insensitive(internal_backdrop(internal_bare(background)))};
+@define-color theme_bare_foreground_normal                     #{"" + internal_bare(foreground)};
+@define-color theme_bare_foreground_hover                      #{"" + internal_bare(foreground-hover)};
+@define-color theme_bare_foreground_active                     #{"" + internal_bare(foreground-active)};
+@define-color theme_bare_foreground_checked                    #{"" + internal_bare(foreground-checked)};
+@define-color theme_bare_foreground_insensitive                #{"" + internal_insensitive(internal_bare(foreground))};
+@define-color theme_bare_foreground_backdrop                   #{"" + internal_backdrop(internal_bare(foreground))};
+@define-color theme_bare_foreground_backdrop_checked           #{"" + internal_backdrop(internal_bare(foreground-checked))};
+@define-color theme_bare_foreground_backdrop_insensitive       #{"" + internal_insensitive(internal_backdrop(internal_bare(foreground)))};
+
 /* --------------------------------------------------------------- Window Colors --------------------------------------------------------------- */
-@define-color theme_window_background_normal                     #{"" + internal_window(background)};
-@define-color theme_window_background_insensitive                #{"" + internal_insensitive(internal_window(background))};
-@define-color theme_window_background_backdrop                   #{"" + internal_backdrop(internal_window(background))};
-@define-color theme_window_background_backdrop_insensitive       #{"" + internal_insensitive(internal_backdrop(internal_window(background)))};
-@define-color theme_window_foreground_normal                     #{"" + internal_window(foreground)};
-@define-color theme_window_foreground_insensitive                #{"" + internal_insensitive(internal_window(foreground))};
-@define-color theme_window_foreground_backdrop                   #{"" + internal_backdrop(internal_window(foreground))};
-@define-color theme_window_foreground_backdrop_insensitive       #{"" + internal_insensitive(internal_backdrop(internal_window(foreground)))};
-@define-color theme_window_border_normal                         #{"" + internal_window(border)};
-@define-color theme_window_border_insensitive                    #{"" + internal_insensitive(internal_window(border))};
-@define-color theme_window_border_backdrop                       #{"" + internal_backdrop(internal_window(border))};
-@define-color theme_window_border_backdrop_insensitive           #{"" + internal_insensitive(internal_backdrop(internal_window(border)))};
+@define-color theme_window_background_normal                   #{"" + internal_window(background)};
+@define-color theme_window_background_insensitive              #{"" + internal_insensitive(internal_window(background))};
+@define-color theme_window_background_backdrop                 #{"" + internal_backdrop(internal_window(background))};
+@define-color theme_window_background_backdrop_insensitive     #{"" + internal_insensitive(internal_backdrop(internal_window(background)))};
+@define-color theme_window_foreground_normal                   #{"" + internal_window(foreground)};
+@define-color theme_window_foreground_insensitive              #{"" + internal_insensitive(internal_window(foreground))};
+@define-color theme_window_foreground_backdrop                 #{"" + internal_backdrop(internal_window(foreground))};
+@define-color theme_window_foreground_backdrop_insensitive     #{"" + internal_insensitive(internal_backdrop(internal_window(foreground)))};
+@define-color theme_window_border_normal                       #{"" + internal_window(border)};
+@define-color theme_window_border_insensitive                  #{"" + internal_insensitive(internal_window(border))};
+@define-color theme_window_border_backdrop                     #{"" + internal_backdrop(internal_window(border))};
+@define-color theme_window_border_backdrop_insensitive         #{"" + internal_insensitive(internal_backdrop(internal_window(border)))};
 
 /* --------------------------------------------------------------- View Colors --------------------------------------------------------------- */
 @define-color theme_view_background_normal                     #{"" + internal_view(background)};

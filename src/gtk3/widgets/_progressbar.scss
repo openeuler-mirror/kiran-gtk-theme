@@ -26,22 +26,22 @@ progressbar {
     trough {
         border: 0px solid transparent;
         border-radius: $RadiusLittle;
-        background-color: gtk("@theme_widget_background_normal");
+        background-color: gtk("@theme_bare_background_normal");
 
         &:backdrop {
-            background-color: gtk("@theme_widget_background_backdrop");
+            background-color: gtk("@theme_bare_background_backdrop");
         }
     }
 
 
     progress {
-        background-color: gtk("@theme_widget_background_checked");
+        background-color: gtk("@theme_bare_background_checked");
         border: 0px solid transparent;
         border-radius: $RadiusLittle;
         box-shadow: none; //needed for clipping
 
         &:backdrop {
-            background-color: gtk("@theme_widget_background_backdrop_checked");    
+            background-color: gtk("@theme_bare_background_backdrop_checked");    
         }
     }
 
@@ -111,11 +111,11 @@ levelbar {
         }
 
         &.empty {
-            background-color: gtk("@theme_widget_background_normal");
+            background-color: gtk("@theme_bare_background_normal");
             border-color: transparent;
             box-shadow: none;
             &:backdrop {
-                background-color: gtk("@theme_widget_background_backdrop");
+                background-color: gtk("@theme_bare_background_backdrop");
             }
         }
     }
