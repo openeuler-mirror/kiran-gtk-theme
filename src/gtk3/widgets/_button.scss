@@ -366,11 +366,6 @@ combobox {
             }
         }
     }
-
-    /* &:drop(active) { // FIXME: untested
-        box-shadow: none;
-        button.combo { @extend %button_basic:drop(active); }
-    } */
 }
   
 .linked > combobox > box > button.combo {

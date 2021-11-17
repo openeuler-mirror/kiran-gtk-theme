@@ -38,19 +38,19 @@ scrollbar {
         border-radius: $RadiusBig;
         background-clip: padding-box;
 
-        background-color: gtk("@theme_widget_background_normal");
+        background-color: gtk("@theme_bare_background_normal");
 
         &:hover { 
-            background-color: gtk("@theme_widget_background_hover");
+            background-color: gtk("@theme_bare_background_hover");
         }
 
         &:active,
         &:checked {
-            background-color: gtk("@theme_widget_background_checked");
+            background-color: gtk("@theme_bare_background_checked");
         }
 
         &:backdrop {
-            background-color: gtk("@theme_widget_background_backdrop");
+            background-color: gtk("@theme_bare_background_backdrop");
         }
 
         &:disabled {

@@ -153,6 +153,16 @@ entry {
             border-color: gtk("@theme_widget_border_backdrop");
         }
     }
+
+    // linked entries
+    .linked:not(.vertical) > & { @extend %linked; }
+    .linked:not(.vertical) > &:focus + &,
+    .linked:not(.vertical) > &:focus + button,
+    .linked:not(.vertical) > &:focus + combobox > box > button.combo { border-left-color: gtk("@theme_widget_border_focus"); }
+
+    .linked:not(.vertical) > &:drop(active) + &,
+    .linked:not(.vertical) > &:drop(active) + button,
+    .linked:not(.vertical) > &:drop(active) + combobox > box > button.combo { border-left-color: gtk("@theme_widget_border_focus"); }
 }
 
 treeview acceleditor > label {

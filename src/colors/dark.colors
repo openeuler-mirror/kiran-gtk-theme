@@ -21,6 +21,7 @@ IntensityEffect=0
 [Colors:Default]
 BackgroundNormal=0x222222
 ForegroundNormal=0xFFFFFF
+BareNormal=0x595959
 Border=0x393939
 Selection=0x2EB3FF
 Warning=0xFA4949
@@ -43,7 +44,7 @@ BorderHover=mix(Widget::BorderNormal, Widget::ForegroundNormal, 0.3)
 BorderFocus=Default::Selection
 
 [Colors:Bare]
-BackgroundNormal=Default::Border
+BackgroundNormal=Default::BareNormal
 ForegroundNormal=Default::ForegroundNormal
 BackgroundHover=mix(Bare::BackgroundNormal, Bare::ForegroundNormal, 0.9)
 BackgroundActive=mix(Bare::BackgroundNormal, Bare::ForegroundNormal, 0.8)
@@ -55,7 +56,7 @@ ForegroundChecked=Default::Selection
 [Colors:Window]
 BackgroundNormal=Default::BackgroundNormal
 ForegroundNormal=Default::ForegroundNormal
-BorderNormal=mix(Window::BackgroundNormal, Window::ForegroundNormal, 0.75)
+BorderNormal=Default::Border
 
 
 [Colors:Selection]
