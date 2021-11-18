@@ -93,12 +93,12 @@ window {
             }
             &.close:hover {
                 border-color: transparent;
-                background-color: gtk("theme_widget_foreground_hover");
+                background-color: gtk("@theme_widget_background_hover");
             }
 
             &.close:active {
                 border-color: transparent;
-                background-color: gtk("theme_widget_foreground_active");
+                background-color: gtk("@theme_widget_background_active");
             }
 
             &.close:backdrop {
@@ -118,11 +118,11 @@ window {
 
             &.maximize:hover {
                 border-color: transparent;
-                background-color: gtk("theme_widget_foreground_hover");
+                background-color: gtk("@theme_widget_background_hover");
             }
             &.maximize:active {
                 border-color: transparent;
-                background-color: gtk("theme_widget_foreground_active");
+                background-color: gtk("@theme_widget_background_active");
             }
             &.maximize:backdrop {
                 border-color: transparent;
@@ -141,11 +141,11 @@ window {
 
             &.minimize:hover {
                 border-color: transparent;
-                background-color: gtk("theme_widget_foreground_hover");
+                background-color: gtk("@theme_widget_background_hover");
             }
             &.minimize:active {
                 border-color: transparent;
-                background-color: gtk("theme_widget_foreground_active");
+                background-color: gtk("@theme_widget_background_active");
             }
             &.minimize:backdrop {
                 border-color: transparent;
@@ -167,11 +167,11 @@ window {
             }
             &.maximize:hover {
                 border-color: transparent;
-                background-color: gtk("theme_widget_foreground_hover");
+                background-color: gtk("@theme_widget_background_hover");
             }
             &.maximize:active {
                 border-color: transparent;
-                background-color: gtk("theme_widget_foreground_active");
+                background-color: gtk("@theme_widget_background_active");
             }
             &.maximize:backdrop {
                 border-color: transparent;
