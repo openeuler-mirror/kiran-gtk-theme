@@ -31,7 +31,8 @@ render_theme () {
     cp -r assets/ "$3"
 
     # window manager
-    cp -r metacity-1/ "$3"
+    mkdir -pv $3/metacity-1
+    cp -r $5-metacity-1/* "$3/metacity-1/"
 }
 
 
@@ -69,4 +70,4 @@ while [ "$#" -gt 0 ]; do
 done
 
 
-render_theme "./colors/${COLOR_SCHEME}.colors" "${THEME_NAME}" "${THEME_BUILD_DIR}" "./colors/base.colors"
+render_theme "./colors/${COLOR_SCHEME}.colors" "${THEME_NAME}" "${THEME_BUILD_DIR}" "./colors/base.colors" "${COLOR_SCHEME}"
