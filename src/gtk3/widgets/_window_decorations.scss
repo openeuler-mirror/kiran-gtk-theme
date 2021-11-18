@@ -152,8 +152,9 @@ window {
                 background-color: transparent;
             }
         }
+    }
 
-        .maximized & {
+    &.maximized {
         button.titlebutton {
             &.maximize {
                 border-image: none;
@@ -176,7 +177,6 @@ window {
                 border-color: transparent;
                 background-color: transparent;
             }
-        }
         }
     }
 
