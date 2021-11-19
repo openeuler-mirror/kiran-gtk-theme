@@ -10,6 +10,22 @@ create_folders () {
     done
 }
 
+render_metacity() {
+    cp  -r metacity-1/ "$1"
+    cp assets/window-close-symbolic.svg "$1/metacity-1/"
+    cp assets/window-maximum-symbolic.svg "$1/metacity-1/"
+    cp assets/window-minimum-symbolic.svg "$1/metacity-1/"
+    cp assets/window-unmaximum-symbolic.svg "$1/metacity-1/"
+    cp assets/thumbnail.png "$1/metacity-1/"
+    cat "$2" | while read line; do
+        key=`echo $line | sed -n 's/^\([^=]\+\)=\(.*\)$/\1/p'`
+        value=`echo $line | sed -n 's/^\([^=]\+\)=\(.*\)$/\2/p'`
+        sed -i "s/@$key/$value/g" "$1/metacity-1/metacity-theme-3.xml"
+        sed -i "s/@$key/$value/g" "$1/metacity-1/metacity-theme-2.xml"
+        sed -i "s/@$key/$value/g" "$1/metacity-1/metacity-theme-1.xml"
+    done
+}
+
 # Usage render_theme <colorscheme> <theme-name> <theme-dir> <colorschemebase>
 render_theme () {
     create_folders "$3"
@@ -31,10 +47,8 @@ render_theme () {
     cp -r assets/ "$3"
 
     # window manager
-    mkdir -pv $3/metacity-1
-    cp -r $5-metacity-1/* "$3/metacity-1/"
+    render_metacity "$3" "$5"
 }
-
 
 COLOR_SCHEME=""
 THEME_NAME=""
@@ -70,4 +84,4 @@ while [ "$#" -gt 0 ]; do
 done
 
 
-render_theme "./colors/${COLOR_SCHEME}.colors" "${THEME_NAME}" "${THEME_BUILD_DIR}" "./colors/base.colors" "${COLOR_SCHEME}"
+render_theme "./colors/${COLOR_SCHEME}.colors" "${THEME_NAME}" "${THEME_BUILD_DIR}" "./colors/base.colors" "./colors/metacity_${COLOR_SCHEME}.colors"
