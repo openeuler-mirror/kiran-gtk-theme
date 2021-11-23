@@ -72,5 +72,6 @@ BorderFocus=Default::Selection
 
 [WM]
 BackgroundNormal=Default::BackgroundNormal
+BackgroundBackdrop=0x2a2a2a
 ForegroundNormal=Default::ForegroundNormal
 BorderNormal=Default::Border

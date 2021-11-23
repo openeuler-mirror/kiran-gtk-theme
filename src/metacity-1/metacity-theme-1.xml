@@ -10,41 +10,41 @@
 
 <!-- meaningfull constants -->
 
-<constant name="C_title_focused" value="@C_title_focused_value" />
-<constant name="C_title_unfocused" value="@C_title_unfocused_value" />
-<constant name="C_wm_bg_focused" value="@C_wm_bg_focused_value" />
-<constant name="C_wm_bg_unfocused" value="@C_wm_bg_unfocused_value" />
-<constant name="C_wm_highlight" value="@C_wm_highlight_value" />
+<constant name="C_title_focused" value="@WMForegroundNormal" />
+<constant name="C_title_unfocused" value="@WMForegroundNormal" />
+<constant name="C_wm_bg_focused" value="@WMBackgroundNormal" />
+<constant name="C_wm_bg_unfocused" value="@WMBackgroundBackdrop" />
+<constant name="C_wm_highlight" value="@WMBorderNormal" />
 
 <!-- window button colors -->
 
 <!-- close -->
-<constant name="C_button_close_bg_focused" value="@C_button_close_bg_focused_value" />
-<constant name="C_button_close_bg_hover" value="@C_button_close_bg_hover_value" />
-<constant name="C_button_close_bg_active" value="@C_button_close_bg_active_value" />
-<constant name="C_button_close_bg_unfocused" value="@C_button_close_bg_unfocused_value" />
+<constant name="C_button_close_bg_focused" value="#ff0000" />
+<constant name="C_button_close_bg_hover" value="#ff0000" />
+<constant name="C_button_close_bg_active" value="#f00000" />
+<constant name="C_button_close_bg_unfocused" value="#ff0000" />
 
-<constant name="C_icon_close_bg_hover" value="@C_icon_close_bg_hover_value" />
-<constant name="C_icon_close_bg_active" value="@C_icon_close_bg_active_value" />
+<constant name="C_icon_close_bg_hover" value="@DefaultError" />
+<constant name="C_icon_close_bg_active" value="@DefaultError" />
 
 <!--maximize-->
-<constant name="C_button_max_bg_focused" value="@C_button_max_bg_focused_value" />
-<constant name="C_button_max_bg_hover" value="@C_button_max_bg_hover_value" />
-<constant name="C_button_max_bg_active" value="@C_button_max_bg_active_value" />
-<constant name="C_button_max_bg_unfocused" value="@C_button_max_bg_unfocused_value" />
+<constant name="C_button_max_bg_focused" value="@WidgetBackgroundHover" />
+<constant name="C_button_max_bg_hover" value="@WidgetBackgroundHover" />
+<constant name="C_button_max_bg_active" value="@WidgetBackgroundActive" />
+<constant name="C_button_max_bg_unfocused" value="@WidgetBackgroundHover" />
 
 <!--minimize-->
-<constant name="C_button_min_bg_focused" value="@C_button_min_bg_focused_value" />
-<constant name="C_button_min_bg_hover" value="@C_button_min_bg_hover_value" />
-<constant name="C_button_min_bg_active" value="@C_button_min_bg_active_value" />
-<constant name="C_button_min_bg_unfocused" value="@C_button_min_bg_unfocused_value" />
+<constant name="C_button_min_bg_focused" value="@WidgetBackgroundHover" />
+<constant name="C_button_min_bg_hover" value="@WidgetBackgroundHover" />
+<constant name="C_button_min_bg_active" value="@WidgetBackgroundActive" />
+<constant name="C_button_min_bg_unfocused" value="@WidgetBackgroundHover" />
 
 <!-- minimize maximize -->
-<constant name="C_icon_minmax_bg_hover" value="@C_icon_minmax_bg_hover_value" />
-<constant name="C_icon_minmax_bg_active" value="@C_icon_minmax_bg_active_value" />
+<constant name="C_icon_minmax_bg_hover" value="@WidgetBackgroundHover" />
+<constant name="C_icon_minmax_bg_active" value="@WidgetBackgroundActive" />
 
-<constant name="C_icon_color" value="@C_icon_color_value" />
-<constant name="C_icon_close_color_hover" value="@C_icon_close_color_hover_value" />
+<constant name="C_icon_color" value="@WidgetForegroundNormal" />
+<constant name="C_icon_close_color_hover" value="#ffffff" />
 
 <!-- geometries -->
 

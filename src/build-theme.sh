@@ -11,19 +11,14 @@ create_folders () {
 }
 
 render_metacity() {
-    cp  -r metacity-1/ "$1"
-    cp assets/window-close-symbolic.svg "$1/metacity-1/"
-    cp assets/window-maximum-symbolic.svg "$1/metacity-1/"
-    cp assets/window-minimum-symbolic.svg "$1/metacity-1/"
-    cp assets/window-unmaximum-symbolic.svg "$1/metacity-1/"
-    cp assets/thumbnail.png "$1/metacity-1/"
-    cat "$2" | while read line; do
-        key=`echo $line | sed -n 's/^\([^=]\+\)=\(.*\)$/\1/p'`
-        value=`echo $line | sed -n 's/^\([^=]\+\)=\(.*\)$/\2/p'`
-        sed -i "s/@$key/$value/g" "$1/metacity-1/metacity-theme-3.xml"
-        sed -i "s/@$key/$value/g" "$1/metacity-1/metacity-theme-2.xml"
-        sed -i "s/@$key/$value/g" "$1/metacity-1/metacity-theme-1.xml"
-    done
+    cp  -r metacity-1/ "$3"
+    cp assets/window-close-symbolic.svg "$3/metacity-1/"
+    cp assets/window-maximum-symbolic.svg "$3/metacity-1/"
+    cp assets/window-minimum-symbolic.svg "$3/metacity-1/"
+    cp assets/window-unmaximum-symbolic.svg "$3/metacity-1/"
+    cp assets/thumbnail.png "$3/metacity-1/"
+
+    python3 render_metacity.py -c "$1" -b "$2" -t "$3"
 }
 
 # Usage render_theme <colorscheme> <theme-name> <theme-dir> <colorschemebase>
@@ -47,7 +42,7 @@ render_theme () {
     cp -r assets/ "$3"
 
     # window manager
-    render_metacity "$3" "$5"
+    render_metacity "$1" "$4" "$3"
 }
 
 COLOR_SCHEME=""
