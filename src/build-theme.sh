@@ -12,11 +12,6 @@ create_folders () {
 
 render_metacity() {
     cp  -r metacity-1/ "$3"
-    cp assets/window-close-symbolic.svg "$3/metacity-1/"
-    cp assets/window-maximum-symbolic.svg "$3/metacity-1/"
-    cp assets/window-minimum-symbolic.svg "$3/metacity-1/"
-    cp assets/window-unmaximum-symbolic.svg "$3/metacity-1/"
-    cp assets/thumbnail.png "$3/metacity-1/"
 
     python3 render_metacity.py -c "$1" -b "$2" -t "$3"
 }
