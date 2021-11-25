@@ -197,118 +197,118 @@
 
 <!--close-->
 <draw_ops name="close_focused">
-	<image filename="window-close-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
+	<image filename="../assets/window-close-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
 </draw_ops>
 
 <draw_ops name="close_focused_pressed">
 	<rectangle color="C_button_close_bg_active" filled="true" x="0" y="0" width="width" height="height"/>
-	<image filename="window-close-symbolic.svg" colorize="C_icon_close_color_hover" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
+	<image filename="../assets/window-close-symbolic.svg" colorize="C_icon_close_color_hover" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
 </draw_ops>
 
 <draw_ops name="close_focused_prelight">
 	<rectangle color="C_button_close_bg_hover" filled="true" x="0" y="0" width="width" height="height"/>
-	<image filename="window-close-symbolic.svg" colorize="C_icon_close_color_hover" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
+	<image filename="../assets/window-close-symbolic.svg" colorize="C_icon_close_color_hover" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
 </draw_ops>
 
 <draw_ops name="close_unfocused">
-	<image filename="window-close-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
+	<image filename="../assets/window-close-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
 </draw_ops>
 
 <draw_ops name="close_unfocused_prelight">
 	<rectangle color="C_button_close_bg_hover" filled="true" x="0" y="0" width="width" height="height"/>
-	<image filename="window-close-symbolic.svg" colorize="C_icon_close_color_hover" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
+	<image filename="../assets/window-close-symbolic.svg" colorize="C_icon_close_color_hover" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
 </draw_ops>
 
 <draw_ops name="close_unfocused_pressed">
 	<rectangle color="C_button_close_bg_active" filled="true" x="0" y="0" width="width" height="height"/>
-	<image filename="window-close-symbolic.svg" colorize="C_icon_close_color_hover" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
+	<image filename="../assets/window-close-symbolic.svg" colorize="C_icon_close_color_hover" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
 </draw_ops>
 
 <!--maximize-->
 <draw_ops name="maximize_focused">
-	<image filename="window-maximum-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
+	<image filename="../assets/window-maximum-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
 </draw_ops>
 
 <draw_ops name="maximize_focused_pressed">
 	<rectangle color="C_button_max_bg_active" filled="true" x="0" y="0" width="width" height="height"/>
-	<image filename="window-maximum-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
+	<image filename="../assets/window-maximum-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
 </draw_ops>
 
 <draw_ops name="maximize_focused_prelight">
 	<rectangle color="C_button_max_bg_hover" filled="true" x="0" y="0" width="width" height="height"/>
-	<image filename="window-maximum-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
+	<image filename="../assets/window-maximum-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
 </draw_ops>
 
 <draw_ops name="maximize_unfocused">
-	<image filename="window-maximum-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
+	<image filename="../assets/window-maximum-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
 </draw_ops>
 
 <draw_ops name="maximize_unfocused_prelight">
 	<rectangle color="C_button_max_bg_hover" filled="true" x="0" y="0" width="width" height="height"/>
-	<image filename="window-maximum-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
+	<image filename="../assets/window-maximum-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
 </draw_ops>
 
 <draw_ops name="maximize_unfocused_pressed">
 	<rectangle color="C_button_max_bg_active" filled="true" x="0" y="0" width="width" height="height"/>
-	<image filename="window-maximum-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
+	<image filename="../assets/window-maximum-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
 </draw_ops>
 
 <!--maximize-->
 <draw_ops name="unmaximize_focused">
-	<image filename="window-unmaximum-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
+	<image filename="../assets/window-unmaximum-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
 </draw_ops>
 
 <draw_ops name="unmaximize_focused_pressed">
 	<rectangle color="C_button_max_bg_active" filled="true" x="0" y="0" width="width" height="height"/>
-	<image filename="window-unmaximum-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
+	<image filename="../assets/window-unmaximum-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
 </draw_ops>
 
 <draw_ops name="unmaximize_focused_prelight">
 	<rectangle color="C_button_max_bg_hover" filled="true" x="0" y="0" width="width" height="height"/>
-	<image filename="window-unmaximum-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
+	<image filename="../assets/window-unmaximum-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
 </draw_ops>
 
 <draw_ops name="unmaximize_unfocused">
-	<image filename="window-unmaximum-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
+	<image filename="../assets/window-unmaximum-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
 </draw_ops>
 
 <draw_ops name="unmaximize_unfocused_prelight">
 	<rectangle color="C_button_max_bg_hover" filled="true" x="0" y="0" width="width" height="height"/>
-	<image filename="window-unmaximum-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
+	<image filename="../assets/window-unmaximum-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
 </draw_ops>
 
 <draw_ops name="unmaximize_unfocused_pressed">
 	<rectangle color="C_button_max_bg_active" filled="true" x="0" y="0" width="width" height="height"/>
-	<image filename="window-unmaximum-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
+	<image filename="../assets/window-unmaximum-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
 </draw_ops>
 
 <!--minimize-->
 <draw_ops name="minimize_focused">
-	<image filename="window-minimum-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
+	<image filename="../assets/window-minimum-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
 </draw_ops>
 
 <draw_ops name="minimize_focused_pressed">
 	<rectangle color="C_button_min_bg_active" filled="true" x="0" y="0" width="width" height="height"/>
-	<image filename="window-minimum-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
+	<image filename="../assets/window-minimum-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
 </draw_ops>
 
 <draw_ops name="minimize_focused_prelight">
 	<rectangle color="C_button_min_bg_hover" filled="true" x="0" y="0" width="width" height="height"/>
-	<image filename="window-minimum-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
+	<image filename="../assets/window-minimum-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
 </draw_ops>
 
 <draw_ops name="minimize_unfocused">
-	<image filename="window-minimum-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
+	<image filename="../assets/window-minimum-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
 </draw_ops>
 
 <draw_ops name="minimize_unfocused_prelight">
 	<rectangle color="C_button_min_bg_hover" filled="true" x="0" y="0" width="width" height="height"/>
-	<image filename="window-minimum-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
+	<image filename="../assets/window-minimum-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
 </draw_ops>
 
 <draw_ops name="minimize_unfocused_pressed">
 	<rectangle color="C_button_min_bg_active" filled="true" x="0" y="0" width="width" height="height"/>
-	<image filename="window-minimum-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
+	<image filename="../assets/window-minimum-symbolic.svg" colorize="C_icon_color" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height"/>
 </draw_ops>
 
 <!--Todo-->
