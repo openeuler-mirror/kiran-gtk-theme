@@ -34,7 +34,8 @@ frame > border,
     box-shadow: none;
     margin: 0;
     padding: 0;
-    border-radius: $RadiusMiddle;
+    // 添加圆角会导致滚动窗口(ScrolledWindow)的圆角显示存在问题
+    border-radius: 0px;
     border: 1px solid gtk("@theme_window_border_normal");
 
     &.flat {
