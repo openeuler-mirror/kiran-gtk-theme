@@ -61,6 +61,10 @@ PanelToplevel {
 window#menu-applet-window {
     .block-section {
         background-color: gtk("@theme_widget_background_normal");
+
+        &:backdrop {
+            background-color: gtk("@theme_widget_background_backdrop");
+        }
     }
 }
 
