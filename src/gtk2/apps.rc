@@ -1,0 +1,337 @@
+#
+# Thunar
+#
+style "thunar-handle" { GtkPaned::handle-size = 2 }
+
+style "dark-sidebar" {
+  GtkTreeView::odd_row_color = @dark_sidebar_bg
+  GtkTreeView::even_row_color = @dark_sidebar_bg
+
+
+  base[NORMAL] = @dark_sidebar_bg
+  base[INSENSITIVE] = @dark_sidebar_bg
+
+  text[NORMAL] = "#BAC3CF"
+  text[ACTIVE] = @selected_fg_color
+  text[SELECTED] = @selected_fg_color
+}
+
+style "thunar-frame" {
+  xthickness = 0
+  ythickness = 0
+}
+
+widget_class "*ThunarWindow*.<GtkScrolledWindow>"       style "thunar-frame"
+widget_class "*ThunarShortcutsView*"                    style "dark-sidebar"
+widget_class "*ThunarTreeView*"                         style "dark-sidebar"
+widget_class "*ThunarWindow*.<GtkHPaned>"               style "thunar-handle"
+
+#
+# Workaround for colored entries
+#
+style "entry_border" {
+
+  xthickness = 7
+  ythickness = 5
+
+  engine "pixmap" {
+
+    image {
+      function = SHADOW
+      state = NORMAL
+      detail = "entry"
+      file = "assets/entry-border-bg.png"
+      border = {6, 6, 6, 6}
+      stretch = TRUE
+    }
+
+    image {
+      function = SHADOW
+      state = ACTIVE
+      detail = "entry"
+      file = "assets/entry-border-active-bg.png"
+      border = {6, 6, 6, 6}
+      stretch = TRUE
+    }
+
+    image {
+      function = FLAT_BOX
+      state    = ACTIVE
+      detail   = "entry_bg"
+      file     = "assets/null.png"
+    }
+
+    image {
+      function = FLAT_BOX
+      state    = INSENSITIVE
+      detail   = "entry_bg"
+      file     = "assets/null.png"
+    }
+
+    image {
+      function = FLAT_BOX
+      detail   = "entry_bg"
+      file     = "assets/null.png"
+    }
+  }
+}
+
+style "combobox_entry_border" = "combobox_entry" {
+
+  engine "pixmap" {
+
+    image {
+      function = SHADOW
+      detail = "entry"
+      state = NORMAL
+      shadow = IN
+      file = "assets/combo-entry-border.png"
+      border = { 4, 4, 12, 12 }
+      stretch = TRUE
+      direction = LTR
+    }
+
+    image {
+      function = SHADOW
+      detail = "entry"
+      state = ACTIVE
+      file = "assets/combo-entry-border-focus.png"
+      border = { 4, 4, 12, 12 }
+      stretch = TRUE
+      direction = LTR
+    }
+
+    image {
+      function = SHADOW
+      detail = "entry"
+      state = NORMAL
+      shadow = IN
+      file = "assets/combo-entry-border-rtl.png"
+      border = { 4, 4, 12, 12 }
+      stretch = TRUE
+      direction = RTL
+    }
+
+    image {
+      function = SHADOW
+      detail = "entry"
+      state = ACTIVE
+      file = "assets/combo-entry-border-focus-rtl.png"
+      border = { 4, 4, 12, 12 }
+      stretch = TRUE
+      direction = RTL
+    }
+
+    image {
+      function = FLAT_BOX
+      state    = INSENSITIVE
+      detail   = "entry_bg"
+      file     = "assets/null.png"
+    }
+
+    image {
+      function = FLAT_BOX
+      detail   = "entry_bg"
+      file     = "assets/null.png"
+    }
+  }
+}
+
+
+# Mousepad search entry
+widget_class "*MousepadSearchBar*.<GtkEntry>"         style "entry_border"
+
+# Mousepad find and replace
+widget_class "*MousepadReplaceDialog*.<GtkEntry>"     style "entry_border"
+
+# Thunar bulk rename
+widget_class "*ThunarRenamerDialog*.<GtkEntry>"         style "entry_border"
+
+# Hexchat input box
+class "SexySpellEntry"                                style:highest "entry_border"
+
+# Geany search entries
+widget "*GeanyToolbar.*geany-search-entry-no-match*"  style "entry_border"
+widget "*GeanyToolbar.*GtkEntry*"                     style "entry_border"
+
+widget "GeanyDialogSearch.*GtkComboBoxEntry*.*geany-search-entry-no-match*"  style "combobox_entry_border"
+
+style "panelbg"
+{
+  xthickness            			= 2
+  ythickness            			= 0
+
+  fg[NORMAL]		= "#FFFFFF"
+  fg[PRELIGHT]		= "#FFFFFF"
+  fg[ACTIVE]		= "#FFFFFF"
+  fg[SELECTED]		= "#000000"
+  fg[INSENSITIVE]	= "#8A857C"
+
+  text[NORMAL]		= "#000000"
+  text[PRELIGHT]	= "#000000"
+  text[ACTIVE]		= "#000000"
+  text[SELECTED]	= "#000000"
+  text[INSENSITIVE]	= "#8A857C"
+
+  bg[NORMAL]		= "#141414"
+  bg_pixmap[INSENSITIVE]	= "<parent>"
+  bg_pixmap[PRELIGHT]		= "<parent>"
+  bg_pixmap[SELECTED]		= "<parent>"
+  bg_pixmap[ACTIVE]		= "<parent>"
+}
+
+##################### PANEL BUTTONS ###############################
+
+style "panelbuttons"
+{
+
+	fg[NORMAL]		= "#ffffff"
+	fg[PRELIGHT]		= "#ffffff" # text on buttons (hover)
+	fg[ACTIVE]		= "#ffffff" # text on unfocused tabs
+	fg[SELECTED]		= "#ffffff" # selected text on lists
+	fg[INSENSITIVE]	= "#ffffff" # greyed "unused" text
+
+
+	xthickness            			= 2
+	ythickness            			= 1
+
+	GtkWidget::focus_padding = 2
+
+	engine "pixmap" {
+			image
+			{
+				function		= FOCUS
+				recolorable		= TRUE
+			}
+
+			image
+			{
+				function        	= BOX
+				recolorable     	= TRUE
+				state			= NORMAL
+				file            	= "assets/panel-button-inactive.png"
+				border          	= { 1, 1, 1, 1 }
+				stretch         	= TRUE
+			}
+
+			image
+			{
+				function        	= BOX
+				recolorable     	= TRUE
+				state			= PRELIGHT
+				file            	= "assets/panel-button-prelight.png"
+				border          	= { 1, 1, 1, 1 }
+				stretch         	= TRUE
+			}
+
+			image
+			{
+				function        	= BOX
+				recolorable     	= TRUE
+				shadow			= OUT
+				state			= PRELIGHT
+				file            	= "assets/panel-button-prelight.png"
+				border          	= { 1, 1, 1, 1 }
+				stretch         	= TRUE
+
+			}
+
+			image
+			{
+				function        	= BOX
+				recolorable     	= TRUE
+				shadow			= IN
+				state			= PRELIGHT
+				file            	= "assets/panel-button-prelight.png"
+				border          	= { 1, 1, 1, 1 }
+				stretch         	= TRUE
+
+			}
+
+			image
+			{
+				function        	= BOX
+				recolorable     	= TRUE
+				state			= ACTIVE
+				file            	= "assets/panel-button-active.png"
+				border          	= { 1, 1, 1, 1 }
+				stretch         	= TRUE
+			}
+			image
+			{
+				function        	= BOX
+				recolorable     	= TRUE
+				state			= INSENSITIVE
+				file            	= "assets/panel-button-active.png"
+				border          	= { 1, 1, 1, 1 }
+				stretch         	 = TRUE
+			}
+		}
+
+}
+
+
+style "panel-showdesktop"
+{
+	engine "pixmap" {
+		image {
+				function        	= BOX
+				recolorable     	= TRUE
+				state			= NORMAL
+				file            	= "assets/panel-showdesktop.png"
+				border          	= { 0, 0, 0, 0 }
+				stretch         	= FALSE
+		}
+	}
+}
+
+style "panel-context-menu"
+{
+	bg[NORMAL]="#ff0000"
+	fg[NORMAL]="#00ff00"
+	text[NORMAL]="#00ff00"
+}
+
+style "clock-style"
+{
+	font_name="Noto Sans CJK SC 9.0"
+}
+style "panel-separator-style"
+{
+	engine "pixmap"
+	{
+		image {
+			function= VLINE
+			file = "assets/handle-v.png"
+			stretch = TRUE
+		}
+
+		image {
+			function= HLINE
+			file = "assets/handle-h.png"
+			stretch = TRUE
+		}
+	}
+}
+
+style "panel-style"
+{
+	ythickness=1
+	bg[NORMAL]=mix(0.2, "#ffffff", "#000000")
+}
+
+class "*PanelWidget*" 			style "panelbg"
+class "*PanelApplet*" 			style "panelbg"
+widget_class "*notif*" 			style "panelbg"
+widget_class "*Notif*" 			style "panelbg"
+widget_class "*Tray*" 			style "panelbg"
+widget_class "*tray*" 			style "panelbg"
+widget "*PanelWidget*" 			style "panelbuttons"
+widget "*WnckTasklist*" 		style "panelbuttons"
+widget_class "*PanelApplet.*" 		style "panelbuttons"
+widget "*.showdesktop-button"		style "panel-showdesktop"
+widget "*clock-applet-button*"		style "clock-style"
+
+widget "*PanelSeparator*" style "panelbg"
+widget "*PanelSeparator*" style "panel-separator-style"
+class "PanelToplevel" style "panel-style"
