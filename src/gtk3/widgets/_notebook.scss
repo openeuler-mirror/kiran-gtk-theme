@@ -148,7 +148,8 @@ notebook {
     }
 
     stack {
-        border: 1px solid gtk("@theme_window_border_normal");
+        /* 这里取消边框设置，特别是border-width，如果设置了1px会导致virt-manager出现花屏问题 #bug 49421*/
+        /* border: 1px solid gtk("@theme_window_border_normal"); */
         background: gtk("@theme_window_background_normal");
 
         &:backdrop {
