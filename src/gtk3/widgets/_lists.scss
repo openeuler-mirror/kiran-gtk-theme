@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+/*********
+ * Lists *
+ *********/
+list {
+    background-color: gtk("@theme_widget_background_normal");
+    color: gtk("@theme_widget_foreground_normal");
+    border-width: 0px;
+
+    &:backdrop {
+        background-color: gtk("@theme_widget_background_backdrop");
+        color: gtk("@theme_widget_foreground_backdrop");
+    }
+    row {
+        padding: 2px;
+    }
+}
+
+%row,
+row {
+    &.activatable {
+        &.has-open-popup, // this is for indicathing which row generated a popover see https://bugzilla.gnome.org/show_bug.cgi?id=754411
+
+        &:hover {
+            background-color: gtk("@theme_widget_background_hover");
+        }
+
+        &:active {
+            box-shadow: none;
+            background-color: gtk("@theme_widget_background_active");
+        }
+
+        &:selected {
+            box-shadow: none;
+            background-color: gtk("@theme_widget_background_checked");
+        }
+    }
+
+    &:selected {
+        @extend %selected_items;
+    }
+}
+

@@ -1,0 +1,199 @@
+@charset "UTF-8";
+
+/********
+ * Misc *
+ ********/
+
+/****************
+* Print dialog *
+*****************/
+printdialog {
+    paper {
+        color: gtk("@theme_window_foreground_normal");
+        border: 1px solid gtk("@theme_window_border_normal");
+        background: gtk("@theme_window_background_normal");
+        padding: 0;
+
+        &:backdrop {
+            color: gtk("@theme_window_foreground_backdrop");
+            border-color: gtk("@theme_window_border_backdrop");
+            background: gtk("@theme_window_background_backdrop");
+        }
+    }
+
+    .dialog-action-box {
+        margin: 12px;
+    }
+}
+
+/**********
+* Frames *
+**********/
+frame > border,
+.frame {
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
+    // 添加圆角会导致滚动窗口(ScrolledWindow)的圆角显示存在问题
+    border-radius: 0px;
+    border: 1px solid gtk("@theme_window_border_normal");
+
+    &.flat {
+        border-style: none;
+    }
+
+    &:backdrop {
+        border-color: gtk("@theme_window_border_backdrop");
+    }
+}
+
+actionbar > revealer > box {
+    padding: 6px;
+    border-top: 1px solid gtk("@theme_window_border_normal");
+
+    &:backdrop {
+        border-color: gtk("@theme_window_border_backdrop");
+    }
+}
+
+scrolledwindow {
+    viewport.frame {
+        // avoid double borders when viewport inside scrolled window
+        border-style: none;
+    }
+
+    junction {
+        // the small square between two scrollbars
+        border-color: transparent;
+        background-color: transparent;
+        background-image: none;
+    }
+}
+
+//vbox and hbox separators
+separator {
+    /* background-color: gtkalpha(gtk("@theme_window_foreground_normal"), 0.2); */
+    border-width: 1px 1px 0px 0px;
+    border-style: solid;
+    border-color: gtk("@theme_widget_border_normal");
+}
+
+/*************
+* Expanders *
+*************/
+
+expander {
+    arrow {
+        min-width: 16px;
+        min-height: 16px;
+        -gtk-icon-source: -gtk-icontheme('pan-end-symbolic');
+
+        &:dir(rtl) {
+            -gtk-icon-source: -gtk-icontheme('pan-end-symbolic-rtl');
+        }
+
+        &:hover {
+            color: gtk("@theme_widget_foreground_hover");
+        } //only lightens the arrow
+
+        &:checked {
+            -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
+        }
+    }
+}
+
+/*********
+* Paned *
+*********/
+
+paned {
+    > separator {
+        min-width: 1px;
+        min-height: 1px;
+        -gtk-icon-source: none; // defeats the ugly default handle decoration
+        border-style: none; // just to be sure
+        background-color: transparent;
+        // workaround, using background istead of a border since the border will get rendered twice (?)
+        background-image: image(gtk("@theme_window_background_normal"));
+        background-size: 1px 1px;
+
+        //&:selected { background-image: image($selected_bg_color); } // FIXME is this needed?
+
+        &:backdrop {
+            background-image: image(gtk("@theme_window_background_backdrop"));
+        }
+
+        &.wide {
+            min-width: 5px;
+            min-height: 5px;
+            background-color: gtk("@theme_window_background_normal");
+            background-image: image(gtk("@borders")), image(gtk("@borders"));
+            background-size: 1px 1px, 1px 1px;
+
+            &:backdrop {
+                background-color: gtk("@theme_window_background_backdrop");
+                background-image: image(gtk("@unfocused_borders")),
+                                  image(gtk("@unfocused_borders"));
+            }
+        }
+    }
+
+    &.horizontal > separator {
+        background-repeat: repeat-y;
+
+        &:dir(ltr) {
+            margin: 0 -8px 0 0;
+            padding: 0 8px 0 0;
+            background-position: left;
+        }
+        &:dir(rtl) {
+            margin: 0 0 0 -8px;
+            padding: 0 0 0 8px;
+            background-position: right;
+        }
+
+        &.wide {
+            margin: 0;
+            padding: 0;
+            background-repeat: repeat-y, repeat-y;
+            background-position: left, right;
+        }
+    }
+
+    &.vertical > separator {
+        margin: 0 0 -8px 0;
+        padding: 0 0 8px 0;
+        background-repeat: repeat-x;
+        background-position: top;
+
+        &.wide {
+            margin: 0;
+            padding: 0;
+            background-repeat: repeat-x, repeat-x;
+            background-position: bottom, top;
+        }
+    }
+}
+
+/*********************
+* Spinner Animation *
+*********************/
+
+@keyframes spin {
+    to {
+        -gtk-icon-transform: rotate(1turn);
+    }
+}
+
+spinner {
+    background-image: none;
+    opacity: 0; // non spinning spinner makes no sense
+    -gtk-icon-source: -gtk-icontheme("process-working-symbolic");
+    &:checked {
+        opacity: 1;
+        animation: spin 1s linear infinite;
+        &:disabled {
+            opacity: 0.5;
+        }
+    }
+}

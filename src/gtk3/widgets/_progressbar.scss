@@ -1,0 +1,122 @@
+@charset "UTF-8";
+
+
+/*****************
+ * Progress bars *
+ *****************/
+progressbar {
+    // sizing
+    &.horizontal {
+        trough,
+        progress {
+            min-height: 6px;
+        }
+    }
+
+    &.vertical {
+        trough,
+        progress {
+            min-width: 6px;
+        }
+    }
+
+    font-size: smaller;
+    background: transparent;
+
+    trough {
+        border: 0px solid transparent;
+        border-radius: $RadiusLittle;
+        background-color: gtk("@theme_bare_background_normal");
+
+        &:backdrop {
+            background-color: gtk("@theme_bare_background_backdrop");
+        }
+    }
+
+
+    progress {
+        background-color: gtk("@theme_bare_background_checked");
+        border: 0px solid transparent;
+        border-radius: $RadiusLittle;
+        box-shadow: none; //needed for clipping
+
+        &:backdrop {
+            background-color: gtk("@theme_bare_background_backdrop_checked");    
+        }
+    }
+
+    &.osd {
+        // progressbar.osd used for epiphany page loading progress
+        background-color: transparent;
+    }
+}
+
+/*************
+ * Level Bar *
+ *************/
+levelbar {
+    block {
+        min-width: 32px;
+        min-height: 6px;
+    }
+
+    &.vertical block {
+        min-width: 6px;
+        min-height: 32px;
+    }
+
+    trough {
+        border: none;
+        padding: 2px;
+        border-radius: $RadiusLittle;
+        @include entry(normal);
+
+        &:backdrop {
+            @include entry(backdrop);
+        }
+    }
+
+    &.horizontal.discrete block {
+        margin: 0 1px;
+    }
+
+    &.vertical.discrete block {
+        margin: 1px 0;
+    }
+
+    block:not(.empty) {
+        background-color: gtk("@theme_widget_background_checked");
+        box-shadow: none;
+        border-radius: 1px;
+
+        &:backdrop {
+            background-color: gtk("@theme_widget_background_backdrop_checked");
+        }
+    }
+
+    block {
+        &.low {
+            background-color: gtk("@theme_default_warning");
+            &:backdrop {
+                background-color: gtk("@theme_default_warning_backdrop");
+            }
+        }
+
+        &.high,
+        &.full {
+            background-color: gtk("@theme_default_success");
+            &:backdrop {
+                background-color: gtk("@theme_default_success_backdrop");
+            }
+        }
+
+        &.empty {
+            background-color: gtk("@theme_bare_background_normal");
+            border-color: transparent;
+            box-shadow: none;
+            &:backdrop {
+                background-color: gtk("@theme_bare_background_backdrop");
+            }
+        }
+    }
+}

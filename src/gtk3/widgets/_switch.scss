@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+/**********
+ * Switch *
+ **********/
+
+switch {
+    min-width: 54px;
+    min-height: 24px;
+    border: none;
+    border-radius: $RadiusSSBig;
+    color: transparent;
+    background-color: gtk("@theme_bare_background_normal");
+    text-shadow: none;
+
+    slider {
+        min-width: 16px;
+        min-height: 16px;
+        border-width: 0px;
+        border-radius: $RadiusBig;
+        background-color: white;
+        margin: 4px;
+    }
+
+    &:disabled {
+        background-color: gtk("@theme_bare_background_insensitive");
+    }
+
+    &:hover {
+        background-color: gtk("@theme_bare_background_hover");
+    }
+
+    &:checked {
+        background-color: gtk("@theme_bare_background_checked");
+    }
+
+    &:backdrop {
+        background-color: gtk("@theme_bare_background_backdrop");
+        color: transparent;
+        text-shadow: none;
+
+        &:disabled {
+            background-color: gtk("@theme_bare_background_backdrop_insensitive");
+        }
+
+        &:checked {
+            background-color: gtk("@theme_bare_background_backdrop_checked");
+        }
+
+    }
+}

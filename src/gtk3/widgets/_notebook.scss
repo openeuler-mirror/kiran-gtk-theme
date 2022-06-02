@@ -1,0 +1,160 @@
+@charset "UTF-8";
+
+/*****************
+ * Notebooks and *
+ * Tabs          *
+ *****************/
+/*************
+  * Notebooks *
+  *************/
+
+notebook {
+    background: none;
+
+    > header {
+        color: gtk("@theme_widget_foreground_normal");
+        background: none;
+
+        tab {
+            min-height: 30px;
+            min-width: 30px;
+            padding: 3px 12px;
+            border: none;
+            background: gtk("@theme_widget_background_normal");
+
+            &:hover{
+                background: gtk("@theme_widget_background_hover");
+            }
+        
+            &:checked {
+                outline: none;
+                background: gtk("@theme_widget_background_checked");
+            }
+            
+        }
+
+        @at-root %notebook_vert_arrows {
+            margin-left: -5px;
+            margin-right: -5px;
+            padding-left: 4px;
+            padding-right: 4px;
+        
+            &.down {
+                -gtk-icon-source: -gtk-icontheme('pan-start-symbolic');
+            }
+        
+            &.up {
+                -gtk-icon-source: -gtk-icontheme('pan-end-symbolic');
+            }
+        }
+
+        @at-root %notebook_horz_arrows {
+            margin-top: -5px;
+            margin-bottom: -5px;
+            padding-top: 4px;
+            padding-bottom: 4px;
+
+            &.down {
+                -gtk-icon-source: -gtk-icontheme('pan-up-symbolic');
+            }
+
+            &.up {
+                -gtk-icon-source: -gtk-icontheme('pan-down-symbolic');
+            }
+        }
+
+        &.top {
+            > tabs {
+                > tab {
+                    margin: 0px;
+                    border-radius: $RadiusLittle $RadiusLittle 0px 0px;
+                }
+
+                > arrow {
+                    @extend %notebook_vert_arrows;
+                    border-top-style: none;
+                }
+            }
+        }
+
+        &.bottom {
+            > tabs {
+                > tab {
+                    margin: 0px;
+                    border-radius: 0px 0px $RadiusLittle $RadiusLittle;
+                }
+
+                > arrow {
+                    @extend %notebook_vert_arrows;
+                    border-bottom-style: none;
+                }
+            }
+        }
+
+        &.left {
+            > tabs {
+                > tab {
+                    margin: 0px;
+                    border-radius: $RadiusLittle 0px 0px $RadiusLittle;
+                }
+
+                > arrow {
+                    @extend %notebook_horz_arrows;
+                    border-left-style: none;
+                }
+            }
+        }
+
+        &.right {
+            > tabs {
+                > tab {
+                    margin: 0px;
+                    border-radius: 0px $RadiusLittle $RadiusLittle 0px;
+                }
+
+                > arrow {
+                    @extend %notebook_horz_arrows;
+                    border-right-style: none;
+                }
+            }
+        }
+
+        &.top,
+        &.bottom {
+            > tabs {
+                > tab:not(:last-child) {
+                    margin-right: 2px;
+                }
+            }
+        }
+
+        &.left,
+        &.right {
+            > tabs {
+                > tab:not(:last-child) {
+                    margin-bottom: 2px;
+                }
+            }
+        }
+
+        > tabs > arrow {
+        
+            &:hover {
+                color: gtk("@theme_widget_foreground_hover");
+            }
+
+            &:disabled { @include button(undecorated); }
+        }
+    }
+
+    stack {
+        /* 这里取消边框设置，特别是border-width，如果设置了1px会导致virt-manager出现花屏问题 #bug 49421*/
+        /* border: 1px solid gtk("@theme_window_border_normal"); */
+        background: gtk("@theme_window_background_normal");
+
+        &:backdrop {
+            background-color: gtk("@theme_window_background_backdrop");
+        }
+    }
+    
+}

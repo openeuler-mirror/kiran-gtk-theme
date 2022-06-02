@@ -1,0 +1,190 @@
+@charset "UTF-8";
+
+/**********************
+ * Window Decorations *
+ *********************/
+
+decoration {
+    $shadow: rgba(0, 0, 0, 0.5);
+
+    //border: 1px solid transparent;
+    border-radius: $RadiusLittle $RadiusLittle 0 0;
+    border-width: 0px;
+    /* box-shadow: 0px 0px 16px $shadow,
+        0px 2px 8px scale-color($shadow, $alpha: -40%); */
+
+    /* this is used for the resize cursor area */
+    margin: 10px;
+
+    .maximized &,
+    .fullscreen &,
+    .tiled & {
+        border-radius: 0;
+    }
+    .popup & {
+        border-radius: $RadiusLittle;
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
+    }
+    // server-side decorations as used by mutter
+    .ssd & {
+        box-shadow: 0 2px 6px 1px rgba(0, 0, 0, 0.1);
+    }
+    .csd & {
+        border-radius: $RadiusLittle;
+        &.popup {
+            box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
+        }
+        &.tooltip {
+            box-shadow: none;
+        }
+        &.message-dialog {
+            box-shadow: 0 2px 6px 1px rgba(0, 0, 0, 0.5);
+        }
+    }
+    .solid-csd & {
+        border-radius: 0;
+        margin: 0;
+        padding: 0px;
+        border: 5px solid gtk("@theme_window_border_normal");
+        background-color: gtk("@theme_window_background_normal");
+        box-shadow: none;
+    }
+}
+
+window.solid-csd {
+    headerbar.titlebar,
+    paned.titlebar,
+    .titlebar,
+    paned.titlebar headerbar {
+        border-radius: 0;
+    }
+}
+
+
+window {
+    headerbar.titlebar {
+        min-height: 46px;
+    }
+    headerbar,
+    .titlebar {
+        &.default-decoration button.titlebutton {
+            padding: 6px;
+            min-height: 18px;
+            min-width: 18px;
+            margin: 0;
+        }
+        $titlebutton-size: 18px 18px;
+        button.titlebutton {
+            padding: 6px;
+
+            image {
+                color: transparent;
+            }
+
+            &.close {
+                border-image: none;
+                box-shadow: none;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-image: -gtk-recolor(
+                    url("../assets/window-close-symbolic.svg"),
+                );
+                -gtk-icon-source: none;
+            }
+            &.close:hover {
+                border-color: transparent;
+                background-color: gtk("@theme_widget_background_hover");
+            }
+
+            &.close:active {
+                border-color: transparent;
+                background-color: gtk("@theme_widget_background_active");
+            }
+
+            &.close:backdrop {
+                border-color: transparent;
+                background-color: transparent;
+            }
+
+            &.maximize {
+                border-image: none;
+                box-shadow: none;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-image: -gtk-recolor(
+                    url("../assets/window-maximum-symbolic.svg"),
+                );
+            }
+
+            &.maximize:hover {
+                border-color: transparent;
+                background-color: gtk("@theme_widget_background_hover");
+            }
+            &.maximize:active {
+                border-color: transparent;
+                background-color: gtk("@theme_widget_background_active");
+            }
+            &.maximize:backdrop {
+                border-color: transparent;
+                background-color: transparent;
+            }
+
+            &.minimize {
+                border-image: none;
+                box-shadow: none;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-image: -gtk-recolor(
+                    url("../assets/window-minimum-symbolic.svg"),
+                );
+            }
+
+            &.minimize:hover {
+                border-color: transparent;
+                background-color: gtk("@theme_widget_background_hover");
+            }
+            &.minimize:active {
+                border-color: transparent;
+                background-color: gtk("@theme_widget_background_active");
+            }
+            &.minimize:backdrop {
+                border-color: transparent;
+                background-color: transparent;
+            }
+        }
+    }
+
+    &.maximized {
+        button.titlebutton {
+            &.maximize {
+                border-image: none;
+                box-shadow: none;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-image: -gtk-recolor(
+                    url("../assets/window-unmaximum-symbolic.svg"),
+                );
+            }
+            &.maximize:hover {
+                border-color: transparent;
+                background-color: gtk("@theme_widget_background_hover");
+            }
+            &.maximize:active {
+                border-color: transparent;
+                background-color: gtk("@theme_widget_background_active");
+            }
+            &.maximize:backdrop {
+                border-color: transparent;
+                background-color: transparent;
+            }
+        }
+    }
+
+    headerbar.selection-mode button.titlebutton,
+    .titlebar.selection-mode button.titlebutton {
+        text-shadow: none;
+        &:backdrop {
+            -gtk-icon-shadow: none;
+        }
+    }
+}

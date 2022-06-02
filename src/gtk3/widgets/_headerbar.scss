@@ -1,0 +1,197 @@
+@charset "UTF-8";
+
+/***************
+ * Header bars *
+ ***************/
+
+%titlebar,
+headerbar {
+
+    padding: 0px 6px;
+    border: 1px solid gtk("@theme_titlebar_border_normal");
+    border-radius: $RadiusLittle $RadiusLittle 0px 0px;
+    border-bottom-width: 2px;
+    color: gtk("@theme_titlebar_foreground_normal");
+    background-image: none;
+    background-color: gtk("@theme_titlebar_background_normal");
+
+    &:backdrop {
+        border-color: gtk("@theme_titlebar_border_backdrop");
+        background-color: gtk("@theme_titlebar_background_backdrop");
+        color: gtk("@theme_titlebar_foreground_backdrop");
+        background-image: none;
+        box-shadow: none;
+    }
+
+    label {
+        font-weight: normal;
+        &:backdrop {
+            color: gtk("@theme_titlebar_foreground_backdrop");
+        }
+    }
+
+    .path-bar button {
+        color: gtk("@theme_titlebar_foreground_normal");
+        font-weight: normal;
+        &:backdrop {
+            color: gtk("@theme_titlebar_foreground_backdrop");
+        }
+    }
+
+    button {
+
+        @include button(undecorated);
+        color: gtk("@theme_titlebar_foreground_normal");
+
+        &.flat {
+            @include button(undecorated);
+            color: gtk("@theme_titlebar_foreground_normal");
+        }
+
+        &:hover {
+            @include button(hover);
+            color: gtk("@theme_titlebar_foreground_normal");
+        }
+        
+        &:active,
+        &:checked {
+            @include button(active);
+            &:hover {
+                @include button(active-hover);
+            }
+            &:backdrop {
+                background-image: none;
+                background-color: gtk("@theme_titlebar_background_backdrop");
+                border-color: gtk("@theme_titlebar_background_backdrop");
+                color: gtk("@theme_titlebar_foreground_backdrop");
+            }
+        }
+
+        &.suggested-action {
+            @extend %suggested-action;
+        }
+
+        &:backdrop {
+            border-color: transparent;
+            background-image: none;
+            background-color: gtk("@theme_titlebar_background_backdrop");
+            color: gtk("@theme_titlebar_foreground_backdrop");
+        }
+
+        &.flat:backdrop,
+        &.flat:backdrop:disabled,
+        &:disabled:backdrop {
+            background-image: none;
+            background-color: gtk("@theme_titlebar_background_backdrop");
+            color: gtk("@theme_titlebar_foreground_backdrop");
+            border-color: gtk("@unfocused_insensitive_borders");
+            
+        }
+        &.flat:disabled {
+            @extend %undecorated_button;
+            color: gtk("@theme_titlebar_foreground_insensitive");
+        }
+        &:disabled {
+            background-color: transparent;
+            background-image: none;
+            border-color: transparent;
+            color: gtk("@theme_titlebar_foreground_insensitive");
+        }
+    }
+
+    .title {
+        font-weight: normal;
+        padding: 0px 12px;
+        &:backdrop {
+            color: gtk("@theme_titlebar_foreground_backdrop");
+        }
+    }
+
+    .subtitle {
+        font-size: smaller;
+        padding: 0 12px;
+        @extend .dim-label;
+        &:backdrop {
+            color: gtk("@theme_titlebar_foreground_backdrop");
+        }
+    }
+
+    separator {
+        border-width: 0px;
+        background-color: transparent;
+        background-image: none;
+        border-color: transparent;
+    }
+
+    &.selection-mode,
+    &.selection-mode headerbar {
+        background-color: gtkmix(
+            "@theme_titlebar_background_normal",
+            "@theme_widget_background_checked",
+            0.5
+        );
+        separator {
+            background-color: gtk("@theme_widget_background_checked");
+        }
+        button:not(.titlebutton) {
+            background-color: gtkalpha(gtk("@theme_widget_background_checked"), 0.5);
+            &:active,
+            &:focus {
+                background-color: gtk("@theme_widget_background_checked");
+            }
+        }
+
+        &.suggested-action {
+            @extend %suggested-action;
+        }
+
+        .selection-menu {
+            padding: 4px 6px;
+
+            GtkArrow {
+                -GtkArrow-arrow-scaling: 1;
+            }
+
+            .arrow {
+                -gtk-icon-source: -gtk-icontheme($arrow_down);
+                -gtk-icon-shadow: none;
+            }
+        }
+    }
+
+    .tiled &,
+    .maximized & {
+        border-radius: 0; // squared corners when the window is max'd or tiled
+    }
+}
+
+headerbar {
+    // add vertical margins to headerbar entries, buttons and separators to avoid them spanning the whole height
+    entry,
+    spinbutton,
+    separator,
+    button {
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+}
+
+%suggested-action {
+    background-image: none;
+    background-color: gtk("@theme_titlebar_background_normal");
+
+    &:disabled {
+        background-color: transparent;
+        background-image: none;
+        color: gtk("@theme_titlebar_foreground_insensitive");
+    }
+
+    &:backdrop {
+        background-color: gtk("@theme_titlebar_background_backdrop");
+        border-color: gtk("@theme_titlebar_border_backdrop");
+        color: gtk("@theme_titlebar_foreground_backdrop");
+        &:disabled {
+            color: gtk("@theme_titlebar_foreground_backdrop_insensitive");
+        }
+    }
+}

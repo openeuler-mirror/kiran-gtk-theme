@@ -1,0 +1,130 @@
+// main panel
+
+PanelToplevel {
+
+    &.horizontal {
+        PanelSeparator {
+            background-color: transparent;
+            background-repeat: no-repeat;
+            background-position: left;
+            border: none;
+            padding: 9px 0px 9px 0px;
+        }
+
+        MatePanelAppletFrameDBus > MatePanelAppletFrameDBus {
+            background-image: -gtk-recolor(url("../assets/panel-grid-horizontal-symbolic.svg"));
+            background-color: transparent;
+            background-repeat: no-repeat;
+            background-position: left;
+        }
+
+        &.bottom > grid {
+            border-top-width: 1px;
+        }
+
+        &.top > grid {
+            border-bottom-width: 1px;
+        }
+
+    }
+
+    &.vertical {
+        PanelSeparator {
+            background-color: transparent;
+            background-repeat: no-repeat;
+            background-position: center;
+            padding: 0px 9px 0px 9px;
+        }
+
+        // FIXME: The allocated width of separator is too small
+       /*  MatePanelAppletFrameDBus > MatePanelAppletFrameDBus {
+            background-image: -gtk-recolor(url("../assets/panel-grid-vertical-symbolic.svg"));
+            background-color: transparent;
+            background-repeat: no-repeat;
+            background-position: top left;
+        } */
+
+        &.left > grid {
+            border-right-width: 1px;
+        }
+    
+        &.right > grid {
+            border-left-width: 1px;
+        }
+
+        
+    }
+}
+
+
+// start menu
+window#menu-applet-window {
+    .block-section {
+        background-color: gtk("@theme_widget_background_normal");
+
+        &:backdrop {
+            background-color: gtk("@theme_widget_background_backdrop");
+        }
+    }
+}
+
+
+// task list
+
+@define-color tasklist_app_active_color alpha(@theme_widget_foreground_normal, 0.3);
+
+window.app-previewer {
+    background-color: gtkalpha(gtk("@theme_window_background_normal"), 0.85);
+    border: 1px solid gtk("@theme_window_border_normal");
+}
+
+menu.opacity-menu {
+    background-color: gtkalpha(gtk("@theme_window_background_normal"), 0.85);
+
+    menuitem {
+        background-color: transparent;
+        &:hover {
+            background-color: gtkalpha(gtk("@theme_widget_foreground_normal"), 0.15);
+        }
+    }
+}
+
+
+// workspace
+
+window.workspace-previewer {
+    .workspace-list-box {
+        background-color: gtkalpha(gtk("@theme_window_background_normal"), 0.7);
+    }
+
+    button.workspace-thumbnail {
+        background-color: transparent;
+        border: none;
+        &:hover {
+            background-color: gtkalpha(gtk("@theme_window_foreground_normal"), 0.15);
+            border-color: transparent;
+        }
+    }
+
+    button#add-button {
+        background: transparent;
+        border: none;
+
+        &:hover {
+            background-color: gtkalpha(gtk("@theme_window_foreground_normal"), 0.15);
+        }
+    }
+}
+
+// tray
+
+#iconWinButton
+{
+    background-color: transparent;
+    &:hover {
+        background-color: gtk("@theme_widget_background_hover");
+    }
+    &:disabled {
+        background-color: gtk("@theme_widget_background_insensitive");
+    }
+}
