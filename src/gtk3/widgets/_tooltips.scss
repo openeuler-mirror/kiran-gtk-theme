@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+/************
+ * Tooltips *
+ ************/
+
+ tooltip {
+    
+    &.background {
+        background-color: gtk("@theme_window_background_normal");
+        background-clip: padding-box;
+        border: 1px solid gtk("@theme_window_border_normal");
+    }
+
+    color: gtk("@theme_window_foreground_normal");
+    padding: 2px; /* not working */
+    border-radius: $RadiusMiddle;
+    box-shadow: none; // otherwise it gets inherited by windowframe.csd
+    text-shadow: none;
+}

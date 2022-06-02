@@ -1,0 +1,73 @@
+@charset "UTF-8";
+
+/************
+ * Calendar *
+ ***********/
+ // FIXME: when the widget is in backdrop and disable states, it has some problems.
+ 
+calendar {
+    color: gtk("@theme_window_foreground_normal");
+    border: 1px solid gtk("@theme_window_border_normal");
+    background-color: gtk("@theme_window_background_normal");
+
+    &:selected {
+        @extend %selected_items;
+
+        border-radius: $RadiusLittle;
+    }
+
+    &:disabled {
+        background-color: gtk("@theme_window_background_insensitive");
+        color: gtk("@theme_widget_foreground_insensitive");
+    }
+
+    &.header {
+        border: 1px solid gtk("@theme_widget_border_normal");
+        color: gtk("@theme_widget_foreground_normal");
+
+        &:backdrop {
+            color: gtk("@theme_widget_foreground_backdrop");
+            border-color: gtk("@theme_widget_border_backdrop");
+        }
+
+        &:disabled {
+            color: gtk("@theme_widget_foreground_insensitive");
+        }
+    }
+
+    &.button {
+        @extend %undecorated_button;
+        color: gtk("@theme_widget_foreground_normal");
+
+        &:hover {
+            @extend %undecorated_button;
+            color: gtk("@theme_widget_foreground_hover");
+        }
+        
+        &:active {
+            @extend %undecorated_button;
+            color: gtk("@theme_widget_foreground_active");
+        }
+
+        &:backdrop {
+            @extend %undecorated_button;
+            color: gtk("@theme_widget_foreground_backdrop");
+        }
+    }
+
+    &:indeterminate,
+    &.highlight {
+        color: gtkalpha(gtk("@theme_widget_foreground_normal"), 0.5);
+    }
+
+    &:indeterminate:backdrop,
+    &.highlight:backdrop {
+        color: gtkalpha(gtk("@theme_widget_foreground_backdrop"), 0.5);
+    }
+
+    &:backdrop {
+        color: gtk("@theme_widget_foreground_backdrop");
+        border-color: gtk("@theme_widget_border_backdrop");
+        background-color: gtk("@theme_widget_background_backdrop");
+    }
+}

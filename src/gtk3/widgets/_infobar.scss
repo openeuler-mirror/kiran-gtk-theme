@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+/**************
+ * GtkInfoBar *
+ **************/
+infobar {
+    border-style: none;
+    border-bottom: 1px solid gtk("@theme_window_border_normal");
+    background-color: gtk("@theme_window_background_normal");
+    background-image: none;
+
+    &:backdrop {
+        background-color: gtk("@theme_window_background_backdrop");
+    }
+}
+
+.question,
+.warning {
+    background-color: gtk("@theme_window_background_normal");
+    background-image: none;
+    color: gtk("@theme_default_warning");
+    text-shadow: none;
+
+    &:backdrop {
+        background-color: gtk("@theme_window_background_backdrop");
+        color: gtk("@theme_default_warning_backdrop");
+
+        label {
+            color: gtk("@theme_default_warning_backdrop");
+        }
+    }
+}
+
+.error {
+    background-color: gtk("@theme_window_background_normal");
+    background-image: none;
+    color: gtk("@theme_default_error");
+    text-shadow: none;
+
+    &:backdrop {
+        background-color: gtk("@theme_window_background_backdrop");
+        color: gtk("@theme_default_error_backdrop");
+
+        label {
+            color: gtk("@theme_default_error_backdrop");
+        }
+    }
+}

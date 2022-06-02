@@ -1,0 +1,183 @@
+@charset "UTF-8";
+
+@mixin entry($t, $fc: gtk("@theme_view_border_focus")) {
+    //
+    // Entries drawing function
+    //
+    // $t: entry type
+    // $fc: focus color
+    // $edge: set to none to not draw the bottom edge or specify a color to not
+    //        use the default one
+    //
+    // possible $t values:
+    // normal, focus, insensitive, backdrop, backdrop-insensitive, osd, osd-focus, osd-backdrop;
+    //
+    @if $t==normal {
+        color: gtk("@theme_view_foreground_normal");
+        border-color: gtk("@theme_view_border_normal");
+        background-color: gtk("@theme_view_background_normal");
+        box-shadow: none;
+    }
+
+    @if $t==focus {
+        border-color: $fc;
+    }
+
+    @if $t==insensitive {
+        color: gtk("@theme_view_foreground_insensitive");
+        border-color: gtk("@theme_view_border_insensitive");
+        background-color: gtk("@theme_view_background_insensitive");
+    }
+
+    @if $t==backdrop {
+        color: gtk("@theme_view_foreground_backdrop");
+        border-color: gtk("@theme_view_border_backdrop");
+        background-color: gtk("@theme_view_background_backrop");
+    }
+
+    @if $t==backdrop-insensitive {
+        color: gtk("@theme_view_background_backdrop_insensitive");
+        border-color: gtk("@theme_view_border_backdrop_insensitive");
+        background-color: gtk("@theme_view_background_backrop_insensitive");
+    }
+}
+  
+/****************
+* Text Entries *
+****************/
+  
+%entry,
+entry {
+    %entry_basic,
+    & {
+        min-height: 30px;
+        padding-left: 8px;
+        padding-right: 8px;
+        border: 1px solid;
+        border-radius: $RadiusLittle;
+
+        @include entry(normal);
+
+        image {
+            // icons inside the entry
+            &.left {
+                padding-left: 0;
+                padding-right: 6px;
+            }
+            &.right {
+                padding-left: 6px;
+                padding-right: 0;
+            }
+        }
+        // FIXME
+        // undershoot {
+        // &.left { @include undershoot(left); }
+        // &.right { @include undershoot(right); }
+        // }
+
+        &.flat {
+            &:focus,
+            & {
+                min-height: 0;
+                padding: 2px;
+                @include entry(normal);
+            }
+        }
+        &:focus {
+            @include entry(focus);
+        }
+        &:disabled {
+            @include entry(insensitive);
+        }
+        &:backdrop {
+            @include entry(backdrop);
+        }
+        &:backdrop:disabled {
+            @include entry(backdrop-insensitive);
+        }
+
+        selection {
+            &:focus,
+            & {
+                @extend %selected_items;
+            }
+        }
+
+        @each $e_type, $e_color in (error, gtk("@theme_default_error")),
+                                   (warning, gtk("@theme_default_warning")) {
+            &.#{$e_type} {
+                color: $e_color;
+                border-color: $e_color;
+                &:focus {
+                    @include entry(focus, $e_color);
+                }
+
+                selection,
+                &:selected {
+                    background-color: $e_color;
+                }
+            }
+        }
+
+        image {
+            // entry icons colors
+            color: gtk("@theme_widget_foreground_normal");
+
+            &:hover {
+                color: gtk("@theme_widget_foreground_hover");
+            }
+            &:active {
+                color: gtk("@theme_widget_foreground_active");
+            }
+            &:backdrop {
+                color: gtk("@theme_widget_foreground_backdrop");
+            }
+        }
+    }
+
+    progress {
+        margin: 1px;
+        border-radius: 0;
+        border-width: 0 0 1px;
+        border-color: gtk("@theme_widget_border_normal");
+        border-style: solid;
+        background-image: none;
+        background-color: transparent;
+        box-shadow: none;
+
+        &:focus {
+            border-color: gtk("@theme_widget_border_focus");
+        }
+
+        &:backdrop {
+            border-color: gtk("@theme_widget_border_backdrop");
+        }
+    }
+
+    // linked entries
+    .linked:not(.vertical) > & { @extend %linked; }
+    .linked:not(.vertical) > &:focus + &,
+    .linked:not(.vertical) > &:focus + button,
+    .linked:not(.vertical) > &:focus + combobox > box > button.combo { border-left-color: gtk("@theme_widget_border_focus"); }
+
+    .linked:not(.vertical) > &:drop(active) + &,
+    .linked:not(.vertical) > &:drop(active) + button,
+    .linked:not(.vertical) > &:drop(active) + combobox > box > button.combo { border-left-color: gtk("@theme_widget_border_focus"); }
+}
+
+treeview acceleditor > label {
+    background-color: gtk("@theme_widget_background_checked");
+}
+
+treeview entry {
+    &.flat,
+    & {
+        border-radius: 0;
+        background-image: none;
+        background-color: gtk("@theme_base_color");
+
+        &:focus {
+            border-color: gtk("@theme_selected_bg_color");
+        }
+    }
+}

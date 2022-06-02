@@ -1,0 +1,82 @@
+@charset "UTF-8";
+
+/*****************
+ * Color Chooser *
+ *****************/
+// FIXME button.color in buttons section
+colorswatch {
+    border: 1px solid gtk("@theme_widget_border_normal");
+    border-radius: $RadiusLittle;
+    // take care of colorswatches on selected elements
+    :selected & {
+        box-shadow: none;
+        &.overlay,
+        &.overlay:hover {
+            border-color: gtk("@theme_selected_fg_color");
+        }
+    }
+
+    &:selected {
+        box-shadow: none;
+    }
+
+    &:backdrop,
+    &:backdrop:selected &.color-dark:backdrop,
+    &.color-dark:backdrop:selected {
+        background-image: none;
+        box-shadow: none;
+    }
+
+    // no hover effect for the colorswatch in the color editor
+    GtkColorEditor & {
+        border-radius: $RadiusLittle; // same radius as the entry
+        &:hover {
+            background-image: none;
+            box-shadow: none;
+        }
+        &:backdrop {
+            box-shadow: none;
+        }
+    }
+
+    // indicator and keynav outline colors
+    &.color-dark {
+        color: white;
+        outline-color: transparentize(black, 0.7);
+        &:backdrop {
+            color: transparentize(white, 0.7);
+        }
+    }
+    &.color-light {
+        color: black;
+        outline-color: transparentize(white, 0.5);
+        &:backdrop {
+            color: transparentize(black, 0.7);
+        }
+    }
+
+    // border color
+    overlay,
+    overlay:selected {
+        border: 1px solid gtk("@borders");
+        border-radius: $RadiusLittle;
+        &:hover {
+            border-color: gtk("@theme_widget_border_hover");
+        }
+    }
+
+    // make the add color button looks like, well, a button
+    &#add-color-button {
+        border-radius: $RadiusLittle;
+
+        overlay {
+            @include button(normal);
+            &:hover {
+                @include button(hover);
+            }
+            &:backdrop {
+                @include button(backdrop);
+            }
+        }
+    }
+}
