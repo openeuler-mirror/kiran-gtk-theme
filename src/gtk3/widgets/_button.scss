@@ -101,14 +101,6 @@ $_dot_color: gtk("@theme_widget_foreground_active");
     @include button(normal);
     &.flat {
         @include button(undecorated);
-
-        &:hover {
-            /* transition: $button_transition; */
-            transition-duration: 500ms;
-            &:active {
-                /* transition: $button_transition; */
-            }
-        }
     }
 
     &:hover {
