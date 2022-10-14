@@ -164,6 +164,7 @@ menuitem {
  * Popovers   *
  ***************/
 /* menu buttons */
+%modelbutton_flat,
 modelbutton.flat,
 .menuitem.button.flat {
     min-height: 16px;
@@ -254,6 +255,6 @@ popover.background {
 
     checkbutton,
     radiobutton {
-        @extend modelbutton.flat;
+        @extend %modelbutton_flat;
     }
 }

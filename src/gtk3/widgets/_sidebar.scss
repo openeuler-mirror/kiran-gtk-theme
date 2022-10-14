@@ -71,7 +71,6 @@ placessidebar {
         }
 
         @at-root button.sidebar-button {
-            @extend %button_basic.flat;
 
             @extend %undecorated_button;
 
