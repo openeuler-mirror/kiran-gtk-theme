@@ -351,10 +351,10 @@ combobox {
     &.linked {
         button:nth-child(2) {
             &:dir(ltr) {
-                @extend %linked:last-child;
+                @extend %linked_last_child;
             }
             &:dir(rtl) {
-                @extend %linked:first-child;
+                @extend %linked_first_child;
             }
         }
     }
@@ -371,14 +371,14 @@ combobox {
     } // specificity bump
 }
 
-.linked:not(.vertical) > combobox:first-child > box > button.combo { @extend %linked:first-child; }
-.linked:not(.vertical) > combobox:last-child > box > button.combo { @extend %linked:last-child; }
-.linked:not(.vertical) > combobox:only-child > box > button.combo { @extend %linked:only-child; }
+.linked:not(.vertical) > combobox:first-child > box > button.combo { @extend %linked_first_child; }
+.linked:not(.vertical) > combobox:last-child > box > button.combo { @extend %linked_last_child; }
+.linked:not(.vertical) > combobox:only-child > box > button.combo { @extend %linked_only_child; }
 
 .linked.vertical > combobox > box > button.combo { @extend %linked_vertical_middle; }
-.linked.vertical > combobox:first-child > box > button.combo { @extend %linked_vertical:first-child;}
-.linked.vertical > combobox:last-child > box > button.combo { @extend %linked_vertical:last-child; }
-.linked.vertical > combobox:only-child > box > button.combo { @extend %linked_vertical:only-child; }
+.linked.vertical > combobox:first-child > box > button.combo { @extend %linked_vertical_first_child;}
+.linked.vertical > combobox:last-child > box > button.combo { @extend %linked_vertical_last_child; }
+.linked.vertical > combobox:only-child > box > button.combo { @extend %linked_vertical_only_child; }
   
 %needs_attention {
     animation: needs_attention 150ms ease-in;
@@ -409,49 +409,74 @@ combobox {
     border-right-style: none;
 }
 
+%linked_first_child {
+    border-top-left-radius: $RadiusLittle;
+    border-bottom-left-radius: $RadiusLittle;
+}
+
+%linked_last_child {
+    border-top-right-radius: $RadiusLittle;
+    border-bottom-right-radius: $RadiusLittle;
+    border-right-style: solid;
+}
+
+%linked_only_child {
+    border-radius: $RadiusLittle;
+    border-style: solid;
+}
+
 %linked {
     @extend %linked_middle;
    
     &:first-child {
-        border-top-left-radius: $RadiusLittle;
-        border-bottom-left-radius: $RadiusLittle;
+        @extend %linked_first_child;
     }
 
     &:last-child {
-        border-top-right-radius: $RadiusLittle;
-        border-bottom-right-radius: $RadiusLittle;
-        border-right-style: solid;
+        @extend %linked_last_child;
     }
 
     &:only-child {
-        border-radius: $RadiusLittle;
-        border-style: solid;
+        @extend %linked_only_child;
     }
     
 }
+
 
 %linked_vertical_middle {
     border-style: solid solid none solid;
     border-radius: 0;
 }
 
+%linked_vertical_first_child {
+    border-top-left-radius: $RadiusLittle;
+    border-top-right-radius: $RadiusLittle;
+}
+
+%linked_vertical_last_child {
+    border-bottom-left-radius: $RadiusLittle;
+    border-bottom-right-radius: $RadiusLittle;
+    border-style: solid;
+}
+
+%linked_vertical_only_child {
+    border-radius: $RadiusLittle;
+    border-style: solid;
+}
+
 %linked_vertical {
     @extend %linked_vertical_middle;
 
     &:first-child {
-        border-top-left-radius: $RadiusLittle;
-        border-top-right-radius: $RadiusLittle;
+        @extend %linked_vertical_first_child;
     }
 
     &:last-child {
-        border-bottom-left-radius: $RadiusLittle;
-        border-bottom-right-radius: $RadiusLittle;
-        border-style: solid;
+        @extend %linked_vertical_last_child;
     }
 
     &:only-child {
-        border-radius: $RadiusLittle;
-        border-style: solid;
+        @extend %linked_vertical_only_child;
     }
 }
 
