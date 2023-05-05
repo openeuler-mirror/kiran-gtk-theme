@@ -31,6 +31,7 @@ render_theme () {
       -g "$3/gtk-2.0" -G "$3" -b "$4"
 
     sassc -I "$3" gtk3/gtk.scss "$3/gtk-3.0/gtk.css" 
+    sed -i '1d' "$3/gtk-3.0/gtk.css"
     rm -f "$3/_global.scss"
 
     # assets
