@@ -95,7 +95,7 @@ $_dot_color: gtk("@theme_widget_foreground_active");
 %buttons {
     border: 1px solid;
     border-radius: $RadiusLittle;
-    padding: 6px 6px;
+    padding: 4px 8px;
     background-clip: border-box;
 
     @include button(normal);
