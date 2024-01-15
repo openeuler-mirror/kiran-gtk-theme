@@ -1,9 +1,9 @@
 
 
-set (KIRAN_LIGHT_THEME_NAME "Kiran")
+set (KIRAN_LIGHT_THEME_NAME "Kiran-white")
 set (KIRAN_DARK_THEME_NAME "Kiran-dark")
 
-set (KIRAN_THEME_ROOT_CSS ${PROJECT_BINARY_DIR}/Kiran/gtk-3.0/gtk.css)
+set (KIRAN_THEME_ROOT_CSS ${PROJECT_BINARY_DIR}/Kiran-white/gtk-3.0/gtk.css)
 set (KIRAN_DARK_THEME_ROOT_CSS ${PROJECT_BINARY_DIR}/Kiran-dark/gtk-3.0/gtk.css)
 
 #add_custom_command(OUTPUT ${KIRAN_THEME_ROOT_CSS}
