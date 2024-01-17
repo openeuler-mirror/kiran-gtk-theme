@@ -2,8 +2,6 @@
 import cairo
 from math import pi
 import os
-import errno
-import sys
 import argparse
 from globals import ReadGlobals, Color
 
