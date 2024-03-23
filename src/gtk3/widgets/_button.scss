@@ -211,34 +211,29 @@ button {
     }
 
     // Suggested and Destructive Action buttons
-    @each $b_type, $button_color in (suggested-action, gtk("@theme_widget_foreground_normal")),
-                                    (destructive-action, gtk("@theme_default_error")) {
+    @each $b_type, $button_color in (suggested-action, gtk("@theme_selected_bg_color")),
+                                    (destructive-action, gtk("@theme_widget_background_normal")) {
         &.#{$b_type},
         &.#{$b_type}.osd & {
             @include button(normal);
             background-color: $button_color;
-            color: gtk("@theme_widget_foreground_active");
+            color: gtk("@theme_widget_foreground_normal");
             &.flat {
                 @include button(undecorated);
-                color: $button_color;
             }
             &:hover {
                 @include button(hover);
-                color: white; //! FIXME - No hardcoded colors.
-                background-color: $button_color;
+                background-color: gtkmix($button_color, gtk("@theme_widget_foreground_normal"), 0.1);
             }
             &:active,
-            &:checked,
-            &:focus {
+            &:checked {
                 @include button(active);
-                background-color: $button_color;
-                color: white;
+                background-color: gtkmix($button_color, gtk("@theme_widget_foreground_normal"), 0.2);
             }
             &:backdrop,
             &.flat:backdrop {
                 @include button(backdrop);
                 background-color: $button_color;
-                color: white;
                 &:disabled {
                     @include button(backdrop-insensitive);
                 }
@@ -247,7 +242,6 @@ button {
             &.flat:disabled,
             &.flat:backdrop:disabled {
                 @include button(undecorated);
-                color: gtkalpha($button_color, 0.8);
             }
             &:disabled {
                 @include button(insensitive);
