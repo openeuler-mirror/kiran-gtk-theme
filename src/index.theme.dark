@@ -1,13 +1,13 @@
 [Desktop Entry]
 Type=X-GNOME-Metatheme
-Name=META_THEME_NAME
+Name=Kiran-dark
 Comment=New theme for Kylin Desktop Environment
 Version=v2.1
 Encoding=UTF-8
 
 [X-GNOME-Metatheme]
-GtkTheme=GTK_THEME_NAME
-MetacityTheme=META_THEME_NAME
-IconTheme=Kiran
-CursorTheme=Kiran
+GtkTheme=Kiran-dark
+MetacityTheme=Kiran-dark
+IconTheme=Spring
+CursorTheme=Adwaita
 ButtonLayout=menu:minimize,maximize,close

@@ -20,9 +20,6 @@ render_metacity() {
 render_theme () {
     create_folders "$3"
 
-    # index.theme
-    sed -e "s/META_THEME_NAME/$2/g" -e "s/GTK_THEME_NAME/$2/g" index.theme > $3/index.theme
-
     # gtk2
     cp -R gtk2/* "$3/gtk-2.0/"
 
