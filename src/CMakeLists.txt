@@ -30,6 +30,7 @@ add_custom_command(
                              -t ${KIRAN_LIGHT_THEME_NAME}
                              -k light
                              -d ${PROJECT_BINARY_DIR}/${KIRAN_LIGHT_THEME_NAME}
+    COMMAND cp index.theme.light ${PROJECT_BINARY_DIR}/${KIRAN_LIGHT_THEME_NAME}/index.theme
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 )
 add_custom_target(${KIRAN_LIGHT_THEME_NAME}_TARGET ALL DEPENDS ${KIRAN_LIGHT_THEME_NAME}_FILES)
@@ -41,6 +42,7 @@ add_custom_command(
                              -t ${KIRAN_DARK_THEME_NAME}
                              -k dark
                              -d ${PROJECT_BINARY_DIR}/${KIRAN_DARK_THEME_NAME}
+    COMMAND cp index.theme.dark ${PROJECT_BINARY_DIR}/${KIRAN_DARK_THEME_NAME}/index.theme
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 )
 add_custom_target(${KIRAN_DARK_THEME_NAME}_TARGET ALL DEPENDS ${KIRAN_DARK_THEME_NAME}_FILES)
